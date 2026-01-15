@@ -4,7 +4,8 @@ import { useRef, useState, useCallback, RefObject } from "react";
 
 export function useHover<T extends HTMLElement = HTMLDivElement>(): [
   RefObject<T | null>,
-  boolean
+  boolean,
+  { onMouseEnter: () => void; onMouseLeave: () => void }
 ] {
   const ref = useRef<T>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -12,7 +13,7 @@ export function useHover<T extends HTMLElement = HTMLDivElement>(): [
   const onMouseEnter = useCallback(() => setIsHovered(true), []);
   const onMouseLeave = useCallback(() => setIsHovered(false), []);
 
-  return [ref, isHovered];
+  return [ref, isHovered, { onMouseEnter, onMouseLeave }];
 }
 
 export function useMagneticHover<T extends HTMLElement = HTMLDivElement>(

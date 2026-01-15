@@ -104,9 +104,11 @@ export default function WeOffer() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="mt-20 flex justify-center"
         >
-          <img
+          <Image
             src="/images/separator.svg"
             alt="Separator"
+            width={200}
+            height={30}
             className="opacity-60"
           />
         </motion.div>

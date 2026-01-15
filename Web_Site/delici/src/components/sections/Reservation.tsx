@@ -11,7 +11,6 @@ const PHONE_NUMBER = "+420 605 375 012";
 
 export default function Reservation() {
   const t = useTranslations("reservation");
-  const tCommon = useTranslations("common");
   return (
     <section
       id="reservation"

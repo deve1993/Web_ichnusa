@@ -42,7 +42,7 @@ export function useReferralTracking() {
       }
 
       return data;
-    } catch (e) {
+    } catch {
       return null;
     }
   }, []);

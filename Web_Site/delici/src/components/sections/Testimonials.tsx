@@ -8,6 +8,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { Quote } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function Testimonials() {
   const t = useTranslations("testimonials");
@@ -79,11 +80,13 @@ export default function Testimonials() {
                   </blockquote>
 
                   <div className="flex flex-col items-center">
-                    <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[var(--color-primary)] mb-4">
-                      <img
+                    <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-[var(--color-primary)] mb-4">
+                      <Image
                         src={testimonial.avatar}
                         alt={t(testimonial.authorKey)}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
+                        sizes="80px"
                       />
                     </div>
                     <div className="w-16 h-0.5 bg-[var(--color-primary)] mb-4" />

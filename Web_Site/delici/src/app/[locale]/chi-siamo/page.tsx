@@ -170,7 +170,7 @@ export default function ChiSiamoPage() {
               variants={staggerContainer}
               className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
             >
-              {values.map((value, index) => (
+              {values.map((value) => (
                 <motion.div
                   key={value.title}
                   variants={fadeInUp}

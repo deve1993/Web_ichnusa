@@ -3,6 +3,7 @@
 import { ReactNode, useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface ParallaxSectionProps {
   children: ReactNode;
@@ -64,7 +65,6 @@ export function ParallaxImage({
   src,
   alt,
   className,
-  speed = 0.2,
 }: ParallaxImageProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -76,12 +76,15 @@ export function ParallaxImage({
 
   return (
     <div ref={ref} className={cn("relative overflow-hidden", className)}>
-      <motion.img
-        src={src}
-        alt={alt}
-        className="w-full h-full object-cover"
-        style={{ y, scale: 1.1 }}
-      />
+      <motion.div className="w-full h-full" style={{ y, scale: 1.1 }}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+      </motion.div>
     </div>
   );
 }
@@ -121,10 +124,12 @@ export function SplitParallaxSection({
             className="relative overflow-hidden h-[500px]"
             style={{ y: imageY }}
           >
-            <img
+            <Image
               src={backgroundImage}
               alt=""
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="50vw"
             />
           </motion.div>
           <motion.div style={{ y: contentY }}>{children}</motion.div>

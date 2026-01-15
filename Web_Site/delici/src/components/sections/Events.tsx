@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const events = [
   {
@@ -77,11 +78,13 @@ export default function Events() {
               className="group cursor-pointer"
             >
               {/* Image */}
-              <div className="relative overflow-hidden mb-6">
-                <img
+              <div className="relative overflow-hidden mb-6 h-64">
+                <Image
                   src={event.image}
                   alt={event.title}
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 {/* Date Badge */}
                 <div className="absolute top-4 left-4 bg-[var(--color-primary)] text-[var(--color-background)] px-4 py-2 font-[var(--font-display)]">

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Facebook, Twitter, Instagram } from "lucide-react";
+import Image from "next/image";
 
 const chefs = [
   {
@@ -58,11 +59,13 @@ export default function Team() {
               className="group"
             >
               {/* Image Container */}
-              <div className="relative overflow-hidden mb-6">
-                <img
+              <div className="relative overflow-hidden mb-6 aspect-[3/4]">
+                <Image
                   src={chef.image}
                   alt={chef.name}
-                  className="w-full aspect-[3/4] object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  fill
+                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
 
                 {/* Overlay */}

@@ -1,0 +1,31 @@
+# Dependencies
+**/node_modules
+
+# Build output
+**/.next
+**/out
+
+# Git
+.git
+.gitignore
+
+# Docs and config (not needed for build)
+docs/
+config/
+context/
+mcp-servers/
+.opencode/
+*.md
+opencode.json
+
+# IDE
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env files (use Coolify env vars instead)
+**/.env*
+!**/.env.example

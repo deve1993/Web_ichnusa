@@ -8,11 +8,6 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import { X } from "lucide-react";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
-};
-
 const categories = [
   { id: "all", label: "Tutto" },
   { id: "interni", label: "Interni" },

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { Link } from "@/i18n/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
@@ -300,12 +301,12 @@ export default function ProdottiPage() {
                 Cerchi un prodotto specifico della Sardegna? Contattaci per ordini speciali 
                 e importazioni su richiesta. Possiamo procurare qualsiasi specialità sarda.
               </p>
-              <a
+              <Link
                 href="/contatti"
                 className="btn-primary inline-flex"
               >
                 Contattaci
-              </a>
+              </Link>
             </motion.div>
           </div>
         </section>

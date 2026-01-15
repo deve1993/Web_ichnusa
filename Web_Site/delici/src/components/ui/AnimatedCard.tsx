@@ -4,6 +4,7 @@ import { ReactNode, useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTiltEffect, useSpotlightEffect } from "@/hooks";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface AnimatedCardProps {
   children: ReactNode;
@@ -117,11 +118,13 @@ export function SpecialtyCard({
       transition={{ duration: 0.6, delay }}
       className="specialty-card group"
     >
-      <div className="card-image-wrapper mb-6">
-        <img
+      <div className="card-image-wrapper mb-6 relative h-64">
+        <Image
           src={image}
           alt={title}
-          className="card-image w-full h-64 object-cover"
+          fill
+          className="card-image object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="card-overlay" />
         <div className="card-icon">
@@ -177,11 +180,13 @@ export function MenuItemCard({
       transition={{ duration: 0.5, delay }}
       className="menu-item-hover flex gap-6 cursor-pointer"
     >
-      <div className="menu-image flex-shrink-0 w-24 h-24 rounded-full overflow-hidden">
-        <img
+      <div className="menu-image flex-shrink-0 w-24 h-24 rounded-full overflow-hidden relative">
+        <Image
           src={image}
           alt={title}
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
+          sizes="96px"
         />
       </div>
       <div className="flex-1">

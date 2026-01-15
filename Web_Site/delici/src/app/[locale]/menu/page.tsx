@@ -159,7 +159,7 @@ export default function MenuPage() {
                   variants={staggerContainer}
                   className="space-y-1"
                 >
-                  {menuItems[activeCategory as keyof typeof menuItems]?.map((item, index) => (
+                  {menuItems[activeCategory as keyof typeof menuItems]?.map((item) => (
                     <motion.div
                       key={item.name}
                       variants={fadeInUp}
