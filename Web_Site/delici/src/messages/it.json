@@ -1,0 +1,161 @@
+{
+  "common": {
+    "bookNow": "Prenota Ora",
+    "viewMenu": "Scopri il Menu",
+    "viewMore": "Scopri di più",
+    "viewProducts": "Scopri i Prodotti",
+    "bookEvent": "Prenota Evento",
+    "sendMessage": "Invia Messaggio",
+    "loading": "Caricamento...",
+    "close": "Chiudi",
+    "phone": "Telefono",
+    "email": "Email",
+    "address": "Indirizzo",
+    "hours": "Orari",
+    "language": "Lingua"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "Chi Siamo",
+    "products": "Prodotti",
+    "menu": "Menu",
+    "gallery": "Galleria",
+    "contact": "Contatti"
+  },
+  "hero": {
+    "subtitle": "Autentica cucina sarda a Praga",
+    "title1": "Ichnusa",
+    "title2": "Botega & Bistro",
+    "description": "Piatti tradizionali sardi, vini pregiati, pesce fresco e frutti di mare nel cuore di Malá Strana",
+    "scroll": "Scroll"
+  },
+  "weOffer": {
+    "subtitle": "L'Essenza della Sardegna",
+    "title": "La Nostra Passione",
+    "tradition": {
+      "title": "Tradizione Sarda",
+      "description": "Ricette autentiche tramandate di generazione in generazione. Due piani con atmosfera calma e intima per vivere la vera esperienza culinaria sarda."
+    },
+    "fish": {
+      "title": "Pesce Fresco",
+      "description": "Selezione giornaliera di pesce fresco, preparato secondo la tradizione italiana. Ingredienti importati direttamente dalla Sardegna."
+    },
+    "wines": {
+      "title": "Vini Unici",
+      "description": "Selezione diversificata di vini italiani, incluso il nostro vino coltivato in Sardegna. Cannonau, Vermentino e rarità locali."
+    },
+    "cards": {
+      "kitchen": "La Nostra Cucina",
+      "bottega": "La Bottega",
+      "wines": "I Nostri Vini",
+      "discover": "Scopri"
+    }
+  },
+  "specialDish": {
+    "badge": "Specialità",
+    "subtitle": "Il Nostro Piatto Iconico",
+    "title": "Porceddu",
+    "description": "Il re della cucina sarda: maialino da latte cotto lentamente su legna di mirto, con la pelle croccante e la carne tenera che si scioglie in bocca. Un'esperienza autentica della tradizione pastorale della Sardegna, servito con patate arrosto e verdure di stagione.",
+    "reservation": "Su prenotazione",
+    "serves": "Per 2-4 persone"
+  },
+  "menu": {
+    "subtitle": "Sapori Autentici",
+    "title": "Il Nostro Menu",
+    "antipasti": "Antipasti",
+    "primi": "Primi",
+    "secondi": "Secondi",
+    "wines": "Vini Sardi",
+    "openDaily": "Aperto tutti i giorni dalle 11:30 alle 23:00",
+    "fullMenu": "Menu Completo"
+  },
+  "infoCards": {
+    "bottega": {
+      "subtitle": "Prodotti Autentici dalla Sardegna",
+      "title": "La Bottega",
+      "description": "Porta a casa un pezzo di Sardegna. Nella nostra bottega trovi formaggi DOP, salumi artigianali, pasta fresca, vini delle migliori cantine sarde e specialità introvabili a Praga. Ideali anche come regalo."
+    },
+    "events": {
+      "subtitle": "Il tuo evento in stile sardo",
+      "title": "Eventi Privati",
+      "description": "Festeggia compleanni, anniversari o cene aziendali nella nostra sala riservata. Menù personalizzati con le migliori specialità sarde, vini pregiati e un'atmosfera intima e accogliente nel cuore di Malá Strana."
+    }
+  },
+  "testimonials": {
+    "review1": {
+      "quote": "Un angolo di Sardegna nel cuore di Praga. I culurgiones sono identici a quelli che mangiavo da bambino in Ogliastra. Complimenti!",
+      "author": "Marco B.",
+      "role": "Google Reviews"
+    },
+    "review2": {
+      "quote": "Finalmente un ristorante italiano autentico a Praga. Il porceddu è spettacolare, la bottega con i prodotti sardi è una chicca. Torneremo sicuramente.",
+      "author": "Lucia e Paolo",
+      "role": "TripAdvisor"
+    },
+    "review3": {
+      "quote": "Atmosfera intima, servizio impeccabile e vini sardi eccezionali. Il Cannonau consigliato dallo staff era perfetto con l'agnello. Consigliatissimo!",
+      "author": "Jana K.",
+      "role": "Google Reviews"
+    }
+  },
+  "reservation": {
+    "subtitle": "Prenota un Tavolo",
+    "title": "Prenota il Tuo Tavolo",
+    "description": "Per prenotazioni chiamaci al {phone} oppure prenota online comodamente",
+    "button": "Prenota Ora",
+    "bookInClicks": "Prenota in pochi click",
+    "dishSystem": "Sistema di prenotazione DISH.co",
+    "instantConfirm": "Conferma immediata • Nessun costo aggiuntivo",
+    "groupsNote": "Per gruppi superiori a 8 persone o eventi privati,",
+    "contactUs": "contattaci direttamente",
+    "orCall": "oppure chiamaci",
+    "findUs": "Dove Siamo",
+    "callToBook": "Chiamaci per prenotare",
+    "addressLabel": "Indirizzo",
+    "lunch": "Pranzo",
+    "dinner": "Cena",
+    "contacts": "Contatti",
+    "mondaySunday": "Lunedì - Domenica"
+  },
+  "footer": {
+    "description": "Autentico ristorante sardo nel cuore di Praga. Piatti tradizionali, vini pregiati e l'ospitalità della Sardegna.",
+    "quickLinks": "Link Rapidi",
+    "contact": "Contatti",
+    "hours": "Orari",
+    "followUs": "Seguici",
+    "rights": "Tutti i diritti riservati",
+    "privacy": "Privacy Policy",
+    "terms": "Termini e Condizioni"
+  },
+  "about": {
+    "pageTitle": "Chi Siamo",
+    "pageSubtitle": "La Nostra Storia",
+    "heroTitle": "Una Passione per la Sardegna",
+    "heroDescription": "Dal cuore della Sardegna al cuore di Praga, portiamo l'autenticità della cucina sarda in ogni piatto che serviamo."
+  },
+  "products": {
+    "pageTitle": "I Nostri Prodotti",
+    "pageSubtitle": "La Bottega Sarda",
+    "description": "Porta a casa i sapori autentici della Sardegna"
+  },
+  "gallery": {
+    "pageTitle": "Galleria",
+    "pageSubtitle": "Le Nostre Immagini"
+  },
+  "contact": {
+    "pageTitle": "Contatti",
+    "pageSubtitle": "Parliamo",
+    "formName": "Nome",
+    "formEmail": "Email",
+    "formPhone": "Telefono",
+    "formMessage": "Messaggio",
+    "formSubmit": "Invia Messaggio",
+    "formSuccess": "Messaggio inviato con successo!"
+  },
+  "whatsapp": {
+    "tooltip": "Scrivici su WhatsApp!",
+    "greeting": "Ciao! 👋 Come possiamo aiutarti? Scrivici per prenotare un tavolo o per qualsiasi informazione.",
+    "startChat": "Avvia chat",
+    "responseTime": "Di solito risponde subito"
+  }
+}

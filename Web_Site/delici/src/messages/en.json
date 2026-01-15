@@ -1,0 +1,161 @@
+{
+  "common": {
+    "bookNow": "Book Now",
+    "viewMenu": "View Menu",
+    "viewMore": "Learn More",
+    "viewProducts": "Discover Products",
+    "bookEvent": "Book Event",
+    "sendMessage": "Send Message",
+    "loading": "Loading...",
+    "close": "Close",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "hours": "Hours",
+    "language": "Language"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "products": "Products",
+    "menu": "Menu",
+    "gallery": "Gallery",
+    "contact": "Contact"
+  },
+  "hero": {
+    "subtitle": "Authentic Sardinian cuisine in Prague",
+    "title1": "Ichnusa",
+    "title2": "Botega & Bistro",
+    "description": "Traditional Sardinian dishes, fine wines, fresh fish and seafood in the heart of Mala Strana",
+    "scroll": "Scroll"
+  },
+  "weOffer": {
+    "subtitle": "The Essence of Sardinia",
+    "title": "Our Passion",
+    "tradition": {
+      "title": "Sardinian Tradition",
+      "description": "Authentic recipes passed down through generations. Two floors with a calm and intimate atmosphere to experience true Sardinian culinary tradition."
+    },
+    "fish": {
+      "title": "Fresh Fish",
+      "description": "Daily selection of fresh fish, prepared according to Italian tradition. Ingredients imported directly from Sardinia."
+    },
+    "wines": {
+      "title": "Unique Wines",
+      "description": "Diverse selection of Italian wines, including our own wine grown in Sardinia. Cannonau, Vermentino and local rarities."
+    },
+    "cards": {
+      "kitchen": "Our Kitchen",
+      "bottega": "The Bottega",
+      "wines": "Our Wines",
+      "discover": "Discover"
+    }
+  },
+  "specialDish": {
+    "badge": "Specialty",
+    "subtitle": "Our Signature Dish",
+    "title": "Porceddu",
+    "description": "The king of Sardinian cuisine: suckling pig slowly roasted over myrtle wood, with crispy skin and tender meat that melts in your mouth. An authentic experience of Sardinia's pastoral tradition, served with roasted potatoes and seasonal vegetables.",
+    "reservation": "By reservation",
+    "serves": "Serves 2-4 people"
+  },
+  "menu": {
+    "subtitle": "Authentic Flavors",
+    "title": "Our Menu",
+    "antipasti": "Appetizers",
+    "primi": "First Courses",
+    "secondi": "Main Courses",
+    "wines": "Sardinian Wines",
+    "openDaily": "Open daily from 11:30 to 23:00",
+    "fullMenu": "Full Menu"
+  },
+  "infoCards": {
+    "bottega": {
+      "subtitle": "Authentic Products from Sardinia",
+      "title": "The Bottega",
+      "description": "Take a piece of Sardinia home. In our shop you'll find DOP cheeses, artisanal cured meats, fresh pasta, wines from the best Sardinian wineries and specialties you won't find anywhere else in Prague. Also perfect as gifts."
+    },
+    "events": {
+      "subtitle": "Your event Sardinian style",
+      "title": "Private Events",
+      "description": "Celebrate birthdays, anniversaries or corporate dinners in our private room. Customized menus with the best Sardinian specialties, fine wines and an intimate, welcoming atmosphere in the heart of Mala Strana."
+    }
+  },
+  "testimonials": {
+    "review1": {
+      "quote": "A corner of Sardinia in the heart of Prague. The culurgiones are identical to those I used to eat as a child in Ogliastra. Congratulations!",
+      "author": "Marco B.",
+      "role": "Google Reviews"
+    },
+    "review2": {
+      "quote": "Finally an authentic Italian restaurant in Prague. The porceddu is spectacular, the shop with Sardinian products is a gem. We will definitely be back.",
+      "author": "Lucia & Paolo",
+      "role": "TripAdvisor"
+    },
+    "review3": {
+      "quote": "Intimate atmosphere, impeccable service and exceptional Sardinian wines. The Cannonau recommended by the staff was perfect with the lamb. Highly recommended!",
+      "author": "Jana K.",
+      "role": "Google Reviews"
+    }
+  },
+  "reservation": {
+    "subtitle": "Book a Table",
+    "title": "Book Your Table",
+    "description": "For reservations call us at {phone} or book online conveniently",
+    "button": "Book Now",
+    "bookInClicks": "Book in a few clicks",
+    "dishSystem": "DISH.co reservation system",
+    "instantConfirm": "Instant confirmation • No extra cost",
+    "groupsNote": "For groups larger than 8 people or private events,",
+    "contactUs": "contact us directly",
+    "orCall": "or call us",
+    "findUs": "Where We Are",
+    "callToBook": "Call us to book",
+    "addressLabel": "Address",
+    "lunch": "Lunch",
+    "dinner": "Dinner",
+    "contacts": "Contact",
+    "mondaySunday": "Monday - Sunday"
+  },
+  "footer": {
+    "description": "Authentic Sardinian restaurant in the heart of Prague. Traditional dishes, fine wines and the hospitality of Sardinia.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "hours": "Hours",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms and Conditions"
+  },
+  "about": {
+    "pageTitle": "About Us",
+    "pageSubtitle": "Our Story",
+    "heroTitle": "A Passion for Sardinia",
+    "heroDescription": "From the heart of Sardinia to the heart of Prague, we bring the authenticity of Sardinian cuisine to every dish we serve."
+  },
+  "products": {
+    "pageTitle": "Our Products",
+    "pageSubtitle": "The Sardinian Bottega",
+    "description": "Take home the authentic flavors of Sardinia"
+  },
+  "gallery": {
+    "pageTitle": "Gallery",
+    "pageSubtitle": "Our Images"
+  },
+  "contact": {
+    "pageTitle": "Contact",
+    "pageSubtitle": "Let's Talk",
+    "formName": "Name",
+    "formEmail": "Email",
+    "formPhone": "Phone",
+    "formMessage": "Message",
+    "formSubmit": "Send Message",
+    "formSuccess": "Message sent successfully!"
+  },
+  "whatsapp": {
+    "tooltip": "Message us on WhatsApp!",
+    "greeting": "Hello! How can we help you? Write to us to book a table or for any information.",
+    "startChat": "Start chat",
+    "responseTime": "Usually responds immediately"
+  }
+}

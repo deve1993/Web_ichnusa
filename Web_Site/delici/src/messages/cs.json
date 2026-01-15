@@ -1,0 +1,161 @@
+{
+  "common": {
+    "bookNow": "Rezervovat",
+    "viewMenu": "Zobrazit menu",
+    "viewMore": "Zjistit vice",
+    "viewProducts": "Objevte produkty",
+    "bookEvent": "Rezervovat akci",
+    "sendMessage": "Odeslat zpravu",
+    "loading": "Nacitani...",
+    "close": "Zavrit",
+    "phone": "Telefon",
+    "email": "Email",
+    "address": "Adresa",
+    "hours": "Oteviraci doba",
+    "language": "Jazyk"
+  },
+  "nav": {
+    "home": "Domov",
+    "about": "O nas",
+    "products": "Produkty",
+    "menu": "Menu",
+    "gallery": "Galerie",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "subtitle": "Autenticka sardinska kuchyne v Praze",
+    "title1": "Ichnusa",
+    "title2": "Botega & Bistro",
+    "description": "Tradicni sardinska jidla, vyborna vina, cerstve ryby a morske plody v srdci Male Strany",
+    "scroll": "Scroll"
+  },
+  "weOffer": {
+    "subtitle": "Esence Sardinie",
+    "title": "Nase vasen",
+    "tradition": {
+      "title": "Sardinska tradice",
+      "description": "Autenticke recepty predavane z generace na generaci. Dve patra s klidnou a intimni atmosferou pro zaziti prave sardinske kulinarske tradice."
+    },
+    "fish": {
+      "title": "Cerstve ryby",
+      "description": "Denni vyber cerstvych ryb, pripravovanych podle italske tradice. Ingredience dovazene primo ze Sardinie."
+    },
+    "wines": {
+      "title": "Jedinecna vina",
+      "description": "Rozmanity vyber italskych vin, vcetne naseho vlastniho vina pestovaneho na Sardinii. Cannonau, Vermentino a mistni rarity."
+    },
+    "cards": {
+      "kitchen": "Nase kuchyne",
+      "bottega": "La Bottega",
+      "wines": "Nase vina",
+      "discover": "Objevit"
+    }
+  },
+  "specialDish": {
+    "badge": "Specialita",
+    "subtitle": "Nas ikonicky pokrm",
+    "title": "Porceddu",
+    "description": "Kral sardinske kuchyne: sele pomalu pecene na myrtovem dreve s krehkou kuzi a jemnym masem, ktere se rozplyva na jazyku. Autenticky zazitek sardinske pastyrske tradice, podavany s pecenymi bramborami a sezonni zeleninou.",
+    "reservation": "Na rezervaci",
+    "serves": "Pro 2-4 osoby"
+  },
+  "menu": {
+    "subtitle": "Autenticke chute",
+    "title": "Nase menu",
+    "antipasti": "Predkrmy",
+    "primi": "Prvni chody",
+    "secondi": "Hlavni chody",
+    "wines": "Sardinska vina",
+    "openDaily": "Otevreno denne od 11:30 do 23:00",
+    "fullMenu": "Kompletni menu"
+  },
+  "infoCards": {
+    "bottega": {
+      "subtitle": "Autenticke produkty ze Sardinie",
+      "title": "La Bottega",
+      "description": "Odneste si kousek Sardinie domu. V nasem obchode najdete DOP syry, remeselne uzeniny, cerstvou pastu, vina z nejlepsich sardinskych vinaren a speciality, ktere v Praze jinde nenajdete. Idealni take jako darek."
+    },
+    "events": {
+      "subtitle": "Vase akce v sardinskem stylu",
+      "title": "Soukrome akce",
+      "description": "Oslavte narozeniny, vyroci nebo firemni vecere v nasem soukromem salonku. Menu na miru s nejlepsimi sardinskymi specialitami, vyberovymi viny a intimni, prijemnou atmosferou v srdci Male Strany."
+    }
+  },
+  "testimonials": {
+    "review1": {
+      "quote": "Kousek Sardinie v srdci Prahy. Culurgiones jsou stejne jako ty, ktere jsem jedl jako dite v Ogliastre. Gratulujeme!",
+      "author": "Marco B.",
+      "role": "Google Reviews"
+    },
+    "review2": {
+      "quote": "Konecne autenticka italska restaurace v Praze. Porceddu je uzasne, obchudek se sardinskymi produkty je poklad. Urcite se vratime.",
+      "author": "Lucia & Paolo",
+      "role": "TripAdvisor"
+    },
+    "review3": {
+      "quote": "Intimni atmosfera, bezchybny servis a vyjimecna sardinska vina. Cannonau doporucene personlem bylo dokonale k jehneci. Vrelé doporucuji!",
+      "author": "Jana K.",
+      "role": "Google Reviews"
+    }
+  },
+  "reservation": {
+    "subtitle": "Rezervujte stul",
+    "title": "Rezervujte si stul",
+    "description": "Pro rezervace nam zavolejte na {phone} nebo si pohodlne rezervujte online",
+    "button": "Rezervovat",
+    "bookInClicks": "Rezervujte na par kliknuti",
+    "dishSystem": "Rezervacni system DISH.co",
+    "instantConfirm": "Okamzite potvrzeni • Zadne dalsi poplatky",
+    "groupsNote": "Pro skupiny vetsi nez 8 osob nebo soukrome akce,",
+    "contactUs": "kontaktujte nas primo",
+    "orCall": "nebo zavolejte",
+    "findUs": "Kde nas najdete",
+    "callToBook": "Zavolejte nam pro rezervaci",
+    "addressLabel": "Adresa",
+    "lunch": "Obed",
+    "dinner": "Vecere",
+    "contacts": "Kontakt",
+    "mondaySunday": "Pondeli - Nedele"
+  },
+  "footer": {
+    "description": "Autenticka sardinska restaurace v srdci Prahy. Tradicni pokrmy, vyborna vina a sardinska pohostinnost.",
+    "quickLinks": "Rychle odkazy",
+    "contact": "Kontakt",
+    "hours": "Oteviraci doba",
+    "followUs": "Sledujte nas",
+    "rights": "Vsechna prava vyhrazena",
+    "privacy": "Zasady ochrany osobnich udaju",
+    "terms": "Obchodni podminky"
+  },
+  "about": {
+    "pageTitle": "O nas",
+    "pageSubtitle": "Nas pribeh",
+    "heroTitle": "Vasen pro Sardinii",
+    "heroDescription": "Ze srdce Sardinie do srdce Prahy prinasime autenticitu sardinske kuchyne v kazdem jídle, ktere podavame."
+  },
+  "products": {
+    "pageTitle": "Nase produkty",
+    "pageSubtitle": "Sardinska Bottega",
+    "description": "Odneste si domu autenticke chute Sardinie"
+  },
+  "gallery": {
+    "pageTitle": "Galerie",
+    "pageSubtitle": "Nase fotografie"
+  },
+  "contact": {
+    "pageTitle": "Kontakt",
+    "pageSubtitle": "Pojdme si promluvit",
+    "formName": "Jmeno",
+    "formEmail": "Email",
+    "formPhone": "Telefon",
+    "formMessage": "Zprava",
+    "formSubmit": "Odeslat zpravu",
+    "formSuccess": "Zprava byla uspesne odeslana!"
+  },
+  "whatsapp": {
+    "tooltip": "Napiste nam na WhatsApp!",
+    "greeting": "Ahoj! Jak vam muzeme pomoci? Napiste nam pro rezervaci stolu nebo jakoukoli informaci.",
+    "startChat": "Zahajit chat",
+    "responseTime": "Obvykle odpovida okamzite"
+  }
+}
