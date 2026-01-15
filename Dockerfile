@@ -2,13 +2,13 @@ FROM node:20-alpine AS base
 
 FROM base AS deps
 WORKDIR /app
-COPY Web_Site/delici/package*.json ./
+COPY Web_Site/Ichnusa/package*.json ./
 RUN npm ci
 
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY Web_Site/delici/ .
+COPY Web_Site/Ichnusa/ .
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
