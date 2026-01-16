@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
@@ -21,14 +22,8 @@ const staggerContainer = {
   },
 };
 
-const menuCategories = [
-  { id: "antipasti", label: "Antipasti", icon: "🥗" },
-  { id: "primi", label: "Primi Piatti", icon: "🍝" },
-  { id: "secondi", label: "Secondi", icon: "🥩" },
-  { id: "pesce", label: "Pesce", icon: "🐟" },
-  { id: "contorni", label: "Contorni", icon: "🥬" },
-  { id: "dolci", label: "Dolci", icon: "🍰" },
-];
+const categoryIds = ["antipasti", "primi", "secondi", "pesce", "contorni", "dolci"] as const;
+const categoryIcons = ["🥗", "🍝", "🥩", "🐟", "🥬", "🍰"];
 
 const menuItems = {
   antipasti: [
@@ -80,18 +75,26 @@ const menuItems = {
 };
 
 export default function MenuPage() {
-  const [activeCategory, setActiveCategory] = useState("antipasti");
+  const t = useTranslations("menu");
+  const tCommon = useTranslations("common");
+  const tNav = useTranslations("nav");
+
+  const [activeCategory, setActiveCategory] = useState<typeof categoryIds[number]>("antipasti");
   const [headerRef, headerInView] = useInViewport({ threshold: 0.2 });
+
+  const getCategoryLabel = (id: typeof categoryIds[number]) => {
+    return t(id);
+  };
 
   return (
     <>
       <Header />
       <main>
         <PageHero
-          title="Il Nostro Menu"
-          subtitle="Piatti tradizionali sardi preparati con ingredienti autentici"
+          title={t("title")}
+          subtitle={t("subtitle")}
           backgroundImage="/images/food/lasagne.jpg"
-          breadcrumbs={[{ label: "Menu", href: "/menu" }]}
+          breadcrumbs={[{ label: tNav("menu"), href: "/menu" }]}
         />
 
         <section className="section-padding bg-[var(--color-background)]">
@@ -100,31 +103,31 @@ export default function MenuPage() {
               <aside className="lg:w-64 flex-shrink-0">
                 <div className="lg:sticky lg:top-32">
                   <h3 className="font-[var(--font-display)] text-xl text-white mb-6 hidden lg:block">
-                    Categorie
+                    {t("categories")}
                   </h3>
                   <nav className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0">
-                    {menuCategories.map((cat) => (
+                    {categoryIds.map((cat, index) => (
                       <button
-                        key={cat.id}
-                        onClick={() => setActiveCategory(cat.id)}
+                        key={cat}
+                        onClick={() => setActiveCategory(cat)}
                         className={`flex items-center gap-3 px-4 py-3 text-left whitespace-nowrap transition-all duration-300 border ${
-                          activeCategory === cat.id
+                          activeCategory === cat
                             ? "bg-[var(--color-primary)] border-[var(--color-primary)] text-[var(--color-background)]"
                             : "border-[var(--color-border)] text-[var(--color-text-muted)] hover:border-[var(--color-primary)] hover:text-white"
                         }`}
                       >
-                        <span className="text-xl">{cat.icon}</span>
-                        <span className="text-sm uppercase tracking-wider">{cat.label}</span>
+                        <span className="text-xl">{categoryIcons[index]}</span>
+                        <span className="text-sm uppercase tracking-wider">{getCategoryLabel(cat)}</span>
                       </button>
                     ))}
                   </nav>
 
                   <div className="hidden lg:block mt-8 p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
                     <p className="text-sm text-[var(--color-text-muted)] mb-4">
-                      <strong className="text-white">MP</strong> = Prezzo di Mercato
+                      <strong className="text-white">MP</strong> = {t("marketPrice")}
                     </p>
                     <p className="text-xs text-[var(--color-text-muted)]">
-                      I prezzi possono variare. Comunica allergie o intolleranze al personale.
+                      {t("priceNote")}
                     </p>
                   </div>
                 </div>
@@ -140,10 +143,10 @@ export default function MenuPage() {
                 >
                   <motion.div variants={fadeInUp} className="flex items-center gap-4 mb-2">
                     <span className="text-4xl">
-                      {menuCategories.find(c => c.id === activeCategory)?.icon}
+                      {categoryIcons[categoryIds.indexOf(activeCategory)]}
                     </span>
                     <h2 className="font-[var(--font-display)] text-4xl text-white">
-                      {menuCategories.find(c => c.id === activeCategory)?.label}
+                      {getCategoryLabel(activeCategory)}
                     </h2>
                   </motion.div>
                   <motion.div
@@ -159,7 +162,7 @@ export default function MenuPage() {
                   variants={staggerContainer}
                   className="space-y-1"
                 >
-                  {menuItems[activeCategory as keyof typeof menuItems]?.map((item) => (
+                  {menuItems[activeCategory]?.map((item) => (
                     <motion.div
                       key={item.name}
                       variants={fadeInUp}
@@ -200,20 +203,20 @@ export default function MenuPage() {
               >
                 <Image
                   src="/images/menu/drinks.jpg"
-                  alt="Carta dei vini"
+                  alt={t("wineList")}
                   fill
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8">
                   <h3 className="font-[var(--font-display)] text-3xl text-white mb-2">
-                    Carta dei Vini
+                    {t("wineList")}
                   </h3>
                   <p className="text-[var(--color-text-muted)] mb-4">
-                    Oltre 50 etichette sarde, incluso il nostro vino prodotto in Sardegna.
+                    {t("wineListDesc")}
                   </p>
                   <span className="text-[var(--color-primary)] text-sm uppercase tracking-wider">
-                    Chiedi al sommelier →
+                    {t("askSommelier")} →
                   </span>
                 </div>
               </motion.div>
@@ -227,20 +230,20 @@ export default function MenuPage() {
               >
                 <Image
                   src="/images/food/fish.jpg"
-                  alt="Menu degustazione"
+                  alt={t("tastingMenu")}
                   fill
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8">
                   <h3 className="font-[var(--font-display)] text-3xl text-white mb-2">
-                    Menu Degustazione
+                    {t("tastingMenu")}
                   </h3>
                   <p className="text-[var(--color-text-muted)] mb-4">
-                    Un viaggio attraverso i sapori della Sardegna in 7 portate.
+                    {t("tastingMenuDesc")}
                   </p>
                   <span className="text-[var(--color-primary)] text-sm uppercase tracking-wider">
-                    €65 a persona →
+                    €65 {t("perPerson")} →
                   </span>
                 </div>
               </motion.div>
@@ -257,8 +260,7 @@ export default function MenuPage() {
               transition={{ duration: 0.8 }}
             >
               <p className="text-[var(--color-text-muted)] mb-6">
-                Per allergie o intolleranze alimentari, comunicalo al nostro staff. 
-                Possiamo adattare molti piatti alle tue esigenze.
+                {t("allergyNote")}
               </p>
               <a
                 href="https://reservation.dish.co/widget/hydra-7cc98a90-5678-11ec-bb8e-d7389d5eaae1"
@@ -266,7 +268,7 @@ export default function MenuPage() {
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex"
               >
-                Prenota il Tuo Tavolo
+                {tCommon("bookNow")}
               </a>
             </motion.div>
           </div>

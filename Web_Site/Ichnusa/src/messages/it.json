@@ -12,7 +12,12 @@
     "email": "Email",
     "address": "Indirizzo",
     "hours": "Orari",
-    "language": "Lingua"
+    "language": "Lingua",
+    "details": "Dettagli",
+    "contactUs": "Contattaci",
+    "yearsExperience": "Anni di Esperienza",
+    "importedIngredients": "Ingredienti Importati dalla Sardegna",
+    "wineLabels": "Etichette di Vini Sardi"
   },
   "nav": {
     "home": "Home",
@@ -63,11 +68,24 @@
     "subtitle": "Sapori Autentici",
     "title": "Il Nostro Menu",
     "antipasti": "Antipasti",
-    "primi": "Primi",
+    "primi": "Primi Piatti",
     "secondi": "Secondi",
+    "pesce": "Pesce",
+    "contorni": "Contorni",
+    "dolci": "Dolci",
     "wines": "Vini Sardi",
     "openDaily": "Aperto tutti i giorni dalle 11:30 alle 23:00",
-    "fullMenu": "Menu Completo"
+    "fullMenu": "Menu Completo",
+    "categories": "Categorie",
+    "marketPrice": "Prezzo di Mercato",
+    "priceNote": "I prezzi possono variare. Comunica allergie o intolleranze al personale.",
+    "wineList": "Carta dei Vini",
+    "wineListDesc": "Oltre 50 etichette sarde, incluso il nostro vino prodotto in Sardegna.",
+    "askSommelier": "Chiedi al sommelier",
+    "tastingMenu": "Menu Degustazione",
+    "tastingMenuDesc": "Un viaggio attraverso i sapori della Sardegna in 7 portate.",
+    "perPerson": "a persona",
+    "allergyNote": "Per allergie o intolleranze alimentari, comunicalo al nostro staff. Possiamo adattare molti piatti alle tue esigenze."
   },
   "infoCards": {
     "bottega": {
@@ -129,28 +147,135 @@
   },
   "about": {
     "pageTitle": "Chi Siamo",
-    "pageSubtitle": "La Nostra Storia",
+    "pageSubtitle": "La nostra storia, la nostra passione per la cucina sarda autentica",
     "heroTitle": "Una Passione per la Sardegna",
-    "heroDescription": "Dal cuore della Sardegna al cuore di Praga, portiamo l'autenticità della cucina sarda in ogni piatto che serviamo."
+    "heroDescription": "Dal cuore della Sardegna al cuore di Praga, portiamo l'autenticità della cucina sarda in ogni piatto che serviamo.",
+    "storySubtitle": "La Nostra Storia",
+    "storyTitle": "Un Angolo di Sardegna a Praga",
+    "storyP1": "Ichnusa Botega & Bistro nasce dalla passione per la cucina sarda e dal desiderio di portare i sapori autentici della nostra terra nel cuore di Praga.",
+    "storyP2": "Nel nostro ristorante troverete l'atmosfera calda e accogliente tipica della Sardegna, dove ogni piatto racconta una storia di tradizione e territorio. Importiamo direttamente dall'isola i migliori ingredienti: formaggi stagionati, salumi artigianali, pasta fresca e vini pregiati.",
+    "storyP3": "Il nostro locale si sviluppa su due piani, offrendo un'atmosfera intima e rilassata, perfetta per una cena romantica o un pranzo in famiglia. All'interno troverete anche una piccola bottega dove acquistare i prodotti sardi che potete assaggiare nel nostro menu.",
+    "valuesSubtitle": "I Nostri Valori",
+    "valuesTitle": "Cosa Ci Guida",
+    "values": {
+      "tradition": {
+        "title": "Tradizione",
+        "description": "Piatti tramandati di generazione in generazione, preparati con le ricette autentiche della Sardegna."
+      },
+      "quality": {
+        "title": "Qualità",
+        "description": "Ingredienti selezionati e importati direttamente dalla Sardegna per garantire autenticità."
+      },
+      "passion": {
+        "title": "Passione",
+        "description": "Ogni piatto è preparato con amore e dedizione, come se foste ospiti a casa nostra."
+      },
+      "hospitality": {
+        "title": "Accoglienza",
+        "description": "L'atmosfera calda e familiare della Sardegna, nel cuore di Praga."
+      }
+    },
+    "teamSubtitle": "Il Nostro Team",
+    "teamTitle": "I Maestri della Cucina",
+    "team": {
+      "chef1": {
+        "name": "Marco Ferrara",
+        "role": "Executive Chef",
+        "description": "Nato in Sardegna, porta 20 anni di esperienza nella cucina tradizionale sarda."
+      },
+      "chef2": {
+        "name": "Giuseppe Mura",
+        "role": "Sous Chef",
+        "description": "Specializzato in pesce fresco e frutti di mare, con tecniche moderne e rispetto della tradizione."
+      },
+      "chef3": {
+        "name": "Anna Piras",
+        "role": "Pastry Chef",
+        "description": "Maestra dei dolci sardi, dalle seadas ai pardulas, con un tocco di creatività contemporanea."
+      }
+    },
+    "ctaSubtitle": "Vieni a Trovarci",
+    "ctaTitle": "Prenota il Tuo Tavolo",
+    "ctaDescription": "Ti aspettiamo per farti vivere un'esperienza culinaria unica, dove ogni boccone ti trasporterà nelle terre della Sardegna."
   },
   "products": {
     "pageTitle": "I Nostri Prodotti",
-    "pageSubtitle": "La Bottega Sarda",
-    "description": "Porta a casa i sapori autentici della Sardegna"
+    "pageSubtitle": "Autentici sapori sardi, importati direttamente dall'isola",
+    "description": "Porta a casa i sapori autentici della Sardegna",
+    "bottegaSubtitle": "La Nostra Bottega",
+    "bottegaTitle": "Porta la Sardegna a Casa Tua",
+    "bottegaP1": "All'interno del nostro ristorante troverai una piccola bottega dove puoi acquistare tutti i prodotti che assaggi nel nostro menu.",
+    "bottegaP2": "Formaggi stagionati, salumi artigianali, pasta fresca, vini pregiati e dolci tradizionali: tutto importato direttamente dalla Sardegna, selezionato personalmente dai nostri chef.",
+    "catalogSubtitle": "Catalogo",
+    "catalogTitle": "Esplora i Nostri Prodotti",
+    "categories": {
+      "all": "Tutti",
+      "formaggi": "Formaggi",
+      "salumi": "Salumi",
+      "pasta": "Pasta",
+      "vini": "Vini",
+      "dolci": "Dolci"
+    },
+    "specialOrders": "Ordini Speciali",
+    "specialOrdersDesc": "Cerchi un prodotto specifico della Sardegna? Contattaci per ordini speciali e importazioni su richiesta. Possiamo procurare qualsiasi specialità sarda."
   },
   "gallery": {
     "pageTitle": "Galleria",
-    "pageSubtitle": "Le Nostre Immagini"
+    "pageSubtitle": "Scopri l'atmosfera e i sapori di Ichnusa attraverso le nostre immagini",
+    "categories": {
+      "all": "Tutto",
+      "interni": "Interni",
+      "piatti": "Piatti",
+      "eventi": "Eventi",
+      "team": "Team"
+    },
+    "followInstagram": "Seguici su Instagram",
+    "followInstagramDesc": "Resta aggiornato sulle nostre novità, eventi speciali e piatti del giorno"
   },
   "contact": {
-    "pageTitle": "Contatti",
-    "pageSubtitle": "Parliamo",
-    "formName": "Nome",
-    "formEmail": "Email",
-    "formPhone": "Telefono",
-    "formMessage": "Messaggio",
-    "formSubmit": "Invia Messaggio",
-    "formSuccess": "Messaggio inviato con successo!"
+    "pageTitle": "Contattaci",
+    "pageSubtitle": "Siamo qui per rispondere alle tue domande e accoglierti nel nostro ristorante",
+    "info": {
+      "address": "Indirizzo",
+      "phone": "Telefono",
+      "email": "Email",
+      "hours": "Orari"
+    },
+    "form": {
+      "subtitle": "Scrivici",
+      "title": "Invia un Messaggio",
+      "description": "Hai domande sul nostro menu, vuoi organizzare un evento privato o semplicemente vuoi saperne di più? Compila il form e ti risponderemo al più presto.",
+      "name": "Nome",
+      "namePlaceholder": "Il tuo nome",
+      "email": "Email",
+      "emailPlaceholder": "tua@email.com",
+      "phone": "Telefono",
+      "phonePlaceholder": "+420 ...",
+      "subject": "Oggetto",
+      "subjectPlaceholder": "Seleziona...",
+      "subjects": {
+        "info": "Informazioni generali",
+        "reservation": "Prenotazione",
+        "event": "Evento privato",
+        "products": "Prodotti bottega",
+        "other": "Altro"
+      },
+      "message": "Messaggio",
+      "messagePlaceholder": "Scrivi il tuo messaggio...",
+      "submit": "Invia Messaggio",
+      "sending": "Invio in corso...",
+      "success": "Messaggio inviato con successo!"
+    },
+    "quickBooking": {
+      "title": "Prenotazione Rapida",
+      "description": "Per prenotare un tavolo, usa il nostro sistema di prenotazione online o chiamaci direttamente.",
+      "bookOnline": "Prenota Online",
+      "callNow": "Chiama Ora"
+    },
+    "followUs": {
+      "title": "Seguici",
+      "description": "Resta aggiornato su eventi, piatti del giorno e novità."
+    }
   },
   "whatsapp": {
     "tooltip": "Scrivici su WhatsApp!",

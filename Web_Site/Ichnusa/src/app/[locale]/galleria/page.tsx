@@ -3,55 +3,58 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import { X } from "lucide-react";
 
-const categories = [
-  { id: "all", label: "Tutto" },
-  { id: "interni", label: "Interni" },
-  { id: "piatti", label: "Piatti" },
-  { id: "eventi", label: "Eventi" },
-  { id: "team", label: "Team" },
-];
+const categoryIds = ["all", "interni", "piatti", "eventi", "team"] as const;
 
 const galleryImages = [
-  { id: 1, src: "/images/restaurant/interior.jpg", category: "interni", title: "Sala Principale", aspect: "landscape" },
-  { id: 2, src: "/images/food/special-dish.jpg", category: "piatti", title: "Porceddu Arrosto", aspect: "square" },
-  { id: 3, src: "/images/events/event-1.jpg", category: "eventi", title: "Serata di Gala", aspect: "portrait" },
-  { id: 4, src: "/images/chefs/chef-1.jpg", category: "team", title: "Chef Marco", aspect: "portrait" },
-  { id: 5, src: "/images/food/lasagne.jpg", category: "piatti", title: "Malloreddus", aspect: "landscape" },
-  { id: 6, src: "/images/food/fish.jpg", category: "piatti", title: "Pesce Fresco", aspect: "square" },
-  { id: 7, src: "/images/events/event-2.jpg", category: "eventi", title: "Degustazione Vini", aspect: "landscape" },
-  { id: 8, src: "/images/chefs/chef-2.jpg", category: "team", title: "Sous Chef Giuseppe", aspect: "portrait" },
-  { id: 9, src: "/images/food/wagyu.jpg", category: "piatti", title: "Carne Sarda", aspect: "square" },
-  { id: 10, src: "/images/menu/drinks.jpg", category: "interni", title: "Cantina Vini", aspect: "landscape" },
-  { id: 11, src: "/images/food/greek-salad.jpg", category: "piatti", title: "Antipasto Misto", aspect: "square" },
-  { id: 12, src: "/images/events/event-3.jpg", category: "eventi", title: "Festa Privata", aspect: "portrait" },
-  { id: 13, src: "/images/chefs/chef-3.jpg", category: "team", title: "Pastry Chef Anna", aspect: "portrait" },
-  { id: 14, src: "/images/food/olivas.jpg", category: "piatti", title: "Olive e Formaggi", aspect: "square" },
-  { id: 15, src: "/images/food/pumpkin.jpg", category: "piatti", title: "Fregola", aspect: "landscape" },
-  { id: 16, src: "/images/backgrounds/reservation-bg.jpg", category: "interni", title: "Atmosfera Serale", aspect: "landscape" },
+  { id: 1, src: "/images/restaurant/interior.jpg", category: "interni", titleKey: "Sala Principale", aspect: "landscape" },
+  { id: 2, src: "/images/food/special-dish.jpg", category: "piatti", titleKey: "Porceddu Arrosto", aspect: "square" },
+  { id: 3, src: "/images/events/event-1.jpg", category: "eventi", titleKey: "Serata di Gala", aspect: "portrait" },
+  { id: 4, src: "/images/chefs/chef-1.jpg", category: "team", titleKey: "Chef Marco", aspect: "portrait" },
+  { id: 5, src: "/images/food/lasagne.jpg", category: "piatti", titleKey: "Malloreddus", aspect: "landscape" },
+  { id: 6, src: "/images/food/fish.jpg", category: "piatti", titleKey: "Pesce Fresco", aspect: "square" },
+  { id: 7, src: "/images/events/event-2.jpg", category: "eventi", titleKey: "Degustazione Vini", aspect: "landscape" },
+  { id: 8, src: "/images/chefs/chef-2.jpg", category: "team", titleKey: "Sous Chef Giuseppe", aspect: "portrait" },
+  { id: 9, src: "/images/food/wagyu.jpg", category: "piatti", titleKey: "Carne Sarda", aspect: "square" },
+  { id: 10, src: "/images/menu/drinks.jpg", category: "interni", titleKey: "Cantina Vini", aspect: "landscape" },
+  { id: 11, src: "/images/food/greek-salad.jpg", category: "piatti", titleKey: "Antipasto Misto", aspect: "square" },
+  { id: 12, src: "/images/events/event-3.jpg", category: "eventi", titleKey: "Festa Privata", aspect: "portrait" },
+  { id: 13, src: "/images/chefs/chef-3.jpg", category: "team", titleKey: "Pastry Chef Anna", aspect: "portrait" },
+  { id: 14, src: "/images/food/olivas.jpg", category: "piatti", titleKey: "Olive e Formaggi", aspect: "square" },
+  { id: 15, src: "/images/food/pumpkin.jpg", category: "piatti", titleKey: "Fregola", aspect: "landscape" },
+  { id: 16, src: "/images/backgrounds/reservation-bg.jpg", category: "interni", titleKey: "Atmosfera Serale", aspect: "landscape" },
 ];
 
 export default function GalleriaPage() {
-  const [activeCategory, setActiveCategory] = useState("all");
+  const t = useTranslations("gallery");
+  const tCommon = useTranslations("common");
+  const tNav = useTranslations("nav");
+
+  const [activeCategory, setActiveCategory] = useState<typeof categoryIds[number]>("all");
   const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null);
 
   const filteredImages = activeCategory === "all"
     ? galleryImages
     : galleryImages.filter(img => img.category === activeCategory);
 
+  const getCategoryLabel = (id: typeof categoryIds[number]) => {
+    return t(`categories.${id}`);
+  };
+
   return (
     <>
       <Header />
       <main>
         <PageHero
-          title="Galleria"
-          subtitle="Scopri l'atmosfera e i sapori di Ichnusa attraverso le nostre immagini"
+          title={t("pageTitle")}
+          subtitle={t("pageSubtitle")}
           backgroundImage="/images/events/event-1.jpg"
-          breadcrumbs={[{ label: "Galleria", href: "/galleria" }]}
+          breadcrumbs={[{ label: tNav("gallery"), href: "/galleria" }]}
         />
 
         <section className="section-padding bg-[var(--color-background)]">
@@ -62,17 +65,17 @@ export default function GalleriaPage() {
               transition={{ duration: 0.6 }}
               className="flex flex-wrap justify-center gap-3 mb-12"
             >
-              {categories.map((cat) => (
+              {categoryIds.map((cat) => (
                 <button
-                  key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
                   className={`px-6 py-2 text-sm uppercase tracking-wider transition-all duration-300 border ${
-                    activeCategory === cat.id
+                    activeCategory === cat
                       ? "bg-[var(--color-primary)] border-[var(--color-primary)] text-[var(--color-background)]"
                       : "border-[var(--color-border)] text-[var(--color-text-muted)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
                   }`}
                 >
-                  {cat.label}
+                  {getCategoryLabel(cat)}
                 </button>
               ))}
             </motion.div>
@@ -100,7 +103,7 @@ export default function GalleriaPage() {
                     }`}>
                       <Image
                         src={image.src}
-                        alt={image.title}
+                        alt={image.titleKey}
                         fill
                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                       />
@@ -112,7 +115,7 @@ export default function GalleriaPage() {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                             </svg>
                           </div>
-                          <span className="text-white text-sm font-medium">{image.title}</span>
+                          <span className="text-white text-sm font-medium">{image.titleKey}</span>
                         </div>
                       </div>
                       <div className="absolute bottom-0 left-0 right-0 h-1 bg-[var(--color-primary)] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
@@ -133,10 +136,10 @@ export default function GalleriaPage() {
               transition={{ duration: 0.8 }}
             >
               <h3 className="font-[var(--font-display)] text-3xl text-white mb-4">
-                Seguici su Instagram
+                {t("followInstagram")}
               </h3>
               <p className="text-[var(--color-text-muted)] mb-6 max-w-xl mx-auto">
-                Resta aggiornato sulle nostre novità, eventi speciali e piatti del giorno
+                {t("followInstagramDesc")}
               </p>
               <a
                 href="https://www.instagram.com/ichnusa_official_prague/"
@@ -166,7 +169,7 @@ export default function GalleriaPage() {
             <button
               onClick={() => setSelectedImage(null)}
               className="absolute top-6 right-6 text-white hover:text-[var(--color-primary)] transition-colors z-10"
-              aria-label="Chiudi"
+              aria-label={tCommon("close")}
             >
               <X size={32} />
             </button>
@@ -182,17 +185,17 @@ export default function GalleriaPage() {
               <div className="relative aspect-[4/3]">
                 <Image
                   src={selectedImage.src}
-                  alt={selectedImage.title}
+                  alt={selectedImage.titleKey}
                   fill
                   className="object-contain"
                 />
               </div>
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                 <h3 className="font-[var(--font-display)] text-2xl text-white">
-                  {selectedImage.title}
+                  {selectedImage.titleKey}
                 </h3>
                 <p className="text-[var(--color-primary)] text-sm uppercase tracking-wider">
-                  {categories.find(c => c.id === selectedImage.category)?.label}
+                  {getCategoryLabel(selectedImage.category as typeof categoryIds[number])}
                 </p>
               </div>
             </motion.div>

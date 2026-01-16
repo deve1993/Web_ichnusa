@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
@@ -21,34 +22,37 @@ const staggerContainer = {
   },
 };
 
-const contactInfo = [
+const contactInfoData = [
   {
     icon: MapPin,
-    title: "Indirizzo",
+    key: "address",
     content: "Plaská 623/5\n150 00 Malá Strana, Praha",
     link: "https://maps.google.com/?q=Plaská+623/5,+150+00+Praha,+Czech+Republic",
   },
   {
     icon: Phone,
-    title: "Telefono",
+    key: "phone",
     content: "+420 605 375 012",
     link: "tel:+420605375012",
   },
   {
     icon: Mail,
-    title: "Email",
+    key: "email",
     content: "info@ichnusa.restaurant\nreservations@ichnusa.restaurant",
     link: "mailto:info@ichnusa.restaurant",
   },
   {
     icon: Clock,
-    title: "Orari",
+    key: "hours",
     content: "Lun - Sab: 11:30 - 15:00 & 16:00 - 22:00\nDom: 11:00 - 15:00",
     link: null,
   },
 ];
 
 export default function ContattiPage() {
+  const t = useTranslations("contact");
+  const tNav = useTranslations("nav");
+
   const [formRef, formInView] = useInViewport({ threshold: 0.2 });
   const [formState, setFormState] = useState({
     name: "",
@@ -82,10 +86,10 @@ export default function ContattiPage() {
       <Header />
       <main>
         <PageHero
-          title="Contattaci"
-          subtitle="Siamo qui per rispondere alle tue domande e accoglierti nel nostro ristorante"
+          title={t("pageTitle")}
+          subtitle={t("pageSubtitle")}
           backgroundImage="/images/backgrounds/reservation-bg.jpg"
-          breadcrumbs={[{ label: "Contatti", href: "/contatti" }]}
+          breadcrumbs={[{ label: tNav("contact"), href: "/contatti" }]}
         />
 
         <section className="section-padding bg-[var(--color-background)]">
@@ -97,9 +101,9 @@ export default function ContattiPage() {
               variants={staggerContainer}
               className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
             >
-              {contactInfo.map((info) => (
+              {contactInfoData.map((info) => (
                 <motion.div
-                  key={info.title}
+                  key={info.key}
                   variants={fadeInUp}
                   className="p-6 bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-primary)]/50 transition-all duration-500 group"
                 >
@@ -107,7 +111,7 @@ export default function ContattiPage() {
                     <info.icon className="w-6 h-6 text-[var(--color-primary)]" />
                   </div>
                   <h3 className="font-[var(--font-display)] text-lg text-white mb-2">
-                    {info.title}
+                    {t(`info.${info.key}`)}
                   </h3>
                   {info.link ? (
                     <a
@@ -135,21 +139,20 @@ export default function ContattiPage() {
                 variants={staggerContainer}
               >
                 <motion.span variants={fadeInUp} className="subtitle-decorator mb-4">
-                  Scrivici
+                  {t("form.subtitle")}
                 </motion.span>
                 <motion.h2 variants={fadeInUp} className="font-[var(--font-display)] text-4xl text-white mb-6">
-                  Invia un <span className="text-[var(--color-primary)]">Messaggio</span>
+                  {t("form.title").split(" ")[0]} <span className="text-[var(--color-primary)]">{t("form.title").split(" ").slice(1).join(" ")}</span>
                 </motion.h2>
                 <motion.p variants={fadeInUp} className="text-[var(--color-text-muted)] mb-8">
-                  Hai domande sul nostro menu, vuoi organizzare un evento privato o semplicemente 
-                  vuoi saperne di più? Compila il form e ti risponderemo al più presto.
+                  {t("form.description")}
                 </motion.p>
 
                 <motion.form variants={fadeInUp} onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm text-[var(--color-text-muted)] mb-2">
-                        Nome *
+                        {t("form.name")} *
                       </label>
                       <input
                         type="text"
@@ -158,12 +161,12 @@ export default function ContattiPage() {
                         value={formState.name}
                         onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                         className="w-full bg-[var(--color-surface)] border border-[var(--color-border)] px-4 py-3 text-white focus:border-[var(--color-primary)] focus:outline-none transition-colors"
-                        placeholder="Il tuo nome"
+                        placeholder={t("form.namePlaceholder")}
                       />
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm text-[var(--color-text-muted)] mb-2">
-                        Email *
+                        {t("form.email")} *
                       </label>
                       <input
                         type="email"
@@ -172,7 +175,7 @@ export default function ContattiPage() {
                         value={formState.email}
                         onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                         className="w-full bg-[var(--color-surface)] border border-[var(--color-border)] px-4 py-3 text-white focus:border-[var(--color-primary)] focus:outline-none transition-colors"
-                        placeholder="tua@email.com"
+                        placeholder={t("form.emailPlaceholder")}
                       />
                     </div>
                   </div>
@@ -180,7 +183,7 @@ export default function ContattiPage() {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="phone" className="block text-sm text-[var(--color-text-muted)] mb-2">
-                        Telefono
+                        {t("form.phone")}
                       </label>
                       <input
                         type="tel"
@@ -188,12 +191,12 @@ export default function ContattiPage() {
                         value={formState.phone}
                         onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
                         className="w-full bg-[var(--color-surface)] border border-[var(--color-border)] px-4 py-3 text-white focus:border-[var(--color-primary)] focus:outline-none transition-colors"
-                        placeholder="+420 ..."
+                        placeholder={t("form.phonePlaceholder")}
                       />
                     </div>
                     <div>
                       <label htmlFor="subject" className="block text-sm text-[var(--color-text-muted)] mb-2">
-                        Oggetto *
+                        {t("form.subject")} *
                       </label>
                       <select
                         id="subject"
@@ -202,19 +205,19 @@ export default function ContattiPage() {
                         onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
                         className="w-full bg-[var(--color-surface)] border border-[var(--color-border)] px-4 py-3 text-white focus:border-[var(--color-primary)] focus:outline-none transition-colors"
                       >
-                        <option value="">Seleziona...</option>
-                        <option value="info">Informazioni generali</option>
-                        <option value="reservation">Prenotazione</option>
-                        <option value="event">Evento privato</option>
-                        <option value="products">Prodotti bottega</option>
-                        <option value="other">Altro</option>
+                        <option value="">{t("form.subjectPlaceholder")}</option>
+                        <option value="info">{t("form.subjects.info")}</option>
+                        <option value="reservation">{t("form.subjects.reservation")}</option>
+                        <option value="event">{t("form.subjects.event")}</option>
+                        <option value="products">{t("form.subjects.products")}</option>
+                        <option value="other">{t("form.subjects.other")}</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
                     <label htmlFor="message" className="block text-sm text-[var(--color-text-muted)] mb-2">
-                      Messaggio *
+                      {t("form.message")} *
                     </label>
                     <textarea
                       id="message"
@@ -223,7 +226,7 @@ export default function ContattiPage() {
                       value={formState.message}
                       onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                       className="w-full bg-[var(--color-surface)] border border-[var(--color-border)] px-4 py-3 text-white focus:border-[var(--color-primary)] focus:outline-none transition-colors resize-none"
-                      placeholder="Scrivi il tuo messaggio..."
+                      placeholder={t("form.messagePlaceholder")}
                     />
                   </div>
 
@@ -239,12 +242,12 @@ export default function ContattiPage() {
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                           </svg>
-                          Invio in corso...
+                          {t("form.sending")}
                         </>
                       ) : (
                         <>
                           <Send size={18} />
-                          Invia Messaggio
+                          {t("form.submit")}
                         </>
                       )}
                     </button>
@@ -255,7 +258,7 @@ export default function ContattiPage() {
                         animate={{ opacity: 1, x: 0 }}
                         className="text-green-500 text-sm"
                       >
-                        Messaggio inviato con successo!
+                        {t("form.success")}
                       </motion.span>
                     )}
                   </div>
@@ -284,11 +287,10 @@ export default function ContattiPage() {
 
                 <div className="p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
                   <h3 className="font-[var(--font-display)] text-xl text-white mb-4">
-                    Prenotazione Rapida
+                    {t("quickBooking.title")}
                   </h3>
                   <p className="text-[var(--color-text-muted)] text-sm mb-4">
-                    Per prenotare un tavolo, usa il nostro sistema di prenotazione online 
-                    o chiamaci direttamente.
+                    {t("quickBooking.description")}
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3">
                     <a
@@ -297,23 +299,23 @@ export default function ContattiPage() {
                       rel="noopener noreferrer"
                       className="btn-primary text-center"
                     >
-                      Prenota Online
+                      {t("quickBooking.bookOnline")}
                     </a>
                     <a
                       href="tel:+420605375012"
                       className="px-6 py-3 border border-[var(--color-border)] text-white text-center hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
                     >
-                      Chiama Ora
+                      {t("quickBooking.callNow")}
                     </a>
                   </div>
                 </div>
 
                 <div className="p-6 bg-[var(--color-surface)] border border-[var(--color-border)]">
                   <h3 className="font-[var(--font-display)] text-xl text-white mb-4">
-                    Seguici
+                    {t("followUs.title")}
                   </h3>
                   <p className="text-[var(--color-text-muted)] text-sm mb-4">
-                    Resta aggiornato su eventi, piatti del giorno e novità.
+                    {t("followUs.description")}
                   </p>
                   <div className="flex gap-4">
                     <a

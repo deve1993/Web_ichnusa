@@ -12,7 +12,12 @@
     "email": "Email",
     "address": "Address",
     "hours": "Hours",
-    "language": "Language"
+    "language": "Language",
+    "details": "Details",
+    "contactUs": "Contact Us",
+    "yearsExperience": "Years of Experience",
+    "importedIngredients": "Ingredients Imported from Sardinia",
+    "wineLabels": "Sardinian Wine Labels"
   },
   "nav": {
     "home": "Home",
@@ -65,9 +70,22 @@
     "antipasti": "Appetizers",
     "primi": "First Courses",
     "secondi": "Main Courses",
+    "pesce": "Fish",
+    "contorni": "Side Dishes",
+    "dolci": "Desserts",
     "wines": "Sardinian Wines",
     "openDaily": "Open daily from 11:30 to 23:00",
-    "fullMenu": "Full Menu"
+    "fullMenu": "Full Menu",
+    "categories": "Categories",
+    "marketPrice": "Market Price",
+    "priceNote": "Prices may vary. Please inform staff of any allergies or intolerances.",
+    "wineList": "Wine List",
+    "wineListDesc": "Over 50 Sardinian labels, including our own wine produced in Sardinia.",
+    "askSommelier": "Ask the sommelier",
+    "tastingMenu": "Tasting Menu",
+    "tastingMenuDesc": "A journey through the flavors of Sardinia in 7 courses.",
+    "perPerson": "per person",
+    "allergyNote": "For food allergies or intolerances, please inform our staff. We can adapt many dishes to your needs."
   },
   "infoCards": {
     "bottega": {
@@ -129,32 +147,139 @@
   },
   "about": {
     "pageTitle": "About Us",
-    "pageSubtitle": "Our Story",
+    "pageSubtitle": "Our story, our passion for authentic Sardinian cuisine",
     "heroTitle": "A Passion for Sardinia",
-    "heroDescription": "From the heart of Sardinia to the heart of Prague, we bring the authenticity of Sardinian cuisine to every dish we serve."
+    "heroDescription": "From the heart of Sardinia to the heart of Prague, we bring the authenticity of Sardinian cuisine to every dish we serve.",
+    "storySubtitle": "Our Story",
+    "storyTitle": "A Corner of Sardinia in Prague",
+    "storyP1": "Ichnusa Botega & Bistro was born from our passion for Sardinian cuisine and the desire to bring the authentic flavors of our land to the heart of Prague.",
+    "storyP2": "In our restaurant you'll find the warm and welcoming atmosphere typical of Sardinia, where every dish tells a story of tradition and territory. We import directly from the island the finest ingredients: aged cheeses, artisanal cured meats, fresh pasta and fine wines.",
+    "storyP3": "Our venue spans two floors, offering an intimate and relaxed atmosphere, perfect for a romantic dinner or a family lunch. Inside you'll also find a small shop where you can purchase the Sardinian products you can taste in our menu.",
+    "valuesSubtitle": "Our Values",
+    "valuesTitle": "What Guides Us",
+    "values": {
+      "tradition": {
+        "title": "Tradition",
+        "description": "Dishes passed down through generations, prepared with authentic Sardinian recipes."
+      },
+      "quality": {
+        "title": "Quality",
+        "description": "Selected ingredients imported directly from Sardinia to guarantee authenticity."
+      },
+      "passion": {
+        "title": "Passion",
+        "description": "Every dish is prepared with love and dedication, as if you were guests in our home."
+      },
+      "hospitality": {
+        "title": "Hospitality",
+        "description": "The warm and familiar atmosphere of Sardinia, in the heart of Prague."
+      }
+    },
+    "teamSubtitle": "Our Team",
+    "teamTitle": "The Masters of the Kitchen",
+    "team": {
+      "chef1": {
+        "name": "Marco Ferrara",
+        "role": "Executive Chef",
+        "description": "Born in Sardinia, he brings 20 years of experience in traditional Sardinian cuisine."
+      },
+      "chef2": {
+        "name": "Giuseppe Mura",
+        "role": "Sous Chef",
+        "description": "Specialized in fresh fish and seafood, with modern techniques and respect for tradition."
+      },
+      "chef3": {
+        "name": "Anna Piras",
+        "role": "Pastry Chef",
+        "description": "Master of Sardinian desserts, from seadas to pardulas, with a touch of contemporary creativity."
+      }
+    },
+    "ctaSubtitle": "Come Visit Us",
+    "ctaTitle": "Book Your Table",
+    "ctaDescription": "We look forward to giving you a unique culinary experience, where every bite will transport you to the lands of Sardinia."
   },
   "products": {
     "pageTitle": "Our Products",
-    "pageSubtitle": "The Sardinian Bottega",
-    "description": "Take home the authentic flavors of Sardinia"
+    "pageSubtitle": "Authentic Sardinian flavors, imported directly from the island",
+    "description": "Take home the authentic flavors of Sardinia",
+    "bottegaSubtitle": "Our Bottega",
+    "bottegaTitle": "Bring Sardinia Home",
+    "bottegaP1": "Inside our restaurant you'll find a small shop where you can purchase all the products you taste in our menu.",
+    "bottegaP2": "Aged cheeses, artisanal cured meats, fresh pasta, fine wines and traditional desserts: all imported directly from Sardinia, personally selected by our chefs.",
+    "catalogSubtitle": "Catalog",
+    "catalogTitle": "Explore Our Products",
+    "categories": {
+      "all": "All",
+      "formaggi": "Cheeses",
+      "salumi": "Cured Meats",
+      "pasta": "Pasta",
+      "vini": "Wines",
+      "dolci": "Desserts"
+    },
+    "specialOrders": "Special Orders",
+    "specialOrdersDesc": "Looking for a specific Sardinian product? Contact us for special orders and custom imports. We can procure any Sardinian specialty."
   },
   "gallery": {
     "pageTitle": "Gallery",
-    "pageSubtitle": "Our Images"
+    "pageSubtitle": "Discover the atmosphere and flavors of Ichnusa through our images",
+    "categories": {
+      "all": "All",
+      "interni": "Interior",
+      "piatti": "Dishes",
+      "eventi": "Events",
+      "team": "Team"
+    },
+    "followInstagram": "Follow us on Instagram",
+    "followInstagramDesc": "Stay updated on our news, special events and dishes of the day"
   },
   "contact": {
-    "pageTitle": "Contact",
-    "pageSubtitle": "Let's Talk",
-    "formName": "Name",
-    "formEmail": "Email",
-    "formPhone": "Phone",
-    "formMessage": "Message",
-    "formSubmit": "Send Message",
-    "formSuccess": "Message sent successfully!"
+    "pageTitle": "Contact Us",
+    "pageSubtitle": "We're here to answer your questions and welcome you to our restaurant",
+    "info": {
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Hours"
+    },
+    "form": {
+      "subtitle": "Write to Us",
+      "title": "Send a Message",
+      "description": "Have questions about our menu, want to organize a private event, or simply want to know more? Fill out the form and we'll get back to you as soon as possible.",
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+420 ...",
+      "subject": "Subject",
+      "subjectPlaceholder": "Select...",
+      "subjects": {
+        "info": "General information",
+        "reservation": "Reservation",
+        "event": "Private event",
+        "products": "Shop products",
+        "other": "Other"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Write your message...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!"
+    },
+    "quickBooking": {
+      "title": "Quick Booking",
+      "description": "To book a table, use our online reservation system or call us directly.",
+      "bookOnline": "Book Online",
+      "callNow": "Call Now"
+    },
+    "followUs": {
+      "title": "Follow Us",
+      "description": "Stay updated on events, daily specials and news."
+    }
   },
   "whatsapp": {
     "tooltip": "Message us on WhatsApp!",
-    "greeting": "Hello! How can we help you? Write to us to book a table or for any information.",
+    "greeting": "Hello! 👋 How can we help you? Write to us to book a table or for any information.",
     "startChat": "Start chat",
     "responseTime": "Usually responds immediately"
   }

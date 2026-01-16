@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
@@ -20,51 +21,21 @@ const staggerContainer = {
   },
 };
 
-const values = [
-  {
-    title: "Tradizione",
-    description: "Piatti tramandati di generazione in generazione, preparati con le ricette autentiche della Sardegna.",
-    icon: "🏺",
-  },
-  {
-    title: "Qualità",
-    description: "Ingredienti selezionati e importati direttamente dalla Sardegna per garantire autenticità.",
-    icon: "⭐",
-  },
-  {
-    title: "Passione",
-    description: "Ogni piatto è preparato con amore e dedizione, come se foste ospiti a casa nostra.",
-    icon: "❤️",
-  },
-  {
-    title: "Accoglienza",
-    description: "L'atmosfera calda e familiare della Sardegna, nel cuore di Praga.",
-    icon: "🤝",
-  },
-];
+const valueIcons = ["🏺", "⭐", "❤️", "🤝"];
+const valueKeys = ["tradition", "quality", "passion", "hospitality"] as const;
 
-const team = [
-  {
-    name: "Marco Ferrara",
-    role: "Executive Chef",
-    image: "/images/chefs/chef-1.jpg",
-    description: "Nato in Sardegna, porta 20 anni di esperienza nella cucina tradizionale sarda.",
-  },
-  {
-    name: "Giuseppe Mura",
-    role: "Sous Chef",
-    image: "/images/chefs/chef-2.jpg",
-    description: "Specializzato in pesce fresco e frutti di mare, con tecniche moderne e rispetto della tradizione.",
-  },
-  {
-    name: "Anna Piras",
-    role: "Pastry Chef",
-    image: "/images/chefs/chef-3.jpg",
-    description: "Maestra dei dolci sardi, dalle seadas ai pardulas, con un tocco di creatività contemporanea.",
-  },
+const teamImages = [
+  "/images/chefs/chef-1.jpg",
+  "/images/chefs/chef-2.jpg",
+  "/images/chefs/chef-3.jpg",
 ];
+const teamKeys = ["chef1", "chef2", "chef3"] as const;
 
 export default function ChiSiamoPage() {
+  const t = useTranslations("about");
+  const tCommon = useTranslations("common");
+  const tNav = useTranslations("nav");
+
   const [storyRef, storyInView] = useInViewport({ threshold: 0.2 });
   const [valuesRef, valuesInView] = useInViewport({ threshold: 0.2 });
   const [teamRef, teamInView] = useInViewport({ threshold: 0.2 });
@@ -74,10 +45,10 @@ export default function ChiSiamoPage() {
       <Header />
       <main>
         <PageHero
-          title="Chi Siamo"
-          subtitle="La nostra storia, la nostra passione per la cucina sarda autentica"
+          title={t("pageTitle")}
+          subtitle={t("pageSubtitle")}
           backgroundImage="/images/restaurant/interior.jpg"
-          breadcrumbs={[{ label: "Chi Siamo", href: "/chi-siamo" }]}
+          breadcrumbs={[{ label: tNav("about"), href: "/chi-siamo" }]}
         />
 
         <section ref={storyRef} className="section-padding bg-[var(--color-background)]">
@@ -105,42 +76,31 @@ export default function ChiSiamoPage() {
                   className="absolute -bottom-8 -right-8 bg-[var(--color-primary)] text-[var(--color-background)] p-6 md:p-8"
                 >
                   <span className="block text-4xl md:text-5xl font-[var(--font-display)]">10+</span>
-                  <span className="text-sm uppercase tracking-wider">Anni di Esperienza</span>
+                  <span className="text-sm uppercase tracking-wider">{tCommon("yearsExperience")}</span>
                 </motion.div>
               </motion.div>
 
               <motion.div variants={fadeInUp} className="lg:pl-8">
-                <span className="subtitle-decorator mb-4">La Nostra Storia</span>
+                <span className="subtitle-decorator mb-4">{t("storySubtitle")}</span>
                 <h2 className="font-[var(--font-display)] text-4xl md:text-5xl text-white mb-6">
-                  Un Angolo di <span className="text-[var(--color-primary)]">Sardegna</span> a Praga
+                  {t("storyTitle").split("Sardegna")[0]}
+                  <span className="text-[var(--color-primary)]">Sardegna</span>
+                  {t("storyTitle").split("Sardegna")[1]}
                 </h2>
                 <div className="space-y-4 text-[var(--color-text-muted)]">
-                  <p>
-                    Ichnusa Botega & Bistro nasce dalla passione per la cucina sarda e dal desiderio 
-                    di portare i sapori autentici della nostra terra nel cuore di Praga.
-                  </p>
-                  <p>
-                    Nel nostro ristorante troverete l&apos;atmosfera calda e accogliente tipica della 
-                    Sardegna, dove ogni piatto racconta una storia di tradizione e territorio. 
-                    Importiamo direttamente dall&apos;isola i migliori ingredienti: formaggi stagionati, 
-                    salumi artigianali, pasta fresca e vini pregiati.
-                  </p>
-                  <p>
-                    Il nostro locale si sviluppa su due piani, offrendo un&apos;atmosfera intima e 
-                    rilassata, perfetta per una cena romantica o un pranzo in famiglia. 
-                    All&apos;interno troverete anche una piccola bottega dove acquistare i prodotti 
-                    sardi che potete assaggiare nel nostro menu.
-                  </p>
+                  <p>{t("storyP1")}</p>
+                  <p>{t("storyP2")}</p>
+                  <p>{t("storyP3")}</p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-6 mt-8 pt-8 border-t border-[var(--color-border)]">
                   <div>
                     <span className="text-3xl font-[var(--font-display)] text-[var(--color-primary)]">100%</span>
-                    <p className="text-sm text-[var(--color-text-muted)] mt-1">Ingredienti Importati dalla Sardegna</p>
+                    <p className="text-sm text-[var(--color-text-muted)] mt-1">{tCommon("importedIngredients")}</p>
                   </div>
                   <div>
                     <span className="text-3xl font-[var(--font-display)] text-[var(--color-primary)]">50+</span>
-                    <p className="text-sm text-[var(--color-text-muted)] mt-1">Etichette di Vini Sardi</p>
+                    <p className="text-sm text-[var(--color-text-muted)] mt-1">{tCommon("wineLabels")}</p>
                   </div>
                 </div>
               </motion.div>
@@ -157,10 +117,10 @@ export default function ChiSiamoPage() {
               className="text-center mb-16"
             >
               <motion.span variants={fadeInUp} className="subtitle-decorator justify-center mb-4">
-                I Nostri Valori
+                {t("valuesSubtitle")}
               </motion.span>
               <motion.h2 variants={fadeInUp} className="font-[var(--font-display)] text-4xl md:text-5xl text-white">
-                Cosa Ci <span className="text-[var(--color-primary)]">Guida</span>
+                {t("valuesTitle").split(" ")[0]} <span className="text-[var(--color-primary)]">{t("valuesTitle").split(" ").slice(1).join(" ")}</span>
               </motion.h2>
             </motion.div>
 
@@ -170,18 +130,18 @@ export default function ChiSiamoPage() {
               variants={staggerContainer}
               className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
             >
-              {values.map((value) => (
+              {valueKeys.map((key, index) => (
                 <motion.div
-                  key={value.title}
+                  key={key}
                   variants={fadeInUp}
                   className="group p-8 bg-[var(--color-background)] border border-[var(--color-border)] hover:border-[var(--color-primary)]/50 transition-all duration-500"
                 >
-                  <div className="text-4xl mb-4">{value.icon}</div>
+                  <div className="text-4xl mb-4">{valueIcons[index]}</div>
                   <h3 className="font-[var(--font-display)] text-xl text-white mb-3 group-hover:text-[var(--color-primary)] transition-colors">
-                    {value.title}
+                    {t(`values.${key}.title`)}
                   </h3>
                   <p className="text-[var(--color-text-muted)] text-sm leading-relaxed">
-                    {value.description}
+                    {t(`values.${key}.description`)}
                   </p>
                 </motion.div>
               ))}
@@ -198,10 +158,10 @@ export default function ChiSiamoPage() {
               className="text-center mb-16"
             >
               <motion.span variants={fadeInUp} className="subtitle-decorator justify-center mb-4">
-                Il Nostro Team
+                {t("teamSubtitle")}
               </motion.span>
               <motion.h2 variants={fadeInUp} className="font-[var(--font-display)] text-4xl md:text-5xl text-white">
-                I <span className="text-[var(--color-primary)]">Maestri</span> della Cucina
+                {t("teamTitle").split(" ").slice(0, 1).join(" ")} <span className="text-[var(--color-primary)]">{t("teamTitle").split(" ").slice(1).join(" ")}</span>
               </motion.h2>
             </motion.div>
 
@@ -211,16 +171,16 @@ export default function ChiSiamoPage() {
               variants={staggerContainer}
               className="grid md:grid-cols-3 gap-8"
             >
-              {team.map((member) => (
+              {teamKeys.map((key, index) => (
                 <motion.div
-                  key={member.name}
+                  key={key}
                   variants={fadeInUp}
                   className="group"
                 >
                   <div className="relative aspect-[3/4] overflow-hidden mb-6">
                     <Image
-                      src={member.image}
-                      alt={member.name}
+                      src={teamImages[index]}
+                      alt={t(`team.${key}.name`)}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
@@ -230,13 +190,13 @@ export default function ChiSiamoPage() {
                     </div>
                   </div>
                   <h3 className="font-[var(--font-display)] text-2xl text-white mb-1">
-                    {member.name}
+                    {t(`team.${key}.name`)}
                   </h3>
                   <p className="text-[var(--color-primary)] text-sm uppercase tracking-wider mb-3">
-                    {member.role}
+                    {t(`team.${key}.role`)}
                   </p>
                   <p className="text-[var(--color-text-muted)] text-sm">
-                    {member.description}
+                    {t(`team.${key}.description`)}
                   </p>
                 </motion.div>
               ))}
@@ -256,13 +216,12 @@ export default function ChiSiamoPage() {
               transition={{ duration: 0.8 }}
               className="text-center max-w-3xl mx-auto"
             >
-              <span className="subtitle-decorator justify-center mb-4">Vieni a Trovarci</span>
+              <span className="subtitle-decorator justify-center mb-4">{t("ctaSubtitle")}</span>
               <h2 className="font-[var(--font-display)] text-4xl md:text-5xl text-white mb-6">
-                Prenota il Tuo <span className="text-[var(--color-primary)]">Tavolo</span>
+                {t("ctaTitle").split(" ").slice(0, -1).join(" ")} <span className="text-[var(--color-primary)]">{t("ctaTitle").split(" ").slice(-1)}</span>
               </h2>
               <p className="text-[var(--color-text-muted)] mb-8">
-                Ti aspettiamo per farti vivere un&apos;esperienza culinaria unica, 
-                dove ogni boccone ti trasporterà nelle terre della Sardegna.
+                {t("ctaDescription")}
               </p>
               <a
                 href="https://reservation.dish.co/widget/hydra-7cc98a90-5678-11ec-bb8e-d7389d5eaae1"
@@ -270,7 +229,7 @@ export default function ChiSiamoPage() {
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex"
               >
-                Prenota Ora
+                {tCommon("bookNow")}
               </a>
             </motion.div>
           </div>

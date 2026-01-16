@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
@@ -22,14 +23,7 @@ const staggerContainer = {
   },
 };
 
-const categories = [
-  { id: "all", label: "Tutti" },
-  { id: "formaggi", label: "Formaggi" },
-  { id: "salumi", label: "Salumi" },
-  { id: "pasta", label: "Pasta" },
-  { id: "vini", label: "Vini" },
-  { id: "dolci", label: "Dolci" },
-];
+const categoryIds = ["all", "formaggi", "salumi", "pasta", "vini", "dolci"] as const;
 
 const products = [
   {
@@ -115,7 +109,11 @@ const products = [
 ];
 
 export default function ProdottiPage() {
-  const [activeCategory, setActiveCategory] = useState("all");
+  const t = useTranslations("products");
+  const tCommon = useTranslations("common");
+  const tNav = useTranslations("nav");
+
+  const [activeCategory, setActiveCategory] = useState<typeof categoryIds[number]>("all");
   const [introRef, introInView] = useInViewport({ threshold: 0.2 });
   const [productsRef, productsInView] = useInViewport({ threshold: 0.1 });
 
@@ -123,15 +121,19 @@ export default function ProdottiPage() {
     ? products 
     : products.filter(p => p.category === activeCategory);
 
+  const getCategoryLabel = (id: typeof categoryIds[number]) => {
+    return t(`categories.${id}`);
+  };
+
   return (
     <>
       <Header />
       <main>
         <PageHero
-          title="I Nostri Prodotti"
-          subtitle="Autentici sapori sardi, importati direttamente dall'isola"
+          title={t("pageTitle")}
+          subtitle={t("pageSubtitle")}
           backgroundImage="/images/food/special-dish.jpg"
-          breadcrumbs={[{ label: "Prodotti", href: "/prodotti" }]}
+          breadcrumbs={[{ label: tNav("products"), href: "/prodotti" }]}
         />
 
         <section ref={introRef} className="section-padding bg-[var(--color-background)]">
@@ -143,20 +145,15 @@ export default function ProdottiPage() {
               className="grid lg:grid-cols-2 gap-12 items-center"
             >
               <motion.div variants={fadeInUp}>
-                <span className="subtitle-decorator mb-4">La Nostra Bottega</span>
+                <span className="subtitle-decorator mb-4">{t("bottegaSubtitle")}</span>
                 <h2 className="font-[var(--font-display)] text-4xl md:text-5xl text-white mb-6">
-                  Porta la <span className="text-[var(--color-primary)]">Sardegna</span> a Casa Tua
+                  {t("bottegaTitle").split("Sardegna")[0]}
+                  <span className="text-[var(--color-primary)]">Sardegna</span>
+                  {t("bottegaTitle").split("Sardegna")[1] || ""}
                 </h2>
                 <div className="space-y-4 text-[var(--color-text-muted)]">
-                  <p>
-                    All&apos;interno del nostro ristorante troverai una piccola bottega dove 
-                    puoi acquistare tutti i prodotti che assaggi nel nostro menu.
-                  </p>
-                  <p>
-                    Formaggi stagionati, salumi artigianali, pasta fresca, vini pregiati 
-                    e dolci tradizionali: tutto importato direttamente dalla Sardegna, 
-                    selezionato personalmente dai nostri chef.
-                  </p>
+                  <p>{t("bottegaP1")}</p>
+                  <p>{t("bottegaP2")}</p>
                 </div>
               </motion.div>
 
@@ -213,24 +210,24 @@ export default function ProdottiPage() {
               className="text-center mb-12"
             >
               <motion.span variants={fadeInUp} className="subtitle-decorator justify-center mb-4">
-                Catalogo
+                {t("catalogSubtitle")}
               </motion.span>
               <motion.h2 variants={fadeInUp} className="font-[var(--font-display)] text-4xl md:text-5xl text-white mb-8">
-                Esplora i Nostri <span className="text-[var(--color-primary)]">Prodotti</span>
+                {t("catalogTitle").split(" ").slice(0, -1).join(" ")} <span className="text-[var(--color-primary)]">{t("catalogTitle").split(" ").slice(-1)}</span>
               </motion.h2>
 
               <motion.div variants={fadeInUp} className="flex flex-wrap justify-center gap-3">
-                {categories.map((cat) => (
+                {categoryIds.map((cat) => (
                   <button
-                    key={cat.id}
-                    onClick={() => setActiveCategory(cat.id)}
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
                     className={`px-6 py-2 text-sm uppercase tracking-wider transition-all duration-300 border ${
-                      activeCategory === cat.id
+                      activeCategory === cat
                         ? "bg-[var(--color-primary)] border-[var(--color-primary)] text-[var(--color-background)]"
                         : "border-[var(--color-border)] text-[var(--color-text-muted)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
                     }`}
                   >
-                    {cat.label}
+                    {getCategoryLabel(cat)}
                   </button>
                 ))}
               </motion.div>
@@ -258,7 +255,7 @@ export default function ProdottiPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       <div className="absolute top-4 left-4">
                         <span className="bg-[var(--color-primary)] text-[var(--color-background)] text-xs uppercase tracking-wider px-3 py-1">
-                          {categories.find(c => c.id === product.category)?.label}
+                          {getCategoryLabel(product.category as typeof categoryIds[number])}
                         </span>
                       </div>
                     </div>
@@ -274,7 +271,7 @@ export default function ProdottiPage() {
                           {product.price}
                         </span>
                         <button className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
-                          Dettagli →
+                          {tCommon("details")} →
                         </button>
                       </div>
                     </div>
@@ -295,17 +292,16 @@ export default function ProdottiPage() {
               className="bg-[var(--color-surface)] border border-[var(--color-border)] p-8 md:p-12 text-center"
             >
               <h3 className="font-[var(--font-display)] text-3xl text-white mb-4">
-                Ordini Speciali
+                {t("specialOrders")}
               </h3>
               <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto mb-6">
-                Cerchi un prodotto specifico della Sardegna? Contattaci per ordini speciali 
-                e importazioni su richiesta. Possiamo procurare qualsiasi specialità sarda.
+                {t("specialOrdersDesc")}
               </p>
               <Link
                 href="/contatti"
                 className="btn-primary inline-flex"
               >
-                Contattaci
+                {tCommon("contactUs")}
               </Link>
             </motion.div>
           </div>
