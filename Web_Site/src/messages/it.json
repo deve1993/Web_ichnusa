@@ -1,0 +1,507 @@
+{
+  "common": {
+    "bookNow": "Prenota Ora",
+    "viewMenu": "Scopri il Menu",
+    "viewMore": "Scopri di più",
+    "viewProducts": "Scopri i Prodotti",
+    "bookEvent": "Prenota Evento",
+    "sendMessage": "Invia Messaggio",
+    "loading": "Caricamento...",
+    "close": "Chiudi",
+    "phone": "Telefono",
+    "email": "Email",
+    "address": "Indirizzo",
+    "hours": "Orari",
+    "language": "Lingua",
+    "details": "Dettagli",
+    "contactUs": "Contattaci",
+    "yearsExperience": "Anni di Esperienza",
+    "importedIngredients": "Ingredienti Importati dalla Sardegna",
+    "wineLabels": "Etichette di Vini Sardi"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "Chi Siamo",
+    "products": "Prodotti",
+    "menu": "Menu",
+    "gallery": "Galleria",
+    "contact": "Contatti"
+  },
+  "hero": {
+    "subtitle": "Autentica cucina sarda a Praga",
+    "title1": "Ichnusa",
+    "title2": "Botega & Bistro",
+    "description": "Piatti tradizionali sardi, vini pregiati, pesce fresco e frutti di mare nel cuore di Malá Strana",
+    "scroll": "Scroll"
+  },
+  "weOffer": {
+    "subtitle": "L'Essenza della Sardegna",
+    "title": "La Nostra Passione",
+    "tradition": {
+      "title": "Tradizione Sarda",
+      "description": "Ricette autentiche tramandate di generazione in generazione. Due piani con atmosfera calma e intima per vivere la vera esperienza culinaria sarda."
+    },
+    "fish": {
+      "title": "Pesce Fresco",
+      "description": "Selezione giornaliera di pesce fresco, preparato secondo la tradizione italiana. Ingredienti importati direttamente dalla Sardegna."
+    },
+    "wines": {
+      "title": "Vini Unici",
+      "description": "Selezione diversificata di vini italiani, incluso il nostro vino coltivato in Sardegna. Cannonau, Vermentino e rarità locali."
+    },
+    "cards": {
+      "kitchen": "La Nostra Cucina",
+      "bottega": "La Bottega",
+      "wines": "I Nostri Vini",
+      "discover": "Scopri"
+    }
+  },
+  "specialDish": {
+    "badge": "Specialità",
+    "subtitle": "Il Nostro Piatto Iconico",
+    "title": "Porceddu",
+    "description": "Il re della cucina sarda: maialino da latte cotto lentamente su legna di mirto, con la pelle croccante e la carne tenera che si scioglie in bocca. Un'esperienza autentica della tradizione pastorale della Sardegna, servito con patate arrosto e verdure di stagione.",
+    "reservation": "Su prenotazione",
+    "serves": "Per 2-4 persone"
+  },
+  "menu": {
+    "subtitle": "Sapori Autentici",
+    "title": "Il Nostro Menu",
+    "antipasti": "Antipasti",
+    "pastaRisotto": "Pasta e Risotto",
+    "secondi": "Secondi Piatti",
+    "insalate": "Insalate",
+    "dolci": "Dolci",
+    "openDaily": "Aperto tutti i giorni dalle 11:30 alle 23:00",
+    "fullMenu": "Menu Completo",
+    "categories": "Categorie",
+    "marketPrice": "Prezzo di Mercato",
+    "priceNote": "I prezzi possono variare. Comunica allergie o intolleranze al personale.",
+    "wineList": "Carta dei Vini",
+    "wineListDesc": "Oltre 50 etichette sarde, incluso il nostro vino prodotto in Sardegna.",
+    "askSommelier": "Chiedi al sommelier",
+    "tastingMenu": "Menu Degustazione",
+    "tastingMenuDesc": "Un viaggio attraverso i sapori della Sardegna in 7 portate.",
+    "perPerson": "a persona",
+    "allergyNote": "Per allergie o intolleranze alimentari, comunicalo al nostro staff. Possiamo adattare molti piatti alle tue esigenze.",
+    "noItems": "Nessun piatto disponibile in questa categoria.",
+    "special": "Speciale"
+  },
+  "infoCards": {
+    "bottega": {
+      "subtitle": "Prodotti Autentici dalla Sardegna",
+      "title": "La Bottega",
+      "description": "Porta a casa un pezzo di Sardegna. Nella nostra bottega trovi formaggi DOP, salumi artigianali, pasta fresca, vini delle migliori cantine sarde e specialità introvabili a Praga. Ideali anche come regalo."
+    },
+    "events": {
+      "subtitle": "Il tuo evento in stile sardo",
+      "title": "Eventi Privati",
+      "description": "Festeggia compleanni, anniversari o cene aziendali nella nostra sala riservata. Menù personalizzati con le migliori specialità sarde, vini pregiati e un'atmosfera intima e accogliente nel cuore di Malá Strana."
+    }
+  },
+  "testimonials": {
+    "review1": {
+      "quote": "Un angolo di Sardegna nel cuore di Praga. I culurgiones sono identici a quelli che mangiavo da bambino in Ogliastra. Complimenti!",
+      "author": "Marco B.",
+      "role": "Google Reviews"
+    },
+    "review2": {
+      "quote": "Finalmente un ristorante italiano autentico a Praga. Il porceddu è spettacolare, la bottega con i prodotti sardi è una chicca. Torneremo sicuramente.",
+      "author": "Lucia e Paolo",
+      "role": "TripAdvisor"
+    },
+    "review3": {
+      "quote": "Atmosfera intima, servizio impeccabile e vini sardi eccezionali. Il Cannonau consigliato dallo staff era perfetto con l'agnello. Consigliatissimo!",
+      "author": "Jana K.",
+      "role": "Google Reviews"
+    }
+  },
+  "googleReviews": {
+    "title": "Cosa Dicono i Nostri Ospiti",
+    "reviews": "recensioni",
+    "viewAll": "Vedi tutte le recensioni su Google",
+    "basedOn": "Basato su"
+  },
+  "reservation": {
+    "subtitle": "Prenota un Tavolo",
+    "title": "Prenota il Tuo Tavolo",
+    "description": "Per prenotazioni chiamaci al {phone} oppure prenota online comodamente",
+    "button": "Prenota Ora",
+    "bookInClicks": "Prenota in pochi click",
+    "dishSystem": "Sistema di prenotazione DISH.co",
+    "instantConfirm": "Conferma immediata • Nessun costo aggiuntivo",
+    "groupsNote": "Per gruppi superiori a 8 persone o eventi privati,",
+    "contactUs": "contattaci direttamente",
+    "orCall": "oppure chiamaci",
+    "findUs": "Dove Siamo",
+    "callToBook": "Chiamaci per prenotare",
+    "addressLabel": "Indirizzo",
+    "lunch": "Pranzo",
+    "dinner": "Cena",
+    "contacts": "Contatti",
+    "mondaySunday": "Lunedì - Domenica"
+  },
+  "footer": {
+    "description": "Autentico ristorante sardo nel cuore di Praga. Piatti tradizionali, vini pregiati e l'ospitalità della Sardegna.",
+    "quickLinks": "Link Rapidi",
+    "contact": "Contatti",
+    "hours": "Orari",
+    "followUs": "Seguici",
+    "rights": "Tutti i diritti riservati",
+    "privacy": "Privacy Policy",
+    "terms": "Termini e Condizioni"
+  },
+  "about": {
+    "pageTitle": "Chi Siamo",
+    "pageSubtitle": "La nostra storia, la nostra passione per la cucina sarda autentica",
+    "heroTitle": "Una Passione per la Sardegna",
+    "heroDescription": "Dal cuore della Sardegna al cuore di Praga, portiamo l'autenticità della cucina sarda in ogni piatto che serviamo.",
+    "storySubtitle": "La Nostra Storia",
+    "storyTitle": "Un Angolo di Sardegna a Praga",
+    "storyP1": "Ichnusa Botega & Bistro nasce dalla passione per la cucina sarda e dal desiderio di portare i sapori autentici della nostra terra nel cuore di Praga.",
+    "storyP2": "Nel nostro ristorante troverete l'atmosfera calda e accogliente tipica della Sardegna, dove ogni piatto racconta una storia di tradizione e territorio. Importiamo direttamente dall'isola i migliori ingredienti: formaggi stagionati, salumi artigianali, pasta fresca e vini pregiati.",
+    "storyP3": "Il nostro locale si sviluppa su due piani, offrendo un'atmosfera intima e rilassata, perfetta per una cena romantica o un pranzo in famiglia. Un ambiente che vi farà sentire come ospiti nella nostra casa in Sardegna.",
+    "valuesSubtitle": "I Nostri Valori",
+    "valuesTitle": "Cosa Ci Guida",
+    "values": {
+      "tradition": {
+        "title": "Tradizione",
+        "description": "Piatti tramandati di generazione in generazione, preparati con le ricette autentiche della Sardegna."
+      },
+      "quality": {
+        "title": "Qualità",
+        "description": "Ingredienti selezionati e importati direttamente dalla Sardegna per garantire autenticità."
+      },
+      "passion": {
+        "title": "Passione",
+        "description": "Ogni piatto è preparato con amore e dedizione, come se foste ospiti a casa nostra."
+      },
+      "hospitality": {
+        "title": "Accoglienza",
+        "description": "L'atmosfera calda e familiare della Sardegna, nel cuore di Praga."
+      }
+    },
+    "journeySubtitle": "Dalla Sardegna a Praga",
+    "journeyTitle": "Il Nostro Viaggio",
+    "journeyP1": "A oltre 1.500 km dalla Sardegna, abbiamo portato a Praga l'essenza della nostra terra: i sapori, i profumi e l'ospitalità che ci contraddistinguono.",
+    "journeyP2": "Ogni ingrediente racconta un viaggio: i formaggi stagionati nelle grotte dell'isola, i salumi preparati con ricette centenarie, il pesce fresco del Mediterraneo e i vini delle nostre vigne.",
+    "journeyP3": "Non è solo un ristorante: è un ponte tra la Sardegna e la Boemia, dove ogni piatto è una promessa di autenticità.",
+    "journey": {
+      "stat1": { "value": "1.500+", "label": "km dalla Sardegna" },
+      "stat2": { "value": "100%", "label": "Ingredienti sardi autentici" },
+      "stat3": { "value": "10+", "label": "Anni di tradizione culinaria" }
+    },
+    "ctaSubtitle": "Vieni a Trovarci",
+    "ctaTitle": "Prenota il Tuo Tavolo",
+    "ctaDescription": "Ti aspettiamo per farti vivere un'esperienza culinaria unica, dove ogni boccone ti trasporterà nelle terre della Sardegna."
+  },
+  "products": {
+    "pageTitle": "I Nostri Prodotti",
+    "pageSubtitle": "Autentici sapori sardi, importati direttamente dall'isola",
+    "description": "Porta a casa i sapori autentici della Sardegna",
+    "bottegaSubtitle": "La Nostra Bottega",
+    "bottegaTitle": "Porta la Sardegna a Casa Tua",
+    "bottegaP1": "All'interno del nostro ristorante troverai una piccola bottega dove puoi acquistare tutti i prodotti che assaggi nel nostro menu.",
+    "bottegaP2": "Formaggi stagionati, salumi artigianali, pasta fresca, vini pregiati e dolci tradizionali: tutto importato direttamente dalla Sardegna, selezionato personalmente dai nostri chef.",
+    "catalogSubtitle": "Catalogo",
+    "catalogTitle": "Esplora i Nostri Prodotti",
+    "categories": {
+      "all": "Tutti",
+      "formaggi": "Formaggi",
+      "salumi": "Salumi",
+      "pasta": "Pasta",
+      "vini": "Vini",
+      "dolci": "Dolci"
+    },
+    "specialOrders": "Ordini Speciali",
+    "specialOrdersDesc": "Cerchi un prodotto specifico della Sardegna? Contattaci per ordini speciali e importazioni su richiesta. Possiamo procurare qualsiasi specialità sarda."
+  },
+  "gallery": {
+    "pageTitle": "Galleria",
+    "pageSubtitle": "Scopri l'atmosfera e i sapori di Ichnusa attraverso le nostre immagini",
+    "categories": {
+      "all": "Tutto",
+      "interni": "Interni",
+      "piatti": "Piatti",
+      "eventi": "Eventi"
+    },
+    "followInstagram": "Seguici su Instagram",
+    "followInstagramDesc": "Resta aggiornato sulle nostre novità, eventi speciali e piatti del giorno"
+  },
+  "contact": {
+    "pageTitle": "Contattaci",
+    "pageSubtitle": "Siamo qui per rispondere alle tue domande e accoglierti nel nostro ristorante",
+    "info": {
+      "address": "Indirizzo",
+      "phone": "Telefono",
+      "email": "Email",
+      "hours": "Orari"
+    },
+    "form": {
+      "subtitle": "Scrivici",
+      "title": "Invia un Messaggio",
+      "description": "Hai domande sul nostro menu, vuoi organizzare un evento privato o semplicemente vuoi saperne di più? Compila il form e ti risponderemo al più presto.",
+      "name": "Nome",
+      "namePlaceholder": "Il tuo nome",
+      "email": "Email",
+      "emailPlaceholder": "tua@email.com",
+      "phone": "Telefono",
+      "phonePlaceholder": "+420 ...",
+      "subject": "Oggetto",
+      "subjectPlaceholder": "Seleziona...",
+      "subjects": {
+        "info": "Informazioni generali",
+        "reservation": "Prenotazione",
+        "event": "Evento privato",
+        "products": "Prodotti bottega",
+        "other": "Altro"
+      },
+      "message": "Messaggio",
+      "messagePlaceholder": "Scrivi il tuo messaggio...",
+      "submit": "Invia Messaggio",
+      "sending": "Invio in corso...",
+      "success": "Messaggio inviato con successo!",
+      "error": "Si è verificato un errore. Riprova più tardi.",
+      "privacyConsent": "Ho letto e accetto la",
+      "privacyLink": "Privacy Policy"
+    },
+    "quickBooking": {
+      "title": "Prenotazione Rapida",
+      "description": "Per prenotare un tavolo, usa il nostro sistema di prenotazione online o chiamaci direttamente.",
+      "bookOnline": "Prenota Online",
+      "callNow": "Chiama Ora"
+    },
+    "followUs": {
+      "title": "Seguici",
+      "description": "Resta aggiornato su eventi, piatti del giorno e novità."
+    }
+  },
+  "whatsapp": {
+    "tooltip": "Scrivici su WhatsApp!",
+    "greeting": "Ciao! 👋 Come possiamo aiutarti? Scrivici per prenotare un tavolo o per qualsiasi informazione.",
+    "startChat": "Avvia chat",
+    "responseTime": "Di solito risponde subito"
+  },
+  "cookieBanner": {
+    "title": "Utilizziamo i cookie",
+    "description": "Questo sito utilizza cookie tecnici necessari al funzionamento. Per maggiori informazioni consulta la nostra",
+    "privacyLink": "Privacy Policy",
+    "acceptAll": "Accetta tutti",
+    "acceptNecessary": "Solo necessari",
+    "close": "Chiudi"
+  },
+  "consentEmbed": {
+    "map": {
+      "title": "Google Maps",
+      "description": "Per visualizzare la mappa interattiva, è necessario accettare i cookie di terze parti. Google Maps potrebbe raccogliere dati sulla tua navigazione.",
+      "externalLink": "Apri in Google Maps"
+    },
+    "video": {
+      "title": "Contenuto Video",
+      "description": "Per visualizzare questo video, è necessario accettare i cookie di terze parti. YouTube potrebbe raccogliere dati sulla tua navigazione.",
+      "externalLink": "Guarda su YouTube"
+    },
+    "generic": {
+      "title": "Contenuto Esterno",
+      "description": "Per visualizzare questo contenuto, è necessario accettare i cookie di terze parti.",
+      "externalLink": "Apri esternamente"
+    },
+    "acceptCookies": "Accetta cookie",
+    "privacyNote": "Puoi modificare le tue preferenze in qualsiasi momento dalla Privacy Policy"
+  },
+  "privacy": {
+    "pageTitle": "Privacy Policy",
+    "pageSubtitle": "Come trattiamo i tuoi dati personali",
+    "lastUpdated": "Ultimo aggiornamento",
+    "sections": {
+      "controller": {
+        "title": "Titolare del Trattamento",
+        "content": "Il titolare del trattamento dei dati personali è Ichnusa Botega & Bistro s.r.o., con sede in Plaská 623/5, 150 00 Praha 5, Repubblica Ceca. Per qualsiasi questione relativa alla privacy, puoi contattarci all'indirizzo email: info@ichnusa.restaurant"
+      },
+      "dataCollected": {
+        "title": "Dati Raccolti",
+        "content": "Raccogliamo i seguenti dati: dati di contatto (nome, email, telefono) quando compili il modulo di contatto; dati di navigazione (indirizzo IP, browser, pagine visitate) tramite cookie tecnici; dati di marketing (fonte di riferimento, parametri UTM) per analizzare l'efficacia delle nostre campagne."
+      },
+      "purposes": {
+        "title": "Finalità del Trattamento",
+        "content": "I tuoi dati vengono trattati per: rispondere alle tue richieste inviate tramite il modulo di contatto; gestire le prenotazioni; migliorare la navigazione del sito; inviare comunicazioni di marketing (solo con il tuo consenso esplicito)."
+      },
+      "legalBasis": {
+        "title": "Base Giuridica",
+        "content": "Il trattamento dei tuoi dati si basa su: il tuo consenso (art. 6.1.a GDPR) per i cookie non essenziali e le comunicazioni marketing; l'esecuzione di un contratto (art. 6.1.b GDPR) per le prenotazioni; il legittimo interesse (art. 6.1.f GDPR) per il funzionamento tecnico del sito."
+      },
+      "cookies": {
+        "title": "Cookie Policy",
+        "content": "Il nostro sito utilizza cookie per garantire il corretto funzionamento e migliorare la tua esperienza. Puoi gestire le tue preferenze tramite il banner dei cookie."
+      },
+      "thirdParties": {
+        "title": "Condivisione con Terze Parti",
+        "content": "I tuoi dati possono essere condivisi con: Google (per Google Maps incorporato nella pagina contatti); fornitori di servizi email per l'invio di comunicazioni. Non vendiamo i tuoi dati a terze parti per scopi commerciali."
+      },
+      "retention": {
+        "title": "Conservazione dei Dati",
+        "content": "Conserviamo i tuoi dati per il tempo necessario alle finalità per cui sono stati raccolti: dati del modulo di contatto per 2 anni; dati di navigazione per 30 giorni; dati di marketing per 1 anno o fino alla revoca del consenso."
+      },
+      "rights": {
+        "title": "I Tuoi Diritti",
+        "content": "Ai sensi del GDPR, hai diritto di:"
+      },
+      "contact": {
+        "title": "Contatti per la Privacy",
+        "content": "Per esercitare i tuoi diritti o per qualsiasi domanda sulla privacy, contattaci a: info@ichnusa.restaurant oppure scrivi a Ichnusa Botega & Bistro, Plaská 623/5, 150 00 Praha 5, Repubblica Ceca. Hai inoltre il diritto di presentare reclamo all'Autorità Garante per la protezione dei dati personali."
+      }
+    },
+    "cookieTypes": {
+      "title": "Tipi di Cookie Utilizzati",
+      "necessary": {
+        "name": "Cookie Necessari",
+        "desc": "Essenziali per il funzionamento del sito. Includono la memorizzazione delle preferenze cookie."
+      },
+      "functional": {
+        "name": "Cookie Funzionali",
+        "desc": "Migliorano l'esperienza utente, come la memorizzazione della lingua preferita."
+      }
+    },
+    "rightsList": {
+      "access": "Accedere ai tuoi dati personali",
+      "rectification": "Rettificare dati inesatti",
+      "deletion": "Richiedere la cancellazione dei dati",
+      "restriction": "Limitare il trattamento",
+      "portability": "Richiedere la portabilità dei dati",
+      "objection": "Opporti al trattamento"
+    }
+  },
+  "terms": {
+    "pageTitle": "Termini e Condizioni",
+    "pageSubtitle": "Condizioni di utilizzo del sito",
+    "lastUpdated": "Ultimo aggiornamento",
+    "sections": {
+      "general": {
+        "title": "Disposizioni Generali",
+        "content": "I presenti Termini e Condizioni regolano l'utilizzo del sito web ichnusa.restaurant gestito da Ichnusa Botega & Bistro s.r.o. Accedendo al sito, accetti di essere vincolato da questi termini. Se non accetti questi termini, ti preghiamo di non utilizzare il sito."
+      },
+      "services": {
+        "title": "Servizi Offerti",
+        "content": "Il sito fornisce informazioni sul ristorante Ichnusa Botega & Bistro, inclusi menu, orari di apertura, contatti e possibilità di prenotazione. Le informazioni sono fornite a scopo informativo e possono essere soggette a modifiche senza preavviso."
+      },
+      "reservations": {
+        "title": "Prenotazioni",
+        "content": "Le prenotazioni effettuate tramite il sito o i sistemi collegati sono soggette a disponibilità. Ci riserviamo il diritto di modificare o cancellare prenotazioni in caso di circostanze impreviste. Si prega di comunicare eventuali allergie o esigenze alimentari al momento della prenotazione."
+      },
+      "intellectualProperty": {
+        "title": "Proprietà Intellettuale",
+        "content": "Tutti i contenuti del sito, inclusi testi, immagini, loghi, grafiche e design, sono di proprietà di Ichnusa Botega & Bistro o dei rispettivi titolari dei diritti. È vietata la riproduzione, distribuzione o utilizzo non autorizzato dei contenuti."
+      },
+      "liability": {
+        "title": "Limitazione di Responsabilità",
+        "content": "Il sito è fornito \"così com'è\". Non garantiamo che il sito sia sempre disponibile o privo di errori. Non siamo responsabili per danni diretti o indiretti derivanti dall'utilizzo del sito o dall'impossibilità di utilizzarlo."
+      },
+      "modifications": {
+        "title": "Modifiche ai Termini",
+        "content": "Ci riserviamo il diritto di modificare questi Termini e Condizioni in qualsiasi momento. Le modifiche saranno pubblicate su questa pagina con indicazione della data di aggiornamento. L'uso continuato del sito dopo le modifiche costituisce accettazione dei nuovi termini."
+      },
+      "jurisdiction": {
+        "title": "Legge Applicabile e Foro Competente",
+        "content": "I presenti Termini sono regolati dalla legge della Repubblica Ceca. Per qualsiasi controversia sarà competente il foro di Praga."
+      }
+    }
+  },
+  "menuItems": {
+    "a1": {
+      "name": "Tagliere di salumi e formaggi",
+      "description": "Selezione di salumi e formaggi tipici sardi con olive e giardiniera della casa"
+    },
+    "a2": {
+      "name": "Polpo fritto in s'Azzada",
+      "description": "Polpo croccante con tradizionale salsa agrodolce sarda e lattuga di mare"
+    },
+    "a3": {
+      "name": "Melanzane alla sulcitana",
+      "description": "Melanzane preparate secondo la ricetta tradizionale del Sulcis"
+    },
+    "a4": {
+      "name": "Sashimi di tonno",
+      "description": "Tonno cotto-crudo in riduzione di Vermentino, granella di nocciola tostata e plancton marino"
+    },
+    "a5": {
+      "name": "Burrata con pomodorini",
+      "description": "Burrata cremosa con pomodorini confit, acciughe del Cantabrico e basilico croccante"
+    },
+    "a6": {
+      "name": "Tartare di Fassona",
+      "description": "Tartare piemontese con senape in grani, cialda croccante, tuorlo affumicato e soia al mirto"
+    },
+    "pr1": {
+      "name": "Risotto al tartufo",
+      "description": "Risotto cremoso al tartufo nero con burro e Parmigiano Reggiano"
+    },
+    "pr2": {
+      "name": "Passatelli ai crostacei",
+      "description": "Passatelli freschi in brodo di crostacei con pomodorini"
+    },
+    "pr3": {
+      "name": "Spaghetti alla bottarga",
+      "description": "Spaghetti con bottarga di muggine, aglio, olio EVO e prezzemolo"
+    },
+    "pr4": {
+      "name": "Culurgiones al cinghiale",
+      "description": "Ravioli sardi ripieni di stracotto di cinghiale al Cannonau"
+    },
+    "pr5": {
+      "name": "Tortelli cacio e pepe",
+      "description": "Tortelli ripieni con crema di cacio e pepe e crudité di gambero rosso"
+    },
+    "pr6": {
+      "name": "Malloreddus alla campidanese",
+      "description": "Gnocchetti sardi con ragù di salsiccia, zafferano e pecorino"
+    },
+    "s1": {
+      "name": "Maialetto arrosto",
+      "description": "Maialetto lentamente arrosto con la sua riduzione e giardiniera della casa"
+    },
+    "s2": {
+      "name": "Grigliata di pesce",
+      "description": "Scampo, calamaro, gambero, tonno, polpo e cappasanta con insalatina di stagione"
+    },
+    "s3": {
+      "name": "Fritto misto di mare",
+      "description": "Frittura mista di pesce, crostacei e alghe"
+    },
+    "s4": {
+      "name": "Tataki di ricciola",
+      "description": "Ricciola scottata su cavolfiore arrostito con aglio confit e cavolo croccante"
+    },
+    "s5": {
+      "name": "Tagliata di manzo",
+      "description": "Tagliata alla griglia con patate novelle al burro e rosmarino"
+    },
+    "i1": {
+      "name": "Insalatina tiepida alla mediterranea",
+      "description": "Insalata tiepida con patate, pomodorini e olive"
+    },
+    "i2": {
+      "name": "Panzanella",
+      "description": "Insalata di pane toscana con pomodorini, cetrioli, crostoni e cavolfiore"
+    },
+    "i3": {
+      "name": "Insalata mista di stagione",
+      "description": "Insalata fresca di stagione con carote e finocchio"
+    },
+    "d1": {
+      "name": "Seadas",
+      "description": "Ravioli fritti ripieni di formaggio con miele amaro sardo"
+    },
+    "d2": {
+      "name": "Tiramisù al bicchiere",
+      "description": "Tiramisù classico servito al bicchiere con cacao amaro"
+    },
+    "d3": {
+      "name": "Bobà al mirto",
+      "description": "Babà soffice imbevuto nel liquore di mirto sardo con zabaione caldo"
+    },
+    "d4": {
+      "name": "Millefoglie",
+      "description": "Sfoglia croccante con crema di cioccolato, amaretti e amarene"
+    }
+  }
+}

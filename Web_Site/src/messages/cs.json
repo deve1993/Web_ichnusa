@@ -1,0 +1,507 @@
+{
+  "common": {
+    "bookNow": "Rezervovat",
+    "viewMenu": "Zobrazit menu",
+    "viewMore": "Zjistit více",
+    "viewProducts": "Objevte produkty",
+    "bookEvent": "Rezervovat akci",
+    "sendMessage": "Odeslat zprávu",
+    "loading": "Načítání...",
+    "close": "Zavřít",
+    "phone": "Telefon",
+    "email": "Email",
+    "address": "Adresa",
+    "hours": "Otevírací doba",
+    "language": "Jazyk",
+    "details": "Podrobnosti",
+    "contactUs": "Kontaktujte nás",
+    "yearsExperience": "Let zkušeností",
+    "importedIngredients": "Ingredience dovezené ze Sardinie",
+    "wineLabels": "Etikety sardinských vín"
+  },
+  "nav": {
+    "home": "Domů",
+    "about": "O nás",
+    "products": "Produkty",
+    "menu": "Menu",
+    "gallery": "Galerie",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "subtitle": "Autentická sardinská kuchyně v Praze",
+    "title1": "Ichnusa",
+    "title2": "Botega & Bistro",
+    "description": "Tradiční sardinská jídla, výborná vína, čerstvé ryby a mořské plody v srdci Malé Strany",
+    "scroll": "Scroll"
+  },
+  "weOffer": {
+    "subtitle": "Esence Sardinie",
+    "title": "Naše vášeň",
+    "tradition": {
+      "title": "Sardinská tradice",
+      "description": "Autentické recepty předávané z generace na generaci. Dvě patra s klidnou a intimní atmosférou pro zažití pravé sardinské kulinářské tradice."
+    },
+    "fish": {
+      "title": "Čerstvé ryby",
+      "description": "Denní výběr čerstvých ryb, připravovaných podle italské tradice. Ingredience dovážené přímo ze Sardinie."
+    },
+    "wines": {
+      "title": "Jedinečná vína",
+      "description": "Rozmanitý výběr italských vín, včetně našeho vlastního vína pěstovaného na Sardinii. Cannonau, Vermentino a místní rarity."
+    },
+    "cards": {
+      "kitchen": "Naše kuchyně",
+      "bottega": "La Bottega",
+      "wines": "Naše vína",
+      "discover": "Objevit"
+    }
+  },
+  "specialDish": {
+    "badge": "Specialita",
+    "subtitle": "Náš ikonický pokrm",
+    "title": "Porceddu",
+    "description": "Král sardinské kuchyně: sele pomalu pečené na myrtovém dřevě s křehkou kůží a jemným masem, které se rozplývá na jazyku. Autentický zážitek sardinské pastýřské tradice, podávaný s pečenými bramborami a sezónní zeleninou.",
+    "reservation": "Na rezervaci",
+    "serves": "Pro 2-4 osoby"
+  },
+  "menu": {
+    "subtitle": "Autentické chutě",
+    "title": "Naše menu",
+    "antipasti": "Předkrmy",
+    "pastaRisotto": "Těstoviny a rizoto",
+    "secondi": "Hlavní chody",
+    "insalate": "Saláty",
+    "dolci": "Dezerty",
+    "openDaily": "Otevřeno denně od 11:30 do 23:00",
+    "fullMenu": "Kompletní menu",
+    "categories": "Kategorie",
+    "marketPrice": "Tržní cena",
+    "priceNote": "Ceny se mohou lišit. Informujte prosím personál o případných alergiích či intolerancích.",
+    "wineList": "Vinný lístek",
+    "wineListDesc": "Přes 50 sardinských etiket, včetně našeho vlastního vína vyrobeného na Sardinii.",
+    "askSommelier": "Zeptejte se sommeliera",
+    "tastingMenu": "Degustační menu",
+    "tastingMenuDesc": "Cesta chutěmi Sardinie v 7 chodech.",
+    "perPerson": "na osobu",
+    "allergyNote": "V případě potravinových alergií nebo intolerancí informujte prosím náš personál. Mnoho jídel můžeme přizpůsobit vašim potřebám.",
+    "noItems": "V této kategorii nejsou dostupná žádná jídla.",
+    "special": "Specialita"
+  },
+  "infoCards": {
+    "bottega": {
+      "subtitle": "Autentické produkty ze Sardinie",
+      "title": "La Bottega",
+      "description": "Odneste si kousek Sardinie domů. V našem obchodě najdete DOP sýry, řemeslné uzeniny, čerstvou pastu, vína z nejlepších sardinských vinařství a speciality, které v Praze jinde nenajdete. Ideální také jako dárek."
+    },
+    "events": {
+      "subtitle": "Vaše akce v sardinském stylu",
+      "title": "Soukromé akce",
+      "description": "Oslavte narozeniny, výročí nebo firemní večeře v našem soukromém salonku. Menu na míru s nejlepšími sardinskými specialitami, výběrovými víny a intimní, příjemnou atmosférou v srdci Malé Strany."
+    }
+  },
+  "testimonials": {
+    "review1": {
+      "quote": "Kousek Sardinie v srdci Prahy. Culurgiones jsou stejné jako ty, které jsem jedl jako dítě v Ogliastře. Gratulujeme!",
+      "author": "Marco B.",
+      "role": "Google Reviews"
+    },
+    "review2": {
+      "quote": "Konečně autentická italská restaurace v Praze. Porceddu je úžasné, obchůdek se sardinskými produkty je poklad. Určitě se vrátíme.",
+      "author": "Lucia & Paolo",
+      "role": "TripAdvisor"
+    },
+    "review3": {
+      "quote": "Intimní atmosféra, bezchybný servis a výjimečná sardinská vína. Cannonau doporučené personálem bylo dokonalé k jehněčímu. Vřele doporučuji!",
+      "author": "Jana K.",
+      "role": "Google Reviews"
+    }
+  },
+  "googleReviews": {
+    "title": "Co říkají naši hosté",
+    "reviews": "recenzí",
+    "viewAll": "Zobrazit všechny recenze na Google",
+    "basedOn": "Na základě"
+  },
+  "reservation": {
+    "subtitle": "Rezervujte stůl",
+    "title": "Rezervujte si stůl",
+    "description": "Pro rezervace nám zavolejte na {phone} nebo si pohodlně rezervujte online",
+    "button": "Rezervovat",
+    "bookInClicks": "Rezervujte na pár kliknutí",
+    "dishSystem": "Rezervační systém DISH.co",
+    "instantConfirm": "Okamžité potvrzení - Žádné další poplatky",
+    "groupsNote": "Pro skupiny větší než 8 osob nebo soukromé akce,",
+    "contactUs": "kontaktujte nás přímo",
+    "orCall": "nebo zavolejte",
+    "findUs": "Kde nás najdete",
+    "callToBook": "Zavolejte nám pro rezervaci",
+    "addressLabel": "Adresa",
+    "lunch": "Oběd",
+    "dinner": "Večeře",
+    "contacts": "Kontakt",
+    "mondaySunday": "Pondělí - Neděle"
+  },
+  "footer": {
+    "description": "Autentická sardinská restaurace v srdci Prahy. Tradiční pokrmy, výborná vína a sardinská pohostinnost.",
+    "quickLinks": "Rychlé odkazy",
+    "contact": "Kontakt",
+    "hours": "Otevírací doba",
+    "followUs": "Sledujte nás",
+    "rights": "Všechna práva vyhrazena",
+    "privacy": "Zásady ochrany osobních údajů",
+    "terms": "Obchodní podmínky"
+  },
+  "about": {
+    "pageTitle": "O nás",
+    "pageSubtitle": "Náš příběh, naše vášeň pro autentickou sardinskou kuchyni",
+    "heroTitle": "Vášeň pro Sardinii",
+    "heroDescription": "Ze srdce Sardinie do srdce Prahy přinášíme autenticitu sardinské kuchyně v každém jídle, které podáváme.",
+    "storySubtitle": "Náš příběh",
+    "storyTitle": "Kousek Sardinie v Praze",
+    "storyP1": "Ichnusa Botega & Bistro vznikla z naší vášně pro sardinskou kuchyni a touhy přinést autentické chutě naší země do srdce Prahy.",
+    "storyP2": "V naší restauraci najdete teplou a příjemnou atmosféru typickou pro Sardinii, kde každé jídlo vypráví příběh tradice a území. Dovážíme přímo z ostrova ty nejlepší ingredience: zralé sýry, řemeslné uzeniny, čerstvou pastu a výborná vína.",
+    "storyP3": "Náš podnik se rozprostírá na dvou patrech a nabízí intimní a uvolněnou atmosféru, ideální pro romantické večeře nebo rodinné obědy. Prostředí, ve kterém se budete cítit jako hosté v našem domově na Sardinii.",
+    "valuesSubtitle": "Naše hodnoty",
+    "valuesTitle": "Co nás vede",
+    "values": {
+      "tradition": {
+        "title": "Tradice",
+        "description": "Jídla předávaná z generace na generaci, připravovaná podle autentických sardinských receptů."
+      },
+      "quality": {
+        "title": "Kvalita",
+        "description": "Vybrané ingredience dovážené přímo ze Sardinie pro zaručení autenticity."
+      },
+      "passion": {
+        "title": "Vášeň",
+        "description": "Každé jídlo je připravováno s láskou a oddaností, jako byste byli hosty u nás doma."
+      },
+      "hospitality": {
+        "title": "Pohostinnost",
+        "description": "Teplá a rodinná atmosféra Sardinie v srdci Prahy."
+      }
+    },
+    "journeySubtitle": "Ze Sardinie do Prahy",
+    "journeyTitle": "Naše Cesta",
+    "journeyP1": "Více než 1 500 km od Sardinie jsme do Prahy přinesli esenci naší země: chutě, vůně a pohostinnost, které nás definují.",
+    "journeyP2": "Každá ingredience vypráví příběh cesty: sýry zrající v jeskyních ostrova, uzeniny připravované podle staletých receptů, čerstvé středomořské ryby a vína z našich vinic.",
+    "journeyP3": "Není to jen restaurace: je to most mezi Sardinií a Čechami, kde každé jídlo je příslibem autenticity.",
+    "journey": {
+      "stat1": { "value": "1 500+", "label": "km ze Sardinie" },
+      "stat2": { "value": "100%", "label": "Autentické sardinské ingredience" },
+      "stat3": { "value": "10+", "label": "Let kulinářské tradice" }
+    },
+    "ctaSubtitle": "Přijďte nás navštívit",
+    "ctaTitle": "Rezervujte si stůl",
+    "ctaDescription": "Těšíme se, až vám poskytneme jedinečný kulinářský zážitek, kde vás každé sousto přenese do krajin Sardinie."
+  },
+  "products": {
+    "pageTitle": "Naše produkty",
+    "pageSubtitle": "Autentické sardinské chutě, dovážené přímo z ostrova",
+    "description": "Odneste si domů autentické chutě Sardinie",
+    "bottegaSubtitle": "Naše Bottega",
+    "bottegaTitle": "Přineste si Sardinii domů",
+    "bottegaP1": "Uvnitř naší restaurace najdete malý obchůdek, kde si můžete zakoupit všechny produkty, které ochutnáte v našem menu.",
+    "bottegaP2": "Zralé sýry, řemeslné uzeniny, čerstvá pasta, výborná vína a tradiční dezerty: vše dovážené přímo ze Sardinie, osobně vybrané našimi kuchaři.",
+    "catalogSubtitle": "Katalog",
+    "catalogTitle": "Prozkoumejte naše produkty",
+    "categories": {
+      "all": "Vše",
+      "formaggi": "Sýry",
+      "salumi": "Uzeniny",
+      "pasta": "Těstoviny",
+      "vini": "Vína",
+      "dolci": "Dezerty"
+    },
+    "specialOrders": "Speciální objednávky",
+    "specialOrdersDesc": "Hledáte konkrétní sardinský produkt? Kontaktujte nás pro speciální objednávky a dovozy na zakázku. Můžeme zajistit jakoukoli sardinskou specialitu."
+  },
+  "gallery": {
+    "pageTitle": "Galerie",
+    "pageSubtitle": "Objevte atmosféru a chutě Ichnusy prostřednictvím našich obrázků",
+    "categories": {
+      "all": "Vše",
+      "interni": "Interiér",
+      "piatti": "Jídla",
+      "eventi": "Akce"
+    },
+    "followInstagram": "Sledujte nás na Instagramu",
+    "followInstagramDesc": "Zůstaňte informováni o našich novinkách, speciálních akcích a jídlech dne"
+  },
+  "contact": {
+    "pageTitle": "Kontaktujte nás",
+    "pageSubtitle": "Jsme tu, abychom odpověděli na vaše otázky a přivítali vás v naší restauraci",
+    "info": {
+      "address": "Adresa",
+      "phone": "Telefon",
+      "email": "Email",
+      "hours": "Otevírací doba"
+    },
+    "form": {
+      "subtitle": "Napište nám",
+      "title": "Odeslat zprávu",
+      "description": "Máte otázky ohledně našeho menu, chcete zorganizovat soukromou akci, nebo se chcete prostě dozvědět více? Vyplňte formulář a ozveme se vám co nejdříve.",
+      "name": "Jméno",
+      "namePlaceholder": "Vaše jméno",
+      "email": "Email",
+      "emailPlaceholder": "vas@email.com",
+      "phone": "Telefon",
+      "phonePlaceholder": "+420 ...",
+      "subject": "Předmět",
+      "subjectPlaceholder": "Vyberte...",
+      "subjects": {
+        "info": "Obecné informace",
+        "reservation": "Rezervace",
+        "event": "Soukromá akce",
+        "products": "Produkty z obchodu",
+        "other": "Jiné"
+      },
+      "message": "Zpráva",
+      "messagePlaceholder": "Napište svou zprávu...",
+      "submit": "Odeslat zprávu",
+      "sending": "Odesílání...",
+      "success": "Zpráva byla úspěšně odeslána!",
+      "error": "Došlo k chybě. Zkuste to prosím později.",
+      "privacyConsent": "Přečetl/a jsem si a souhlasím s",
+      "privacyLink": "Zásadami ochrany osobních údajů"
+    },
+    "quickBooking": {
+      "title": "Rychlá rezervace",
+      "description": "Pro rezervaci stolu použijte náš online rezervační systém nebo nám přímo zavolejte.",
+      "bookOnline": "Rezervovat online",
+      "callNow": "Zavolat"
+    },
+    "followUs": {
+      "title": "Sledujte nás",
+      "description": "Zůstaňte informováni o akcích, denních nabídkách a novinkách."
+    }
+  },
+  "whatsapp": {
+    "tooltip": "Napište nám na WhatsApp!",
+    "greeting": "Ahoj! Jak vám můžeme pomoci? Napište nám pro rezervaci stolu nebo jakoukoli informaci.",
+    "startChat": "Zahájit chat",
+    "responseTime": "Obvykle odpovídá okamžitě"
+  },
+  "cookieBanner": {
+    "title": "Používáme cookies",
+    "description": "Tento web používá technické cookies nezbytné pro jeho fungování. Pro více informací si přečtěte naše",
+    "privacyLink": "Zásady ochrany osobních údajů",
+    "acceptAll": "Přijmout vše",
+    "acceptNecessary": "Pouze nezbytné",
+    "close": "Zavřít"
+  },
+  "consentEmbed": {
+    "map": {
+      "title": "Google Mapy",
+      "description": "Pro zobrazení interaktivní mapy je nutné přijmout cookies třetích stran. Google Mapy mohou shromažďovat údaje o vašem prohlížení.",
+      "externalLink": "Otevřít v Google Maps"
+    },
+    "video": {
+      "title": "Video obsah",
+      "description": "Pro zobrazení tohoto videa je nutné přijmout cookies třetích stran. YouTube může shromažďovat údaje o vašem prohlížení.",
+      "externalLink": "Sledovat na YouTube"
+    },
+    "generic": {
+      "title": "Externí obsah",
+      "description": "Pro zobrazení tohoto obsahu je nutné přijmout cookies třetích stran.",
+      "externalLink": "Otevřít externě"
+    },
+    "acceptCookies": "Přijmout cookies",
+    "privacyNote": "Své preference můžete kdykoli změnit v Zásadách ochrany osobních údajů"
+  },
+  "privacy": {
+    "pageTitle": "Zásady ochrany osobních údajů",
+    "pageSubtitle": "Jak zacházíme s vašimi osobními údaji",
+    "lastUpdated": "Poslední aktualizace",
+    "sections": {
+      "controller": {
+        "title": "Správce údajů",
+        "content": "Správcem osobních údajů je Ichnusa Botega & Bistro s.r.o., se sídlem Plaská 623/5, 150 00 Praha 5, Česká republika. Pro jakékoli dotazy týkající se ochrany osobních údajů nás můžete kontaktovat na: info@ichnusa.restaurant"
+      },
+      "dataCollected": {
+        "title": "Shromažďované údaje",
+        "content": "Shromažďujeme následující údaje: kontaktní údaje (jméno, e-mail, telefon) při vyplnění kontaktního formuláře; údaje o prohlížení (IP adresa, prohlížeč, navštívené stránky) prostřednictvím technických cookies; marketingové údaje (zdroj odkazu, UTM parametry) pro analýzu účinnosti našich kampaní."
+      },
+      "purposes": {
+        "title": "Účely zpracování",
+        "content": "Vaše údaje jsou zpracovávány za účelem: odpovědi na vaše dotazy zaslané prostřednictvím kontaktního formuláře; správy rezervací; zlepšení navigace na webových stránkách; zasílání marketingových sdělení (pouze s vaším výslovným souhlasem)."
+      },
+      "legalBasis": {
+        "title": "Právní základ",
+        "content": "Zpracování vašich údajů je založeno na: vašem souhlasu (čl. 6.1.a GDPR) pro nezbytné cookies a marketingová sdělení; plnění smlouvy (čl. 6.1.b GDPR) pro rezervace; oprávněném zájmu (čl. 6.1.f GDPR) pro technický provoz webu."
+      },
+      "cookies": {
+        "title": "Zásady cookies",
+        "content": "Naše webové stránky používají cookies k zajištění správné funkčnosti a zlepšení vašeho zážitku. Své preference můžete spravovat prostřednictvím banneru cookies."
+      },
+      "thirdParties": {
+        "title": "Sdílení s třetími stranami",
+        "content": "Vaše údaje mohou být sdíleny s: Google (pro Google Maps vložené na kontaktní stránce); poskytovateli e-mailových služeb pro zasílání komunikace. Vaše údaje neprodáváme třetím stranám pro komerční účely."
+      },
+      "retention": {
+        "title": "Uchovávání údajů",
+        "content": "Vaše údaje uchováváme po dobu nezbytnou pro účely, pro které byly shromážděny: údaje z kontaktního formuláře 2 roky; údaje o prohlížení 30 dní; marketingové údaje 1 rok nebo do odvolání souhlasu."
+      },
+      "rights": {
+        "title": "Vaše práva",
+        "content": "Podle GDPR máte právo:"
+      },
+      "contact": {
+        "title": "Kontakt pro ochranu osobních údajů",
+        "content": "Pro uplatnění vašich práv nebo jakékoli dotazy týkající se ochrany osobních údajů nás kontaktujte na: info@ichnusa.restaurant nebo pište na Ichnusa Botega & Bistro, Plaská 623/5, 150 00 Praha 5, Česká republika. Máte také právo podat stížnost u Úřadu pro ochranu osobních údajů."
+      }
+    },
+    "cookieTypes": {
+      "title": "Typy používaných cookies",
+      "necessary": {
+        "name": "Nezbytné cookies",
+        "desc": "Nezbytné pro fungování webových stránek. Zahrnují ukládání preferencí cookies."
+      },
+      "functional": {
+        "name": "Funkční cookies",
+        "desc": "Zlepšují uživatelský zážitek, například zapamatováním preferovaného jazyka."
+      }
+    },
+    "rightsList": {
+      "access": "Přístup k vašim osobním údajům",
+      "rectification": "Opravu nepřesných údajů",
+      "deletion": "Žádost o vymazání údajů",
+      "restriction": "Omezení zpracování",
+      "portability": "Žádost o přenositelnost údajů",
+      "objection": "Námitku proti zpracování"
+    }
+  },
+  "terms": {
+    "pageTitle": "Obchodní podmínky",
+    "pageSubtitle": "Podmínky používání webových stránek",
+    "lastUpdated": "Poslední aktualizace",
+    "sections": {
+      "general": {
+        "title": "Obecná ustanovení",
+        "content": "Tyto obchodní podmínky upravují používání webových stránek ichnusa.restaurant provozovaných společností Ichnusa Botega & Bistro s.r.o. Přístupem na stránky souhlasíte s těmito podmínkami. Pokud s těmito podmínkami nesouhlasíte, prosím, nepoužívejte tyto stránky."
+      },
+      "services": {
+        "title": "Nabízené služby",
+        "content": "Stránky poskytují informace o restauraci Ichnusa Botega & Bistro, včetně menu, otevíracích hodin, kontaktů a možnosti rezervace. Informace jsou poskytovány pro informační účely a mohou být změněny bez předchozího upozornění."
+      },
+      "reservations": {
+        "title": "Rezervace",
+        "content": "Rezervace provedené prostřednictvím stránek nebo připojených systémů podléhají dostupnosti. Vyhrazujeme si právo upravit nebo zrušit rezervace v případě nepředvídaných okolností. Prosím, sdělte případné alergie nebo dietní požadavky při rezervaci."
+      },
+      "intellectualProperty": {
+        "title": "Duševní vlastnictví",
+        "content": "Veškerý obsah na stránkách, včetně textů, obrázků, log, grafiky a designu, je vlastnictvím Ichnusa Botega & Bistro nebo příslušných držitelů práv. Reprodukce, distribuce nebo neoprávněné použití obsahu je zakázáno."
+      },
+      "liability": {
+        "title": "Omezení odpovědnosti",
+        "content": "Stránky jsou poskytovány \"tak, jak jsou\". Nezaručujeme, že stránky budou vždy dostupné nebo bez chyb. Nejsme odpovědni za přímé nebo nepřímé škody vyplývající z používání stránek nebo nemožnosti je používat."
+      },
+      "modifications": {
+        "title": "Změny podmínek",
+        "content": "Vyhrazujeme si právo kdykoli upravit tyto obchodní podmínky. Změny budou zveřejněny na této stránce s uvedením data aktualizace. Pokračováním v používání stránek po změnách vyjadřujete souhlas s novými podmínkami."
+      },
+      "jurisdiction": {
+        "title": "Rozhodné právo a příslušnost",
+        "content": "Tyto podmínky se řídí právem České republiky. Pro jakýkoli spor jsou příslušné soudy v Praze."
+      }
+    }
+  },
+  "menuItems": {
+    "a1": {
+      "name": "Variace uzenin a sýrů",
+      "description": "Variace uzenin a sýrů s olivami a nakládanou zeleninou"
+    },
+    "a2": {
+      "name": "Smažená chobotnice",
+      "description": "Smažená chobotnice \u201Ein azzada\u201C s mořskou řasou lattuga di mare"
+    },
+    "a3": {
+      "name": "Zapečené lilky",
+      "description": "Zapečené lilky alla sulcitana"
+    },
+    "a4": {
+      "name": "Sashimi z tuňáka",
+      "description": "Lehce restovaný sashimi tuňák, planktonová emulze, redukce vína vermentino a drcené lískové oříšky"
+    },
+    "a5": {
+      "name": "Burrata s rajčátky",
+      "description": "Burrata s konfitovanými rajčátky, ančovičkami z Cantabrico a křupavou bazalkou"
+    },
+    "a6": {
+      "name": "Tartar z hovězí Fassony",
+      "description": "Tartar z piemontské hovězí Fassony s celozrnnou hořčicí, křupavou oplatkou, kapkami uzeného vaječného žloutku a myrtovou sójovou omáčkou"
+    },
+    "pr1": {
+      "name": "Lanýžové rizoto",
+      "description": "Lanýžové rizoto"
+    },
+    "pr2": {
+      "name": "Passatelli v korýším vývaru",
+      "description": "Passatelli v korýším vývaru"
+    },
+    "pr3": {
+      "name": "Špagety s Bottargou",
+      "description": "Špagety s Bottargou (sušené jikry cípala hlavatého)"
+    },
+    "pr4": {
+      "name": "Culurgiones s kančím masem",
+      "description": "Culurgiones plněné pomalu dušeným kančím masem s Cannonau vínem"
+    },
+    "pr5": {
+      "name": "Tortelli cacio e pepe",
+      "description": "Tortelli plněné \u201Ecacio e pepe\u201C se syrovými červenými krevetami z Mazara del Vallo"
+    },
+    "pr6": {
+      "name": "Malloreddus alla campidanese",
+      "description": "Malloreddus alla campidanese"
+    },
+    "s1": {
+      "name": "Pečené selátko",
+      "description": "Pečené selátko s vlastní redukcí a naší nakládanou zeleninou"
+    },
+    "s2": {
+      "name": "Mix grilovaných mořských plodů",
+      "description": "Mix grilovaných mořských plodů a ryb (langustýna, kalamárový špíz, krevetový špíz, tuňák, chobotnice, mušle Sv. Jakuba) se sezónním salátem"
+    },
+    "s3": {
+      "name": "Fritto Misto",
+      "description": "Fritto Misto (smažené mořské plody a ryby s řasami)"
+    },
+    "s4": {
+      "name": "Tataki z kranase",
+      "description": "Tataki z kranase Hamachi na medailonu z pečeného květáku, s omáčkou z konfitovaného česneku a křupavými listy zelí"
+    },
+    "s5": {
+      "name": "Hovězí Tagliata",
+      "description": "Hovězí Tagliata s novými bramborami na másle a rozmarýnu"
+    },
+    "i1": {
+      "name": "Středomořský vlažný salát",
+      "description": "Středomořský vlažný salát s bramborami, cherry rajčátky a olivami"
+    },
+    "i2": {
+      "name": "Salát Panzanella",
+      "description": "Salát Panzanella s cherry rajčátky, okurkou, květákem a aromatizovanými krutony"
+    },
+    "i3": {
+      "name": "Sezónní míchaný salát",
+      "description": "Sezónní míchaný salát s mrkví a fenyklem"
+    },
+    "d1": {
+      "name": "Seadas",
+      "description": "Smažená Seadas s medem"
+    },
+    "d2": {
+      "name": "Tiramisù ve skle",
+      "description": "Tiramisù ve skle"
+    },
+    "d3": {
+      "name": "Myrtový Babà",
+      "description": "Myrtový Babà podávaný s teplým vaječným Zabaione"
+    },
+    "d4": {
+      "name": "Millefoglie",
+      "description": "Millefoglie s krémem z čokolády a amaretti, zdobené třešněmi amarena"
+    }
+  }
+}

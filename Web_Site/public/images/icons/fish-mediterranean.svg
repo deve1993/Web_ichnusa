@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Corpo pesce elegante -->
+  <path d="M6 20C6 20 10 12 22 12C30 12 36 16 36 20C36 24 30 28 22 28C10 28 6 20 6 20Z"/>
+  <!-- Coda -->
+  <path d="M6 20L2 14M6 20L2 26"/>
+  <!-- Occhio -->
+  <circle cx="28" cy="20" r="2" fill="#c9a96e"/>
+  <!-- Pinna dorsale -->
+  <path d="M18 12C18 12 20 8 22 8C24 8 22 12 22 12"/>
+  <!-- Pinna ventrale -->
+  <path d="M18 28C18 28 20 32 22 32C24 32 22 28 22 28"/>
+  <!-- Dettaglio branchie -->
+  <path d="M24 16V24"/>
+</svg>

@@ -1,0 +1,86 @@
+"use server";
+
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().min(2, "Nome richiesto"),
+  email: z.string().email("Email non valida"),
+  phone: z.string().optional(),
+  subject: z.string().min(1, "Oggetto richiesto"),
+  message: z.string().min(10, "Messaggio troppo corto"),
+});
+
+export type ContactFormData = z.infer<typeof contactSchema>;
+
+export interface ContactResponse {
+  success: boolean;
+  error?: string;
+}
+
+export async function submitContactForm(
+  data: Record<string, string>
+): Promise<ContactResponse> {
+  const result = contactSchema.safeParse(data);
+
+  if (!result.success) {
+    const messages = result.error.issues.map((issue) => issue.message);
+    return {
+      success: false,
+      error: messages.join(", "),
+    };
+  }
+
+  const validatedData = result.data;
+
+  const subjectLabels: Record<string, string> = {
+    info: "Informazioni generali",
+    reservation: "Prenotazione",
+    event: "Evento privato",
+    products: "Prodotti bottega",
+    other: "Altro",
+  };
+
+  const emailContent = `
+Nuovo messaggio dal sito web Ichnusa
+
+Nome: ${validatedData.name}
+Email: ${validatedData.email}
+Telefono: ${validatedData.phone || "Non fornito"}
+Oggetto: ${subjectLabels[validatedData.subject] || validatedData.subject}
+
+Messaggio:
+${validatedData.message}
+
+---
+Referral data: ${data.referrer || "Direct"}
+UTM Source: ${data.utm_source || "N/A"}
+  `.trim();
+
+  try {
+    if (process.env.RESEND_API_KEY) {
+      const { Resend } = await import("resend");
+      const resend = new Resend(process.env.RESEND_API_KEY);
+
+      await resend.emails.send({
+        from: process.env.RESEND_FROM_EMAIL || "Ichnusa <noreply@ichnusa.restaurant>",
+        to: process.env.CONTACT_EMAIL || "info@ichnusa.restaurant",
+        replyTo: validatedData.email,
+        subject: `[Ichnusa Web] ${subjectLabels[validatedData.subject] || validatedData.subject} - ${validatedData.name}`,
+        text: emailContent,
+      });
+
+      console.log("Email sent via Resend");
+    } else {
+      console.log("RESEND_API_KEY not configured. Would send email:");
+      console.log(emailContent);
+    }
+
+    return { success: true };
+  } catch (error: unknown) {
+    console.error("Contact form error:", error);
+    return {
+      success: false,
+      error: "Si è verificato un errore. Riprova più tardi.",
+    };
+  }
+}

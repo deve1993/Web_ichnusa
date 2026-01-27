@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Coppa del calice -->
+  <path d="M10 4H30L28 16C27 22 24 26 20 26C16 26 13 22 12 16L10 4Z"/>
+  <!-- Livello vino -->
+  <path d="M12 10H28" stroke-opacity="0.6"/>
+  <!-- Stelo -->
+  <path d="M20 26V34"/>
+  <!-- Base -->
+  <path d="M12 38H28" stroke-width="2"/>
+  <path d="M16 38L20 34L24 38"/>
+</svg>
