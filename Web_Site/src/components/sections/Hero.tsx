@@ -1,5 +1,4 @@
 import { getTranslations } from "next-intl/server";
-import Image from "next/image";
 import { AnimatedButton } from "@/components/ui/AnimatedButton";
 import { LineReveal } from "@/components/ui/TextReveal";
 import HeroVideo from "./HeroVideo";
@@ -13,15 +12,16 @@ export default async function Hero() {
   return (
     <section id="home" className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero-poster.webp"
-          alt="Ichnusa Restaurant Interior"
-          fill
-          priority
-          quality={75}
-          sizes="100vw"
-          className="object-cover"
-        />
+        <picture>
+          <source media="(min-width: 768px)" srcSet="/images/hero-poster.webp" />
+          <img
+            src="/images/gallery/09.webp"
+            alt="Ichnusa Restaurant Interior"
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </picture>
         <HeroVideo />
         <div className="absolute inset-0 bg-black/60" />
       </div>
