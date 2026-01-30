@@ -133,12 +133,12 @@ export default function ContactFormClient() {
               onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
               className="w-full bg-[var(--color-surface)] border border-[var(--color-border)] px-4 py-3 text-white focus:border-[var(--color-primary)] focus:outline-none transition-colors"
             >
-              <option value="">{t("form.subjectPlaceholder")}</option>
-              <option value="info">{t("form.subjects.info")}</option>
-              <option value="reservation">{t("form.subjects.reservation")}</option>
-              <option value="event">{t("form.subjects.event")}</option>
-              <option value="products">{t("form.subjects.products")}</option>
-              <option value="other">{t("form.subjects.other")}</option>
+              <option value="" className="bg-[#1E1D1B] text-white">{t("form.subjectPlaceholder")}</option>
+              <option value="info" className="bg-[#1E1D1B] text-white">{t("form.subjects.info")}</option>
+              <option value="reservation" className="bg-[#1E1D1B] text-white">{t("form.subjects.reservation")}</option>
+              <option value="event" className="bg-[#1E1D1B] text-white">{t("form.subjects.event")}</option>
+              <option value="products" className="bg-[#1E1D1B] text-white">{t("form.subjects.products")}</option>
+              <option value="other" className="bg-[#1E1D1B] text-white">{t("form.subjects.other")}</option>
             </select>
           </div>
         </div>

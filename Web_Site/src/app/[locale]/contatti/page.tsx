@@ -230,7 +230,7 @@ export default async function ContattiPage({ params }: ContattiPageProps) {
                     </a>
                     <a
                       href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
-                      className="px-6 py-3 border border-[var(--color-border)] text-white text-center hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
+                      className="px-6 py-3 border border-[var(--color-border)] text-white inline-flex items-center justify-center hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
                     >
                       {t("quickBooking.callNow")}
                     </a>
