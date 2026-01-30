@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import { SardegnaDecoration } from "@/components/ui/SardegnaDecoration";
 import { Reveal } from "@/components/ui/Reveal";
@@ -20,7 +18,6 @@ export default function ChiSiamoPage() {
 
   return (
     <>
-      <Header />
       <main>
         <PageHero
           title={t("pageTitle")}
@@ -195,7 +192,6 @@ export default function ChiSiamoPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

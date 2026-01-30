@@ -1,8 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 
 export default function TermsPage() {
@@ -20,7 +18,6 @@ export default function TermsPage() {
 
   return (
     <>
-      <Header />
       <main>
         <PageHero
           title={t("pageTitle")}
@@ -60,7 +57,6 @@ export default function TermsPage() {
           }
         ` }} />
       </main>
-      <Footer />
     </>
   );
 }

@@ -1,8 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 
 export default function PrivacyPage() {
@@ -22,7 +20,6 @@ export default function PrivacyPage() {
 
   return (
     <>
-      <Header />
       <main>
         <PageHero
           title={t("pageTitle")}
@@ -87,7 +84,6 @@ export default function PrivacyPage() {
           }
         ` }} />
       </main>
-      <Footer />
     </>
   );
 }

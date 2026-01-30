@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ichnusa.restaurant'
 
@@ -42,5 +44,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default function PrivacyLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <Header />
+      {children}
+      <Footer />
+    </>
+  );
 }
