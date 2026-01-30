@@ -95,21 +95,29 @@ UTM Source: ${data.utm_source || "N/A"}
   `.trim();
 
   try {
-    if (process.env.RESEND_API_KEY) {
-      const { Resend } = await import("resend");
-      const resend = new Resend(process.env.RESEND_API_KEY);
+    if (process.env.SMTP_HOST) {
+      const nodemailer = await import("nodemailer");
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT) || 465,
+        secure: process.env.SMTP_SECURE !== "false",
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
+        },
+      });
 
-      await resend.emails.send({
-        from: process.env.RESEND_FROM_EMAIL || "Ichnusa <noreply@ichnusa.restaurant>",
-        to: process.env.CONTACT_EMAIL || "info@ichnusa.restaurant",
+      await transporter.sendMail({
+        from: process.env.EMAIL_FROM || "Ichnusa <reservations@ichnusa.restaurant>",
+        to: process.env.CONTACT_EMAIL || "reservations@ichnusa.restaurant",
         replyTo: validatedData.email,
         subject: `[Ichnusa Web] ${subjectLabels[validatedData.subject] || validatedData.subject} - ${validatedData.name}`,
         text: emailContent,
       });
 
-      console.log("Email sent via Resend");
+      console.log("Email sent via SMTP");
     } else {
-      console.log("RESEND_API_KEY not configured. Would send email:");
+      console.log("SMTP not configured. Would send email:");
       console.log(emailContent);
     }
 
