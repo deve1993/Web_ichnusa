@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { MenuItemCard } from "@/components/ui/AnimatedCard";
 import { AnimatedButton } from "@/components/ui/AnimatedButton";
 import { useTranslations } from "next-intl";
+import { Reveal } from "@/components/ui/Reveal";
 
 interface MenuItemData {
   /** ID matching menuItems keys in translation files (a1, pr1, s1, d1, etc.) */
@@ -48,19 +48,6 @@ const menuItems: Record<MenuTabKey, MenuItemData[]> = {
   ],
 };
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
 export default function Menu() {
   const t = useTranslations("menu");
   const tItems = useTranslations("menuItems");
@@ -69,22 +56,17 @@ export default function Menu() {
   return (
     <section id="menu" className="section-padding bg-[var(--color-background-alt)]">
       <div className="container-custom">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <Reveal direction="up">
           <div className="text-center mb-12">
-            <motion.div variants={itemVariants} className="subtitle-decorator justify-center mb-4">
+            <div className="subtitle-decorator justify-center mb-4">
               {t("subtitle")}
-            </motion.div>
-            <motion.h2 variants={itemVariants} className="text-white">
+            </div>
+            <h2 className="text-white">
               {t("title")}
-            </motion.h2>
+            </h2>
           </div>
 
-          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
             {menuTabKeys.map((tabKey) => (
               <button
                 key={tabKey}
@@ -98,50 +80,40 @@ export default function Menu() {
                 {t(tabKey)}
               </button>
             ))}
-          </motion.div>
-        </motion.div>
+          </div>
+        </Reveal>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="grid md:grid-cols-2 gap-x-16 gap-y-8"
-          >
-            {menuItems[activeTab].map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <MenuItemCard
-                  title={tItems(`${item.id}.name`)}
-                  description={tItems(`${item.id}.description`)}
-                  price={item.price}
-                  index={index}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
+        <div
+          key={activeTab}
+          className="grid md:grid-cols-2 gap-x-16 gap-y-8"
+          style={{ animation: "menuFadeIn 0.3s ease-out" }}
         >
+          {menuItems[activeTab].map((item, index) => (
+            <div
+              key={item.id}
+              style={{ opacity: 0, animation: `menuFadeIn 0.3s ease-out ${index * 0.1}s forwards` }}
+            >
+              <MenuItemCard
+                title={tItems(`${item.id}.name`)}
+                description={tItems(`${item.id}.description`)}
+                price={item.price}
+                index={index}
+              />
+            </div>
+          ))}
+        </div>
+
+        <Reveal direction="up" className="text-center mt-16">
           <div className="text-[var(--color-text-muted)] mb-6 font-[var(--font-display)]">
             {t("openDaily")}
           </div>
           <AnimatedButton href="/menu" variant="doubleText">
             {t("fullMenu")}
           </AnimatedButton>
-        </motion.div>
+        </Reveal>
       </div>
+
+
     </section>
   );
 }

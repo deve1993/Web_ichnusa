@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 interface MenuCategory {
@@ -28,26 +27,13 @@ interface MenuClientProps {
   items: MenuItem[];
 }
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08 },
-  },
-};
-
 const categoryIcons: Record<string, string> = {
-  antipasti: "🥗",
-  "pasta-risotto": "🍝",
-  secondi: "🥩",
-  insalate: "🥬",
-  dolci: "🍰",
-  default: "🍽️",
+  antipasti: "",
+  "pasta-risotto": "",
+  secondi: "",
+  insalate: "",
+  dolci: "",
+  default: "",
 };
 
 const allergenLabels: Record<string, string> = {
@@ -132,7 +118,6 @@ export default function MenuClient({ categories, items }: MenuClientProps) {
                         : "border-[var(--color-border)] text-[var(--color-text-muted)] hover:border-[var(--color-primary)] hover:text-white"
                     }`}
                   >
-                    <span className="text-xl">{getCategoryIcon(cat.slug)}</span>
                     <span className="text-sm uppercase tracking-wider">{cat.title}</span>
                   </button>
                 ))}
@@ -150,50 +135,40 @@ export default function MenuClient({ categories, items }: MenuClientProps) {
           </aside>
 
           <div className="flex-1">
-            <motion.div
+            <div
               key={activeCategory}
-              initial="hidden"
-              animate="visible"
-              variants={staggerContainer}
-              className="mb-8"
+              className="mb-8 animate-[menuClientFade_0.4s_ease-out_both]"
             >
-              <motion.div variants={fadeInUp} className="flex items-center gap-4 mb-2">
-                <span className="text-4xl">{getCategoryIcon(activeCategory)}</span>
+              <div className="mb-2">
                 <h2 className="font-[var(--font-display)] text-4xl text-white">
                   {currentCategory?.title || activeCategory}
                 </h2>
-              </motion.div>
-              <motion.div
-                variants={fadeInUp}
-                className="h-[2px] w-24 bg-[var(--color-primary)]"
-              />
+              </div>
+              <div className="h-[2px] w-24 bg-[var(--color-primary)]" />
               {currentCategory?.description && (
-                <motion.p variants={fadeInUp} className="text-[var(--color-text-muted)] mt-4">
+                <p className="text-[var(--color-text-muted)] mt-4">
                   {currentCategory.description}
-                </motion.p>
+                </p>
               )}
-            </motion.div>
+            </div>
 
             {currentItems.length === 0 ? (
               <div className="text-center py-12">
                 <p className="text-[var(--color-text-muted)]">{t("noItems")}</p>
               </div>
             ) : (
-              <motion.div
+              <div
                 key={`items-${activeCategory}`}
-                initial="hidden"
-                animate="visible"
-                variants={staggerContainer}
                 className="space-y-1"
               >
-                {currentItems.map((item) => {
+                {currentItems.map((item, index) => {
                   const translation = getItemTranslation(item.id);
                   
                   return (
-                    <motion.div
+                    <div
                       key={item.id}
-                      variants={fadeInUp}
-                      className="group p-6 border-b border-[var(--color-border)] hover:bg-[var(--color-surface)]/50 transition-all duration-300"
+                      className="group p-6 border-b border-[var(--color-border)] hover:bg-[var(--color-surface)]/50 transition-all duration-300 animate-[menuClientFade_0.4s_ease-out_both]"
+                      style={{ animationDelay: `${index * 0.05}s` }}
                     >
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
@@ -232,10 +207,10 @@ export default function MenuClient({ categories, items }: MenuClientProps) {
                           </span>
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
                   );
                 })}
-              </motion.div>
+              </div>
             )}
           </div>
         </div>

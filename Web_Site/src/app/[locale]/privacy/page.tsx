@@ -4,12 +4,6 @@ import { useTranslations } from "next-intl";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
-import { motion } from "framer-motion";
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
 
 export default function PrivacyPage() {
   const t = useTranslations("privacy");
@@ -38,24 +32,16 @@ export default function PrivacyPage() {
 
         <section className="py-20 bg-[var(--color-background)]">
           <div className="container mx-auto px-4 max-w-4xl">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeInUp}
-              transition={{ duration: 0.5 }}
-              className="prose prose-invert prose-lg max-w-none"
-            >
+            <div className="prose prose-invert prose-lg max-w-none">
               <p className="text-[var(--color-text-muted)] text-lg mb-12">
                 {t("lastUpdated")}: Gennaio 2026
               </p>
 
               {sections.map((section, index) => (
-                <motion.div
+                <div
                   key={section}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
                   className="mb-12"
+                  style={{ opacity: 0, animation: `privacyFadeInUp 0.5s ease-out ${index * 0.1}s forwards` }}
                 >
                   <h2 className="font-[var(--font-display)] text-2xl text-white mb-4">
                     {index + 1}. {t(`sections.${section}.title`)}
@@ -88,11 +74,18 @@ export default function PrivacyPage() {
                       </ul>
                     )}
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
+
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes privacyFadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+        ` }} />
       </main>
       <Footer />
     </>

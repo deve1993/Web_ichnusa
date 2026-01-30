@@ -72,16 +72,18 @@
     "secondi": "Hlavní chody",
     "insalate": "Saláty",
     "dolci": "Dezerty",
-    "openDaily": "Otevřeno denně od 11:30 do 23:00",
+    "openDaily": "Otevřeno pondělí až sobota od 11:00 do 23:30",
     "fullMenu": "Kompletní menu",
     "categories": "Kategorie",
     "marketPrice": "Tržní cena",
     "priceNote": "Ceny se mohou lišit. Informujte prosím personál o případných alergiích či intolerancích.",
-    "wineList": "Vinný lístek",
+    "wineList": "Široký výběr vín",
     "wineListDesc": "Přes 50 sardinských etiket, včetně našeho vlastního vína vyrobeného na Sardinii.",
     "askSommelier": "Zeptejte se sommeliera",
     "tastingMenu": "Degustační menu",
     "tastingMenuDesc": "Cesta chutěmi Sardinie v 7 chodech.",
+    "fishBooking": "Ryby mimo menu",
+    "fishBookingDesc": "Objednejte si rybu podle svého výběru, připravíme ji přímo pro vás.",
     "perPerson": "na osobu",
     "allergyNote": "V případě potravinových alergií nebo intolerancí informujte prosím náš personál. Mnoho jídel můžeme přizpůsobit vašim potřebám.",
     "noItems": "V této kategorii nejsou dostupná žádná jídla.",
@@ -136,10 +138,11 @@
     "findUs": "Kde nás najdete",
     "callToBook": "Zavolejte nám pro rezervaci",
     "addressLabel": "Adresa",
-    "lunch": "Oběd",
-    "dinner": "Večeře",
+    "openingHours": "Otevírací doba",
     "contacts": "Kontakt",
-    "mondaySunday": "Pondělí - Neděle"
+    "mondaySaturday": "Pondělí - Sobota",
+    "sunday": "Neděle",
+    "closed": "Zavřeno"
   },
   "footer": {
     "description": "Autentická sardinská restaurace v srdci Prahy. Tradiční pokrmy, výborná vína a sardinská pohostinnost.",
@@ -223,7 +226,7 @@
       "all": "Vše",
       "interni": "Interiér",
       "piatti": "Jídla",
-      "eventi": "Akce"
+      "vini": "Vína"
     },
     "followInstagram": "Sledujte nás na Instagramu",
     "followInstagramDesc": "Zůstaňte informováni o našich novinkách, speciálních akcích a jídlech dne"

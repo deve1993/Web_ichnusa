@@ -1,7 +1,5 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Heart, Wheat, Wine, Store } from "lucide-react";
+import { Reveal } from "@/components/ui/Reveal";
 
 const features = [
   {
@@ -34,39 +32,25 @@ export default function WhyUs() {
   return (
     <section id="about" className="section-padding bg-[var(--color-background)]">
       <div className="container-custom">
-        {/* Section Header */}
         <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="subtitle-decorator justify-center mb-4"
-          >
+          <Reveal direction="up" className="subtitle-decorator justify-center mb-4">
             Perché Sceglierci
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-white"
-          >
-            I Nostri Valori
-          </motion.h2>
+          </Reveal>
+          <Reveal direction="up" delay={0.1}>
+            <h2 className="text-white">
+              I Nostri Valori
+            </h2>
+          </Reveal>
         </div>
 
-        {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <motion.div
+            <Reveal
               key={feature.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              direction="up"
+              delay={index * 0.1}
               className="text-center group"
             >
-              {/* Icon */}
               <div className="relative inline-flex items-center justify-center w-28 h-28 mb-6">
                 <div className="absolute inset-0 border border-[var(--color-border)] transition-all duration-500 group-hover:border-[var(--color-primary)] group-hover:rotate-45" />
                 <feature.icon
@@ -75,16 +59,14 @@ export default function WhyUs() {
                 />
               </div>
 
-              {/* Title */}
               <h3 className="font-[var(--font-display)] text-xl text-white mb-3 group-hover:text-[var(--color-primary)] transition-colors">
                 {feature.title}
               </h3>
 
-              {/* Description */}
               <p className="text-[var(--color-text-muted)] text-sm">
                 {feature.description}
               </p>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

@@ -179,9 +179,10 @@ export default async function MenuPage({ params }: MenuPageProps) {
             <div className="grid md:grid-cols-2 gap-8">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/images/menu/drinks.jpg"
+                  src="/images/menu/wine-selection.webp"
                   alt={t("wineList")}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -192,30 +193,26 @@ export default async function MenuPage({ params }: MenuPageProps) {
                   <p className="text-[var(--color-text-muted)] mb-4">
                     {t("wineListDesc")}
                   </p>
-                  <span className="text-[var(--color-primary)] text-sm uppercase tracking-wider">
-                    {t("askSommelier")} →
-                  </span>
+
                 </div>
               </div>
 
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/images/food/fish.jpg"
-                  alt={t("tastingMenu")}
+                  src="/images/menu/fish-booking.webp"
+                  alt={t("fishBooking")}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8">
                   <h3 className="font-[var(--font-display)] text-3xl text-white mb-2">
-                    {t("tastingMenu")}
+                    {t("fishBooking")}
                   </h3>
-                  <p className="text-[var(--color-text-muted)] mb-4">
-                    {t("tastingMenuDesc")}
+                  <p className="text-[var(--color-text-muted)]">
+                    {t("fishBookingDesc")}
                   </p>
-                  <span className="text-[var(--color-primary)] text-sm uppercase tracking-wider">
-                    €65 {t("perPerson")} →
-                  </span>
                 </div>
               </div>
             </div>

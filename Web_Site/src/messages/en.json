@@ -72,16 +72,18 @@
     "secondi": "Main Courses",
     "insalate": "Salads",
     "dolci": "Desserts",
-    "openDaily": "Open daily from 11:30 to 23:00",
+    "openDaily": "Open Monday to Saturday from 11:00 to 23:30",
     "fullMenu": "Full Menu",
     "categories": "Categories",
     "marketPrice": "Market Price",
     "priceNote": "Prices may vary. Please inform staff of any allergies or intolerances.",
-    "wineList": "Wine List",
+    "wineList": "Wide selection of wines",
     "wineListDesc": "Over 50 Sardinian labels, including our own wine produced in Sardinia.",
     "askSommelier": "Ask the sommelier",
     "tastingMenu": "Tasting Menu",
     "tastingMenuDesc": "A journey through the flavors of Sardinia in 7 courses.",
+    "fishBooking": "Off-menu fish",
+    "fishBookingDesc": "Book the fish you prefer, we'll cook it just for you.",
     "perPerson": "per person",
     "allergyNote": "For food allergies or intolerances, please inform our staff. We can adapt many dishes to your needs.",
     "noItems": "No dishes available in this category.",
@@ -136,10 +138,11 @@
     "findUs": "Where We Are",
     "callToBook": "Call us to book",
     "addressLabel": "Address",
-    "lunch": "Lunch",
-    "dinner": "Dinner",
+    "openingHours": "Opening Hours",
     "contacts": "Contact",
-    "mondaySunday": "Monday - Sunday"
+    "mondaySaturday": "Monday - Saturday",
+    "sunday": "Sunday",
+    "closed": "Closed"
   },
   "footer": {
     "description": "Authentic Sardinian restaurant in the heart of Prague. Traditional dishes, fine wines and the hospitality of Sardinia.",
@@ -223,7 +226,7 @@
       "all": "All",
       "interni": "Interior",
       "piatti": "Dishes",
-      "eventi": "Events"
+      "vini": "Wines"
     },
     "followInstagram": "Follow us on Instagram",
     "followInstagramDesc": "Stay updated on our news, special events and dishes of the day"

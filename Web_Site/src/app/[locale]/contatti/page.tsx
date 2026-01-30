@@ -64,7 +64,7 @@ const fallbackContactInfo = {
     facebook: "https://www.facebook.com/ichnusarestaurant",
     instagram: "https://www.instagram.com/ichnusa_official_prague/",
   },
-  hours: "Lun - Sab: 11:30 - 15:00 & 16:00 - 22:00\nDom: 11:00 - 15:00",
+  hours: "Lun - Sab: 11:00 - 23:30\nDom: Chiuso",
 };
 
 interface ScheduleDay {
@@ -96,7 +96,7 @@ function formatOpeningHours(schedule: ScheduleDay[]): string {
     const dayName = dayNames[day.dayOfWeek] || day.dayOfWeek;
     const hours = day.isClosed
       ? "Chiuso"
-      : `${day.openTime || "11:30"} - ${day.closeTime || "22:00"}`;
+      : `${day.openTime || "11:00"} - ${day.closeTime || "23:30"}`;
 
     if (hours === currentRange.hours && currentRange.days.length > 0) {
       currentRange.days.push(dayName);
@@ -194,7 +194,7 @@ export default async function ContattiPage({ params }: ContattiPageProps) {
         <PageHero
           title={t("pageTitle")}
           subtitle={t("pageSubtitle")}
-          backgroundImage="/images/backgrounds/reservation-bg.jpg"
+          backgroundImage="/images/gallery/chi-siamo-hero.webp"
           breadcrumbs={[{ label: tNav("contact"), href: "/contatti" }]}
         />
 

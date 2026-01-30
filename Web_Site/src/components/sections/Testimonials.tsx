@@ -1,14 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay, EffectFade } from "swiper/modules";
 import { Quote } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { Reveal } from "@/components/ui/Reveal";
 
 export default function Testimonials() {
   const t = useTranslations("testimonials");
@@ -33,7 +33,6 @@ export default function Testimonials() {
 
   return (
     <section className="section-padding bg-[var(--color-background-alt)] relative overflow-hidden">
-      {/* Background Pattern */}
       <div
         className="absolute inset-0 opacity-5"
         style={{
@@ -44,17 +43,15 @@ export default function Testimonials() {
 
       <div className="container-custom relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+          <Reveal
+            direction="scale"
             className="mb-12"
           >
             <Quote
               size={60}
               className="mx-auto text-[var(--color-primary)] opacity-50"
             />
-          </motion.div>
+          </Reveal>
 
           <Swiper
             modules={[Pagination, Autoplay, EffectFade]}
@@ -66,12 +63,7 @@ export default function Testimonials() {
           >
             {testimonials.map((testimonial, index) => (
               <SwiperSlide key={index}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="px-4"
-                >
+                <div className="px-4">
                   <blockquote className="font-[var(--font-display)] text-2xl md:text-3xl lg:text-4xl text-white leading-relaxed mb-10">
                     &ldquo;{t(testimonial.quoteKey)}&rdquo;
                   </blockquote>
@@ -93,7 +85,7 @@ export default function Testimonials() {
                       </span>
                     </cite>
                   </div>
-                </motion.div>
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>

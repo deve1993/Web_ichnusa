@@ -1,9 +1,5 @@
-"use client";
-
-import { useState } from "react";
-import { motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import {
   Facebook,
   Instagram,
@@ -12,13 +8,13 @@ import {
   Mail,
   Clock,
   ChevronRight,
-  Send,
 } from "lucide-react";
+import { Reveal } from "@/components/ui/Reveal";
+import NewsletterForm from "@/components/NewsletterForm";
 
 const emailAddresses = [
   { label: "General", email: "info@ichnusa.restaurant" },
   { label: "Reservations", email: "reservations@ichnusa.restaurant" },
-  { label: "Admin", email: "administrativa@ichnusa.restaurant" },
 ];
 
 const socialLinks = [
@@ -26,10 +22,9 @@ const socialLinks = [
   { icon: Instagram, href: "https://www.instagram.com/ichnusa_official_prague/", label: "Instagram" },
 ];
 
-export default function Footer() {
-  const [email, setEmail] = useState("");
-  const t = useTranslations("footer");
-  const tNav = useTranslations("nav");
+export default async function Footer() {
+  const t = await getTranslations("footer");
+  const tNav = await getTranslations("nav");
 
   const quickLinks = [
     { label: tNav("home"), href: "/" },
@@ -39,20 +34,11 @@ export default function Footer() {
     { label: tNav("contact"), href: "/contatti" },
   ];
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Newsletter subscription:", email);
-    setEmail("");
-  };
-
   return (
     <footer id="contact" className="bg-[var(--color-background-alt)]">
       <div className="container-custom">
-        <motion.div
+        <Reveal
           className="py-16 border-b border-[var(--color-border)]"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
         >
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="text-center lg:text-left">
@@ -64,37 +50,12 @@ export default function Footer() {
               </p>
             </div>
 
-            <form
-              onSubmit={handleNewsletterSubmit}
-              className="flex w-full max-w-md"
-            >
-              <input
-                type="email"
-                placeholder="La tua email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="flex-1 bg-transparent border border-[var(--color-border)] border-r-0 px-6 py-4 text-white placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-primary)]"
-              />
-              <button
-                type="submit"
-                className="bg-[var(--color-primary)] px-8 py-4 text-[var(--color-background)] hover:bg-[var(--color-primary-dark)] transition-colors flex items-center gap-2"
-              >
-                <span className="hidden sm:inline uppercase tracking-wider text-sm font-medium">
-                  Iscriviti
-                </span>
-                <Send size={18} />
-              </button>
-            </form>
+            <NewsletterForm />
           </div>
-        </motion.div>
+        </Reveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
+          <Reveal>
             <Link href="/" className="inline-block mb-6">
               <div className="font-[var(--font-display)] text-2xl tracking-[0.15em] text-white">
                 <span className="text-[var(--color-primary)]">ICHNUSA</span>
@@ -120,17 +81,12 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-          </motion.div>
+          </Reveal>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            <h4 className="font-[var(--font-display)] text-xl text-white mb-6">
+          <Reveal delay={0.1}>
+            <h3 className="font-[var(--font-display)] text-xl text-white mb-6">
               {t("quickLinks")}
-            </h4>
+            </h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
@@ -147,17 +103,12 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </Reveal>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <h4 className="font-[var(--font-display)] text-xl text-white mb-6">
+          <Reveal delay={0.2}>
+            <h3 className="font-[var(--font-display)] text-xl text-white mb-6">
               {t("contact")}
-            </h4>
+            </h3>
             <ul className="space-y-4">
               <li className="flex gap-4">
                 <MapPin
@@ -165,7 +116,7 @@ export default function Footer() {
                   className="text-[var(--color-primary)] flex-shrink-0 mt-1"
                 />
                 <a 
-                  href="https://maps.google.com/?q=Plaská+623/5,+150+00+Praha+5"
+                  href="https://maps.google.com/?q=Plask%C3%A1+623/5,+150+00+Praha+5"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
@@ -202,17 +153,12 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </Reveal>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-          >
-            <h4 className="font-[var(--font-display)] text-xl text-white mb-6">
+          <Reveal delay={0.3}>
+            <h3 className="font-[var(--font-display)] text-xl text-white mb-6">
               {t("hours")}
-            </h4>
+            </h3>
             <ul className="space-y-4">
               <li className="flex gap-4">
                 <Clock
@@ -221,9 +167,7 @@ export default function Footer() {
                 />
                 <div className="text-[var(--color-text-muted)]">
                   <span className="text-white block mb-1">Lunedi - Sabato</span>
-                  11:30 - 15:00
-                  <br />
-                  16:00 - 22:00
+                  11:00 - 23:30
                 </div>
               </li>
               <li className="flex gap-4">
@@ -233,11 +177,11 @@ export default function Footer() {
                 />
                 <div className="text-[var(--color-text-muted)]">
                   <span className="text-white block mb-1">Domenica</span>
-                  11:00 - 15:00
+                  Chiuso
                 </div>
               </li>
             </ul>
-          </motion.div>
+          </Reveal>
         </div>
 
         <div className="border-t border-[var(--color-border)] py-8">

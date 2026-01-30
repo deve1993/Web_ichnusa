@@ -1,15 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay, EffectFade } from "swiper/modules";
 import { Quote, Star, ExternalLink } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import type { GoogleReview } from "@/lib/google-places";
+import { Reveal } from "@/components/ui/Reveal";
 
 interface GoogleReviewsProps {
   reviews: GoogleReview[];
@@ -59,12 +59,7 @@ export default function GoogleReviews({
       />
 
       <div className="container-custom relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-8"
-        >
+        <Reveal className="text-center mb-8">
           <div className="flex items-center justify-center gap-4 mb-4">
             <Image
               src="/images/icons/google-logo.svg"
@@ -88,20 +83,18 @@ export default function GoogleReviews({
               </span>
             </div>
           </div>
-        </motion.div>
+        </Reveal>
 
         <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+          <Reveal
+            direction="scale"
             className="mb-12"
           >
             <Quote
               size={60}
               className="mx-auto text-[var(--color-primary)] opacity-50"
             />
-          </motion.div>
+          </Reveal>
 
           <Swiper
             modules={[Pagination, Autoplay, EffectFade]}
@@ -113,12 +106,7 @@ export default function GoogleReviews({
           >
             {reviews.map((review, index) => (
               <SwiperSlide key={index}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="px-4"
-                >
+                <div className="px-4">
                   <div className="flex justify-center mb-6">
                     <StarRating rating={review.rating} />
                   </div>
@@ -153,17 +141,12 @@ export default function GoogleReviews({
                       </span>
                     </cite>
                   </div>
-                </motion.div>
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
-          >
+          <Reveal className="text-center mt-12">
             <a
               href={googleMapsUrl}
               target="_blank"
@@ -173,7 +156,7 @@ export default function GoogleReviews({
               {t("viewAll")}
               <ExternalLink size={16} />
             </a>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/navigation";
@@ -118,41 +117,35 @@ export default function LanguageSwitcher({ variant = "desktop", className }: Lan
         />
       </button>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.95 }}
-            transition={{ duration: 0.15 }}
-            className="absolute top-full right-0 mt-2 bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg shadow-xl overflow-hidden min-w-[160px] z-50"
-          >
-            {languages.map((lang) => (
-              <button
-                key={lang.code}
-                onClick={() => handleLanguageChange(lang.code)}
-                className={cn(
-                  "w-full flex items-center gap-3 px-4 py-3 text-left transition-colors",
-                  locale === lang.code
-                    ? "bg-[var(--color-primary)]/10 text-[var(--color-primary)]"
-                    : "text-white hover:bg-white/5"
-                )}
-              >
-                <lang.Flag className="w-7 h-5 rounded-sm shadow-sm ring-1 ring-white/10" />
-                <div className="flex flex-col">
-                  <span className="text-sm font-medium">{lang.label}</span>
-                </div>
-                {locale === lang.code && (
-                  <motion.div
-                    layoutId="activeLang"
-                    className="ml-auto w-1.5 h-1.5 rounded-full bg-[var(--color-primary)]"
-                  />
-                )}
-              </button>
-            ))}
-          </motion.div>
+      <div
+        className={cn(
+          "absolute top-full right-0 mt-2 bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg shadow-xl overflow-hidden min-w-[160px] z-50 transition-all duration-150",
+          isOpen
+            ? "opacity-100 scale-100 pointer-events-auto translate-y-0"
+            : "opacity-0 scale-95 pointer-events-none -translate-y-2"
         )}
-      </AnimatePresence>
+      >
+        {languages.map((lang) => (
+          <button
+            key={lang.code}
+            onClick={() => handleLanguageChange(lang.code)}
+            className={cn(
+              "w-full flex items-center gap-3 px-4 py-3 text-left transition-colors",
+              locale === lang.code
+                ? "bg-[var(--color-primary)]/10 text-[var(--color-primary)]"
+                : "text-white hover:bg-white/5"
+            )}
+          >
+            <lang.Flag className="w-7 h-5 rounded-sm shadow-sm ring-1 ring-white/10" />
+            <div className="flex flex-col">
+              <span className="text-sm font-medium">{lang.label}</span>
+            </div>
+            {locale === lang.code && (
+              <div className="ml-auto w-1.5 h-1.5 rounded-full bg-[var(--color-primary)]" />
+            )}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

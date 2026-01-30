@@ -6,6 +6,11 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
   output: 'standalone',
+  devIndicators: false,
+  experimental: {
+    reactCompiler: true,
+    optimizePackageImports: ['lucide-react', 'swiper'],
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -14,6 +19,7 @@ const nextConfig: NextConfig = {
   },
   images: {
     // Formati moderni per migliore compressione
+    qualities: [75, 80, 90],
     formats: ['image/avif', 'image/webp'],
     // Device sizes ottimizzati
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
@@ -53,6 +59,14 @@ const nextConfig: NextConfig = {
           {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=(self)',
           },
         ],
       },

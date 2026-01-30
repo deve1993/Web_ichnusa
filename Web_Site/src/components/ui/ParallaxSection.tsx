@@ -1,7 +1,6 @@
 "use client";
 
 import { ReactNode, useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -23,12 +22,29 @@ export function ParallaxSection({
   minHeight = "500px",
 }: ParallaxSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
+  const [yOffset, setYOffset] = useState(0);
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", `${speed * 100}%`]);
+  useEffect(() => {
+    if (!ref.current) return;
+    let rafId: number;
+    const handleScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        if (!ref.current) return;
+        const rect = ref.current.getBoundingClientRect();
+        const viewH = window.innerHeight;
+        const progress = 1 - rect.bottom / (viewH + rect.height);
+        const clamped = Math.max(0, Math.min(1, progress));
+        setYOffset(clamped * speed * 100);
+      });
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafId);
+    };
+  }, [speed]);
 
   return (
     <section
@@ -36,15 +52,22 @@ export function ParallaxSection({
       className={cn("relative overflow-hidden", className)}
       style={{ minHeight }}
     >
-      <motion.div
+      <div
         className="absolute inset-0 w-full h-[120%] -top-[10%]"
         style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          y,
+          transform: `translateY(${yOffset}%)`,
+          willChange: "transform",
         }}
-      />
+      >
+        <Image
+          src={backgroundImage}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+          quality={75}
+        />
+      </div>
       <div
         className="absolute inset-0"
         style={{ backgroundColor: `rgba(0, 0, 0, ${overlayOpacity})` }}
@@ -67,16 +90,40 @@ export function ParallaxImage({
   className,
 }: ParallaxImageProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
+  const [yOffset, setYOffset] = useState(0);
 
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  useEffect(() => {
+    if (!ref.current) return;
+    let rafId: number;
+    const handleScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        if (!ref.current) return;
+        const rect = ref.current.getBoundingClientRect();
+        const viewH = window.innerHeight;
+        const progress = 1 - rect.bottom / (viewH + rect.height);
+        const clamped = Math.max(0, Math.min(1, progress));
+        // Map 0→1 to -10%→+10%
+        setYOffset(-10 + clamped * 20);
+      });
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
 
   return (
     <div ref={ref} className={cn("relative overflow-hidden", className)}>
-      <motion.div className="w-full h-full" style={{ y, scale: 1.1 }}>
+      <div
+        className="w-full h-full"
+        style={{
+          transform: `translateY(${yOffset}%) scale(1.1)`,
+          willChange: "transform",
+        }}
+      >
         <Image
           src={src}
           alt={alt}
@@ -84,7 +131,7 @@ export function ParallaxImage({
           className="object-cover"
           sizes="100vw"
         />
-      </motion.div>
+      </div>
     </div>
   );
 }
@@ -103,13 +150,33 @@ export function SplitParallaxSection({
   className,
 }: SplitParallaxSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
+  const [imageYOffset, setImageYOffset] = useState(0);
+  const [contentYOffset, setContentYOffset] = useState(0);
 
-  const imageY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]);
+  useEffect(() => {
+    if (!ref.current) return;
+    let rafId: number;
+    const handleScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        if (!ref.current) return;
+        const rect = ref.current.getBoundingClientRect();
+        const viewH = window.innerHeight;
+        const progress = 1 - rect.bottom / (viewH + rect.height);
+        const clamped = Math.max(0, Math.min(1, progress));
+        // imageY: -5% → +5%
+        setImageYOffset(-5 + clamped * 10);
+        // contentY: +5% → -5% (opposite)
+        setContentYOffset(5 - clamped * 10);
+      });
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
 
   return (
     <section ref={ref} className={cn("relative overflow-hidden", className)}>
@@ -120,9 +187,12 @@ export function SplitParallaxSection({
             imagePosition === "right" && "lg:flex-row-reverse"
           )}
         >
-          <motion.div
+          <div
             className="relative overflow-hidden h-[500px]"
-            style={{ y: imageY }}
+            style={{
+              transform: `translateY(${imageYOffset}%)`,
+              willChange: "transform",
+            }}
           >
             <Image
               src={backgroundImage}
@@ -131,8 +201,15 @@ export function SplitParallaxSection({
               className="object-cover"
               sizes="50vw"
             />
-          </motion.div>
-          <motion.div style={{ y: contentY }}>{children}</motion.div>
+          </div>
+          <div
+            style={{
+              transform: `translateY(${contentYOffset}%)`,
+              willChange: "transform",
+            }}
+          >
+            {children}
+          </div>
         </div>
       </div>
     </section>
@@ -235,11 +312,15 @@ export function FixedBackgroundSection({
   className,
   overlayOpacity = 0.7,
 }: FixedBackgroundSectionProps) {
+  // background-attachment:fixed requires CSS background — use Next.js image
+  // optimization API URL for AVIF/WebP while keeping the fixed effect
+  const optimizedUrl = `/_next/image?url=${encodeURIComponent(backgroundImage)}&w=1920&q=75`;
+
   return (
     <section
       className={cn("relative", className)}
       style={{
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundImage: `url(${optimizedUrl})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",

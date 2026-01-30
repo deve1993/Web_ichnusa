@@ -58,3 +58,15 @@ docs/
 mcp-servers/
 opencode.json
 AGENTS.md
+
+# Lighthouse reports
+lighthouse-*.json
+Web_Site/lighthouse-*.json
+
+# Context / working notes
+context/
+
+# Remotion scaffold (not in use)
+Web_Site/remotion.config.ts
+Web_Site/src/remotion/
+Web_Site/scripts/

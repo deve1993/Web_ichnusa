@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
@@ -31,53 +30,47 @@ export default function CookieBanner() {
   const acceptNecessary = () => setConsent("necessary");
 
   return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
-          transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="fixed bottom-0 left-0 right-0 z-[100] p-4 md:p-6"
+    <div
+      className={`fixed bottom-0 left-0 right-0 z-[100] p-4 md:p-6 transition-all duration-300 ease-out ${
+        isVisible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"
+      }`}
+    >
+      <div className="max-w-4xl mx-auto bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg shadow-2xl p-4 md:p-6">
+        <button
+          onClick={acceptNecessary}
+          className="absolute top-3 right-3 text-[var(--color-text-muted)] hover:text-white transition-colors"
+          aria-label={t("close")}
         >
-          <div className="max-w-4xl mx-auto bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg shadow-2xl p-4 md:p-6">
+          <X size={20} />
+        </button>
+
+        <div className="pr-8">
+          <h3 className="text-lg font-semibold text-white mb-2">
+            {t("title")}
+          </h3>
+          <p className="text-sm text-[var(--color-text-muted)] mb-4">
+            {t("description")}{" "}
+            <Link href="/privacy" className="text-[var(--color-primary)] underline underline-offset-2 hover:opacity-80">
+              {t("privacyLink")}
+            </Link>.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button
+              onClick={acceptAll}
+              className="flex-1 bg-[var(--color-primary)] text-[var(--color-background)] py-2.5 px-4 text-sm font-medium rounded hover:opacity-90 transition-opacity"
+            >
+              {t("acceptAll")}
+            </button>
             <button
               onClick={acceptNecessary}
-              className="absolute top-3 right-3 text-[var(--color-text-muted)] hover:text-white transition-colors"
-              aria-label={t("close")}
+              className="flex-1 border border-[var(--color-border)] text-white py-2.5 px-4 text-sm font-medium rounded hover:bg-white/5 transition-colors"
             >
-              <X size={20} />
+              {t("acceptNecessary")}
             </button>
-
-            <div className="pr-8">
-              <h3 className="text-lg font-semibold text-white mb-2">
-                {t("title")}
-              </h3>
-              <p className="text-sm text-[var(--color-text-muted)] mb-4">
-                {t("description")}{" "}
-                <Link href="/privacy" className="text-[var(--color-primary)] hover:underline">
-                  {t("privacyLink")}
-                </Link>.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3">
-                <button
-                  onClick={acceptAll}
-                  className="flex-1 bg-[var(--color-primary)] text-[var(--color-background)] py-2.5 px-4 text-sm font-medium rounded hover:opacity-90 transition-opacity"
-                >
-                  {t("acceptAll")}
-                </button>
-                <button
-                  onClick={acceptNecessary}
-                  className="flex-1 border border-[var(--color-border)] text-white py-2.5 px-4 text-sm font-medium rounded hover:bg-white/5 transition-colors"
-                >
-                  {t("acceptNecessary")}
-                </button>
-              </div>
-            </div>
           </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        </div>
+      </div>
+    </div>
   );
 }

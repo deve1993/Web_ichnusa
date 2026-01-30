@@ -39,14 +39,8 @@ export function RestaurantJsonLd({ locale = "it" }: RestaurantJsonLdProps) {
       {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        opens: "11:30",
-        closes: "22:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Sunday",
         opens: "11:00",
-        closes: "15:00",
+        closes: "23:30",
       },
     ],
     acceptsReservations: true,

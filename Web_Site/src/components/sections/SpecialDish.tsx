@@ -1,14 +1,12 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { AnimatedButton } from "@/components/ui/AnimatedButton";
 import { SardegnaDecoration } from "@/components/ui/SardegnaDecoration";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { Reveal } from "@/components/ui/Reveal";
 
-export default function SpecialDish() {
-  const t = useTranslations("specialDish");
-  const tCommon = useTranslations("common");
+export default async function SpecialDish() {
+  const t = await getTranslations("specialDish");
+  const tCommon = await getTranslations("common");
 
   return (
     <section className="section-padding bg-[#1A1816] relative overflow-hidden">
@@ -22,11 +20,8 @@ export default function SpecialDish() {
 
       <div className="container-custom relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+          <Reveal
+            direction="left"
             className="relative"
           >
             <div className="absolute inset-0 flex items-center justify-center">
@@ -37,11 +32,9 @@ export default function SpecialDish() {
             </div>
             
             <div className="relative aspect-square max-w-[500px] mx-auto">
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+              <Reveal
+                direction="scale"
+                delay={0.2}
                 className="relative w-full h-full rounded-full overflow-hidden border-4 border-[var(--color-primary)]"
               >
                 <Image
@@ -52,25 +45,20 @@ export default function SpecialDish() {
                   sizes="(max-width: 768px) 100vw, 500px"
                   loading="lazy"
                 />
-              </motion.div>
+              </Reveal>
               
-              <motion.div
-                initial={{ scale: 0, rotate: -10 }}
-                whileInView={{ scale: 1, rotate: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.6 }}
+              <Reveal
+                direction="scale"
+                delay={0.6}
                 className="absolute -right-4 top-10 bg-[var(--color-primary)] text-[var(--color-background)] px-4 py-2 font-[var(--font-display)] text-sm uppercase tracking-wider"
               >
                 {t("badge")}
-              </motion.div>
+              </Reveal>
             </div>
-          </motion.div>
+          </Reveal>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+          <Reveal
+            direction="right"
             className="text-center lg:text-left"
           >
             <div className="subtitle-decorator mb-4 justify-center lg:justify-start">
@@ -85,11 +73,8 @@ export default function SpecialDish() {
               {t("description")}
             </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
+            <Reveal
+              delay={0.4}
               className="flex items-center gap-4 justify-center lg:justify-start mb-10"
             >
               <span className="text-[var(--color-text-muted)] text-lg font-[var(--font-display)]">
@@ -98,12 +83,12 @@ export default function SpecialDish() {
               <span className="text-[var(--color-primary)] text-3xl font-[var(--font-display)]">
                 {t("serves")}
               </span>
-            </motion.div>
+            </Reveal>
 
             <AnimatedButton href="/menu" variant="doubleText">
               {tCommon("viewMenu")}
             </AnimatedButton>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
 

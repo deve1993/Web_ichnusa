@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { usePathname } from "@/i18n/navigation";
 import { Link } from "@/i18n/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
@@ -16,6 +15,9 @@ const RESERVATION_URL = "https://reservation.dish.co/widget/hydra-7cc98a90-5678-
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const menuPanelRef = useRef<HTMLDivElement>(null);
+  const touchStartXRef = useRef(0);
+  const touchStartTimeRef = useRef(0);
   const pathname = usePathname();
   const t = useTranslations("nav");
   const tCommon = useTranslations("common");
@@ -29,17 +31,42 @@ export default function Header() {
   ];
 
   useEffect(() => {
+    let rafId: number;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 50);
+      });
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
+
+  // Touch handlers for swipe-to-close
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+    touchStartTimeRef.current = Date.now();
+  }, []);
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const deltaX = touchEndX - touchStartXRef.current;
+    const deltaTime = Date.now() - touchStartTimeRef.current;
+    const velocity = Math.abs(deltaX) / deltaTime;
+
+    // Close if swiped left > 100px or velocity > 0.5px/ms
+    if (deltaX < -100 || velocity > 0.5) {
+      setIsMobileMenuOpen(false);
+    }
+  }, []);
 
   return (
     <>
@@ -69,7 +96,7 @@ export default function Header() {
             </a>
           </div>
           <div className="text-sm text-[var(--color-text-muted)]">
-            Lun - Sab: 11:30 - 22:00 | Dom: 11:00 - 15:00
+            Lun - Sab: 11:00 - 23:30 | Dom: Chiuso
           </div>
         </div>
       </div>
@@ -118,11 +145,7 @@ export default function Header() {
                 >
                   {link.label}
                   {isActive(link.href) && (
-                    <motion.span
-                      layoutId="activeNav"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[var(--color-primary)]"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
+                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[var(--color-primary)]" />
                   )}
                 </Link>
               ))}
@@ -152,32 +175,25 @@ export default function Header() {
         </div>
       </header>
 
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/80 z-[60]"
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
+      {/* Mobile Menu Backdrop */}
+      <div
+        className={cn(
+          "fixed inset-0 bg-black/80 z-[60] transition-opacity duration-300",
+          isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        )}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
 
-            <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
-              drag="x"
-              dragConstraints={{ left: -300, right: 0 }}
-              dragElastic={0.1}
-              onDragEnd={(_, info) => {
-                if (info.offset.x < -100 || info.velocity.x < -500) {
-                  setIsMobileMenuOpen(false);
-                }
-              }}
-              className="fixed top-0 left-0 bottom-0 w-[300px] bg-[var(--color-background)] z-[70] overflow-y-auto touch-pan-y"
-            >
+      {/* Mobile Menu Panel */}
+      <div
+        ref={menuPanelRef}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        className={cn(
+          "fixed top-0 left-0 bottom-0 w-[300px] bg-[var(--color-background)] z-[70] overflow-y-auto touch-pan-y transition-transform duration-300 ease-out",
+          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        )}
+      >
               <div className="p-6">
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -252,10 +268,7 @@ export default function Header() {
                   {tCommon("bookNow")}
                 </a>
               </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+            </div>
     </>
   );
 }

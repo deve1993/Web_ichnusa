@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { MapPin, Play, Cookie, ExternalLink } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { COOKIE_CONSENT_KEY, type ConsentLevel } from "@/hooks/useCookieConsent";
@@ -79,10 +78,8 @@ export default function ConsentEmbed({
         <div className="absolute inset-0 bg-[var(--color-background)]/80 backdrop-blur-sm" />
       )}
       
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="relative z-10 flex flex-col items-center justify-center h-full min-h-[300px] p-6 text-center"
+      <div
+        className="relative z-10 flex flex-col items-center justify-center h-full min-h-[300px] p-6 text-center animate-[fadeInUp_0.5s_ease-out_both]"
       >
         <div className="w-16 h-16 rounded-full bg-[var(--color-primary)]/10 flex items-center justify-center mb-4">
           <Icon size={32} className="text-[var(--color-primary)]" />
@@ -121,7 +118,7 @@ export default function ConsentEmbed({
         <p className="text-xs text-[var(--color-text-muted)] mt-4">
           {t("privacyNote")}
         </p>
-      </motion.div>
+      </div>
     </div>
   );
 }

@@ -1,105 +1,131 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, useSpring, useMotionValue } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 export default function CustomCursor() {
-  const [isHovering, setIsHovering] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const dotInnerRef = useRef<HTMLDivElement>(null);
+  const ringInnerRef = useRef<HTMLDivElement>(null);
 
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-
-  const springConfig = { damping: 25, stiffness: 400 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
+  const mousePos = useRef({ x: -100, y: -100 });
+  const dotPos = useRef({ x: -100, y: -100 });
+  const ringPos = useRef({ x: -100, y: -100 });
+  const rafId = useRef<number>(0);
 
   useEffect(() => {
-    const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    const isTouchDevice =
+      "ontouchstart" in window || navigator.maxTouchPoints > 0;
     if (isTouchDevice) return;
 
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    const dotInner = dotInnerRef.current;
+    const ringInner = ringInnerRef.current;
+    if (!dot || !ring || !dotInner || !ringInner) return;
+
+    let isHovering = false;
+    let isVisible = false;
+
     const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-      setIsVisible(true);
-    };
+      mousePos.current = { x: e.clientX, y: e.clientY };
 
-    const handleMouseEnter = () => setIsVisible(true);
-    const handleMouseLeave = () => setIsVisible(false);
+      if (!isVisible) {
+        isVisible = true;
+        dotInner.style.opacity = "1";
+        ringInner.style.opacity = "1";
+      }
 
-    const handleElementHover = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const isClickable =
+      const clickable =
         target.tagName === "A" ||
         target.tagName === "BUTTON" ||
-        target.closest("a") ||
-        target.closest("button") ||
-        target.classList.contains("cursor-pointer") ||
-        window.getComputedStyle(target).cursor === "pointer";
+        !!target.closest("a,button,[role='button'],.cursor-pointer");
 
-      setIsHovering(!!isClickable);
+      if (clickable !== isHovering) {
+        isHovering = clickable;
+        dotInner.style.transform = `scale(${clickable ? 0.5 : 1})`;
+        ringInner.style.transform = `scale(${clickable ? 1.5 : 1})`;
+      }
+    };
+
+    const handleMouseLeave = () => {
+      isVisible = false;
+      dotInner.style.opacity = "0";
+      ringInner.style.opacity = "0";
+    };
+
+    const handleMouseEnter = () => {
+      isVisible = true;
+      dotInner.style.opacity = "1";
+      ringInner.style.opacity = "1";
+    };
+
+    const lerp = (start: number, end: number, factor: number) =>
+      start + (end - start) * factor;
+
+    const animate = () => {
+      dotPos.current.x = lerp(dotPos.current.x, mousePos.current.x, 0.35);
+      dotPos.current.y = lerp(dotPos.current.y, mousePos.current.y, 0.35);
+
+      ringPos.current.x = lerp(ringPos.current.x, mousePos.current.x, 0.15);
+      ringPos.current.y = lerp(ringPos.current.y, mousePos.current.y, 0.15);
+
+      dot.style.transform = `translate(${dotPos.current.x}px, ${dotPos.current.y}px) translate(-50%, -50%)`;
+      ring.style.transform = `translate(${ringPos.current.x}px, ${ringPos.current.y}px) translate(-50%, -50%)`;
+
+      rafId.current = requestAnimationFrame(animate);
     };
 
     window.addEventListener("mousemove", moveCursor);
-    window.addEventListener("mousemove", handleElementHover);
     document.body.addEventListener("mouseenter", handleMouseEnter);
     document.body.addEventListener("mouseleave", handleMouseLeave);
 
+    rafId.current = requestAnimationFrame(animate);
+
     return () => {
       window.removeEventListener("mousemove", moveCursor);
-      window.removeEventListener("mousemove", handleElementHover);
       document.body.removeEventListener("mouseenter", handleMouseEnter);
       document.body.removeEventListener("mouseleave", handleMouseLeave);
+      cancelAnimationFrame(rafId.current);
     };
-  }, [cursorX, cursorY]);
+  }, []);
 
   return (
     <>
-      <motion.div
+      <div
+        ref={dotRef}
         className="fixed top-0 left-0 pointer-events-none z-[9999] hidden lg:block"
-        style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
+        style={{ willChange: "transform" }}
       >
-        <motion.div
-          animate={{
-            scale: isHovering ? 0.5 : 1,
-            opacity: isVisible ? 1 : 0,
-          }}
-          transition={{ duration: 0.15 }}
-          className="w-2 h-2 bg-[var(--color-primary)] rounded-full"
+        <div
+          ref={dotInnerRef}
+          className="w-2 h-2 bg-[var(--color-primary)] rounded-full transition-transform duration-150"
+          style={{ opacity: 0 }}
         />
-      </motion.div>
+      </div>
 
-      <motion.div
+      <div
+        ref={ringRef}
         className="fixed top-0 left-0 pointer-events-none z-[9998] hidden lg:block"
-        style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
+        style={{ willChange: "transform" }}
       >
-        <motion.div
-          animate={{
-            scale: isHovering ? 1.5 : 1,
-            opacity: isVisible ? 1 : 0,
-          }}
-          transition={{ duration: 0.2 }}
-          className="w-8 h-8 border border-[var(--color-primary)] rounded-full"
+        <div
+          ref={ringInnerRef}
+          className="w-8 h-8 border border-[var(--color-primary)] rounded-full transition-transform duration-200"
+          style={{ opacity: 0 }}
         />
-      </motion.div>
+      </div>
 
-      <style jsx global>{`
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @media (min-width: 1024px) {
-          * {
-            cursor: none !important;
-          }
+          * { cursor: none !important; }
         }
-      `}</style>
+      `,
+        }}
+      />
     </>
   );
 }

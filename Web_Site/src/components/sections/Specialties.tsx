@@ -1,13 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import "swiper/css";
+import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { SpecialtyCard } from "@/components/ui/AnimatedCard";
 import { AnimatedButton } from "@/components/ui/AnimatedButton";
+import { Reveal } from "@/components/ui/Reveal";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import "swiper/css";
-import "swiper/css/navigation";
 
 const specialties = [
   {
@@ -36,39 +36,23 @@ const specialties = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
 export default function Specialties() {
   return (
     <section className="section-padding bg-[var(--color-background)]">
       <div className="container-custom">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <div>
           <div className="text-center mb-12">
-            <motion.div variants={itemVariants} className="subtitle-decorator justify-center mb-4">
+            <Reveal direction="up" className="subtitle-decorator justify-center mb-4">
               Special Offer
-            </motion.div>
-            <motion.h2 variants={itemVariants} className="text-white">
-              Best Specialties
-            </motion.h2>
+            </Reveal>
+            <Reveal direction="up" delay={0.1}>
+              <h2 className="text-white">
+                Best Specialties
+              </h2>
+            </Reveal>
           </div>
 
-          <motion.div variants={itemVariants} className="relative px-4 lg:px-16">
+          <Reveal direction="up" delay={0.2} className="relative px-4 lg:px-16">
             <Swiper
               modules={[Navigation, Autoplay]}
               spaceBetween={30}
@@ -109,14 +93,14 @@ export default function Specialties() {
             >
               <ChevronRight size={24} />
             </button>
-          </motion.div>
+          </Reveal>
 
-          <motion.div variants={itemVariants} className="text-center mt-12">
+          <Reveal direction="up" delay={0.3} className="text-center mt-12">
             <AnimatedButton href="#menu" variant="primary">
               View All Menu
             </AnimatedButton>
-          </motion.div>
-        </motion.div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

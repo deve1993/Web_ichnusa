@@ -72,16 +72,18 @@
     "secondi": "Secondi Piatti",
     "insalate": "Insalate",
     "dolci": "Dolci",
-    "openDaily": "Aperto tutti i giorni dalle 11:30 alle 23:00",
+    "openDaily": "Aperto dal Lunedì al Sabato dalle 11:00 alle 23:30",
     "fullMenu": "Menu Completo",
     "categories": "Categorie",
     "marketPrice": "Prezzo di Mercato",
     "priceNote": "I prezzi possono variare. Comunica allergie o intolleranze al personale.",
-    "wineList": "Carta dei Vini",
+    "wineList": "Ampia scelta di vini",
     "wineListDesc": "Oltre 50 etichette sarde, incluso il nostro vino prodotto in Sardegna.",
     "askSommelier": "Chiedi al sommelier",
     "tastingMenu": "Menu Degustazione",
     "tastingMenuDesc": "Un viaggio attraverso i sapori della Sardegna in 7 portate.",
+    "fishBooking": "Pesce fuori menu",
+    "fishBookingDesc": "Prenota il pesce che preferisci, lo cuciniamo su misura per te.",
     "perPerson": "a persona",
     "allergyNote": "Per allergie o intolleranze alimentari, comunicalo al nostro staff. Possiamo adattare molti piatti alle tue esigenze.",
     "noItems": "Nessun piatto disponibile in questa categoria.",
@@ -136,10 +138,11 @@
     "findUs": "Dove Siamo",
     "callToBook": "Chiamaci per prenotare",
     "addressLabel": "Indirizzo",
-    "lunch": "Pranzo",
-    "dinner": "Cena",
+    "openingHours": "Orari di Apertura",
     "contacts": "Contatti",
-    "mondaySunday": "Lunedì - Domenica"
+    "mondaySaturday": "Lunedì - Sabato",
+    "sunday": "Domenica",
+    "closed": "Chiuso"
   },
   "footer": {
     "description": "Autentico ristorante sardo nel cuore di Praga. Piatti tradizionali, vini pregiati e l'ospitalità della Sardegna.",
@@ -223,7 +226,7 @@
       "all": "Tutto",
       "interni": "Interni",
       "piatti": "Piatti",
-      "eventi": "Eventi"
+      "vini": "Vini"
     },
     "followInstagram": "Seguici su Instagram",
     "followInstagramDesc": "Resta aggiornato sulle nostre novità, eventi speciali e piatti del giorno"

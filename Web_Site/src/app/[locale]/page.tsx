@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Hero from "@/components/sections/Hero";
-import WeOffer from "@/components/sections/WeOffer";
-import SpecialDish from "@/components/sections/SpecialDish";
-import Menu from "@/components/sections/Menu";
-import InfoCards from "@/components/sections/InfoCards";
-import Testimonials from "@/components/sections/Testimonials";
-import GoogleReviews from "@/components/sections/GoogleReviews";
-import Reservation from "@/components/sections/Reservation";
-import Footer from "@/components/Footer";
 import { FAQJsonLd } from "@/components/seo";
 import { getGoogleReviews } from "@/lib/google-places";
+
+// Server Components — zero client JS, direct imports
+import WeOffer from "@/components/sections/WeOffer";
+import SpecialDish from "@/components/sections/SpecialDish";
+import InfoCards from "@/components/sections/InfoCards";
+import Reservation from "@/components/sections/Reservation";
+
+// Client Components — dynamic imports for JS code-splitting
+const Menu = dynamic(() => import("@/components/sections/Menu"));
+const GoogleReviews = dynamic(() => import("@/components/sections/GoogleReviews"));
+const Testimonials = dynamic(() => import("@/components/sections/Testimonials"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ichnusa.restaurant";
 
@@ -76,7 +81,7 @@ const homeFAQs = [
   },
   {
     question: "What are the opening hours?",
-    answer: "We are open Monday to Saturday from 11:30 to 22:00, and Sunday from 11:00 to 15:00 for lunch service.",
+    answer: "We are open Monday to Saturday from 11:00 to 23:30. We are closed on Sundays.",
   },
   {
     question: "Do you have a shop for Sardinian products?",

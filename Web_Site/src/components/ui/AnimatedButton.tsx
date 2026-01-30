@@ -1,14 +1,12 @@
 "use client";
 
 import { ReactNode } from "react";
-import { motion } from "framer-motion";
-import { useMagneticHover } from "@/hooks";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 interface AnimatedButtonProps {
   children: ReactNode;
-  variant?: "primary" | "doubleText" | "slideText" | "brackets" | "circleFill" | "magnetic" | "ghost" | "outline";
+  variant?: "primary" | "doubleText" | "slideText" | "brackets" | "circleFill" | "ghost" | "outline";
   href?: string;
   onClick?: () => void;
   className?: string;
@@ -27,8 +25,6 @@ export function AnimatedButton({
   type = "button",
   target,
 }: AnimatedButtonProps) {
-    const [magneticRef, offset, magneticHandlers] = useMagneticHover<HTMLButtonElement>(0.4);
-
     const baseStyles = cn(
       "relative inline-flex items-center justify-center",
       "font-[var(--font-display)] text-base tracking-wider uppercase",
@@ -43,10 +39,6 @@ export function AnimatedButton({
       slideText: "btn-slide-text",
       brackets: "btn-brackets",
       circleFill: "btn-circle-fill",
-      magnetic: cn(
-        "px-10 py-5 border border-[var(--color-primary)]",
-        "text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-[var(--color-background)]"
-      ),
       ghost: cn(
         "px-6 py-3 text-[var(--color-primary)]",
         "hover:text-white"
@@ -120,42 +112,6 @@ export function AnimatedButton({
         >
           {content}
         </button>
-      );
-    }
-
-    if (variant === "magnetic") {
-      if (href) {
-        return (
-          <motion.div
-            style={{ x: offset.x, y: offset.y }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          >
-            <Link
-              href={href}
-              className={cn(baseStyles, variants[variant])}
-              onMouseMove={magneticHandlers.onMouseMove as React.MouseEventHandler}
-              onMouseLeave={magneticHandlers.onMouseLeave}
-            >
-              {children}
-            </Link>
-          </motion.div>
-        );
-      }
-
-      return (
-        <motion.button
-          ref={magneticRef}
-          type={type}
-          onClick={onClick}
-          disabled={disabled}
-          className={cn(baseStyles, variants[variant])}
-          style={{ x: offset.x, y: offset.y }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          onMouseMove={magneticHandlers.onMouseMove as React.MouseEventHandler}
-          onMouseLeave={magneticHandlers.onMouseLeave}
-        >
-          {children}
-        </motion.button>
       );
     }
 

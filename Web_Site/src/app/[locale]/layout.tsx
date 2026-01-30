@@ -3,11 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing, Locale } from "@/i18n/routing";
-import Preloader from "@/components/Preloader";
-import ScrollToTop from "@/components/ScrollToTop";
-import MobileCTA from "@/components/MobileCTA";
-import WhatsAppWidget from "@/components/WhatsAppWidget";
-import CookieBanner from "@/components/CookieBanner";
+import ClientWidgets from "@/components/ClientWidgets";
 import { RestaurantJsonLd } from "@/components/seo";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ichnusa.restaurant";
@@ -167,16 +163,35 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   const messages = await getMessages();
 
+  // Only send namespaces that client components actually use via useTranslations().
+  // Server components use getTranslations() and don't need messages on the client.
+  // Excluded: weOffer, specialDish, infoCards, reservation (server components),
+  //           products, whatsapp (unused orphan namespaces).
+  const clientMessages = {
+    common: messages.common,
+    nav: messages.nav,
+    hero: messages.hero,
+    menu: messages.menu,
+    menuItems: messages.menuItems,
+    footer: messages.footer,
+    cookieBanner: messages.cookieBanner,
+    contact: messages.contact,
+    googleReviews: messages.googleReviews,
+    testimonials: messages.testimonials,
+    consentEmbed: messages.consentEmbed,
+    about: messages.about,
+    gallery: messages.gallery,
+    terms: messages.terms,
+    privacy: messages.privacy,
+  };
+
   return (
     <>
       <RestaurantJsonLd locale={locale} />
-      <NextIntlClientProvider messages={messages}>
-        <Preloader />
-        {children}
-        <ScrollToTop />
-        <MobileCTA />
-        <WhatsAppWidget />
-        <CookieBanner />
+      <NextIntlClientProvider messages={clientMessages}>
+        <ClientWidgets>
+          {children}
+        </ClientWidgets>
       </NextIntlClientProvider>
     </>
   );

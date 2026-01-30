@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
-import { ReactNode } from "react";
+import { useRef, useEffect, ReactNode } from "react";
 
 interface TextRevealProps {
   children: string;
@@ -11,30 +10,6 @@ interface TextRevealProps {
   once?: boolean;
 }
 
-const containerVariants: Variants = {
-  hidden: {},
-  visible: (custom: { staggerDelay: number }) => ({
-    transition: {
-      staggerChildren: custom.staggerDelay,
-    },
-  }),
-};
-
-const wordVariants: Variants = {
-  hidden: {
-    y: "100%",
-    opacity: 0,
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: [0.25, 0.1, 0.25, 1],
-    },
-  },
-};
-
 export function TextReveal({
   children,
   className = "",
@@ -42,26 +17,47 @@ export function TextReveal({
   staggerDelay = 0.05,
   once = true,
 }: TextRevealProps) {
+  const containerRef = useRef<HTMLSpanElement>(null);
   const words = children.split(" ");
 
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const revealElements = container.querySelectorAll(".text-reveal-word");
+            revealElements.forEach((el, index) => {
+              (el as HTMLElement).style.transitionDelay = `${delay + index * staggerDelay}s`;
+              el.classList.add("revealed");
+            });
+
+            if (once) {
+              observer.unobserve(container);
+            }
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [delay, staggerDelay, once]);
+
   return (
-    <motion.span
-      className={`inline-flex flex-wrap ${className}`}
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once }}
-      custom={{ staggerDelay }}
-      transition={{ delayChildren: delay }}
-    >
+    <span ref={containerRef} className={`inline-flex flex-wrap ${className}`}>
       {words.map((word, index) => (
         <span key={index} className="overflow-hidden mr-[0.25em]">
-          <motion.span className="inline-block" variants={wordVariants}>
-            {word}
-          </motion.span>
+          <span className="text-reveal-word inline-block">{word}</span>
         </span>
       ))}
-    </motion.span>
+    </span>
   );
 }
 
@@ -73,21 +69,6 @@ interface CharRevealProps {
   once?: boolean;
 }
 
-const charVariants: Variants = {
-  hidden: {
-    y: "100%",
-    opacity: 0,
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.4,
-      ease: [0.25, 0.1, 0.25, 1],
-    },
-  },
-};
-
 export function CharReveal({
   children,
   className = "",
@@ -95,26 +76,49 @@ export function CharReveal({
   staggerDelay = 0.02,
   once = true,
 }: CharRevealProps) {
+  const containerRef = useRef<HTMLSpanElement>(null);
   const chars = children.split("");
 
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const revealElements = container.querySelectorAll(".text-reveal-char");
+            revealElements.forEach((el, index) => {
+              (el as HTMLElement).style.transitionDelay = `${delay + index * staggerDelay}s`;
+              el.classList.add("revealed");
+            });
+
+            if (once) {
+              observer.unobserve(container);
+            }
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [delay, staggerDelay, once]);
+
   return (
-    <motion.span
-      className={`inline-flex ${className}`}
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once }}
-      custom={{ staggerDelay }}
-      transition={{ delayChildren: delay }}
-    >
+    <span ref={containerRef} className={`inline-flex ${className}`}>
       {chars.map((char, index) => (
         <span key={index} className="overflow-hidden">
-          <motion.span className="inline-block" variants={charVariants}>
+          <span className="text-reveal-char inline-block">
             {char === " " ? "\u00A0" : char}
-          </motion.span>
+          </span>
         </span>
       ))}
-    </motion.span>
+    </span>
   );
 }
 
@@ -131,21 +135,41 @@ export function LineReveal({
   delay = 0,
   once = true,
 }: LineRevealProps) {
+  const containerRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const revealElement = container.querySelector(".text-reveal-line");
+            if (revealElement) {
+              (revealElement as HTMLElement).style.transitionDelay = `${delay}s`;
+              revealElement.classList.add("revealed");
+            }
+
+            if (once) {
+              observer.unobserve(container);
+            }
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [delay, once]);
+
   return (
-    <span className={`overflow-hidden block ${className}`}>
-      <motion.span
-        className="block"
-        initial={{ y: "100%" }}
-        whileInView={{ y: 0 }}
-        viewport={{ once }}
-        transition={{
-          duration: 0.8,
-          ease: [0.25, 0.1, 0.25, 1],
-          delay,
-        }}
-      >
-        {children}
-      </motion.span>
+    <span ref={containerRef} className={`overflow-hidden block ${className}`}>
+      <span className="text-reveal-line block">{children}</span>
     </span>
   );
 }

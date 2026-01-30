@@ -1,15 +1,14 @@
 "use client";
 
 import { ReactNode, useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { useTiltEffect, useSpotlightEffect } from "@/hooks";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { Reveal } from "@/components/ui/Reveal";
 
 interface AnimatedCardProps {
   children: ReactNode;
   className?: string;
-  variant?: "default" | "tilt" | "spotlight" | "border";
+  variant?: "default" | "border";
   delay?: number;
 }
 
@@ -19,79 +18,22 @@ export function AnimatedCard({
   variant = "default",
   delay = 0,
 }: AnimatedCardProps) {
-  const [tiltRef, tilt, tiltHandlers] = useTiltEffect<HTMLDivElement>(8, 1.02);
-  const [spotlightRef, spotlight, spotlightHandlers] = useSpotlightEffect<HTMLDivElement>();
-
-  if (variant === "tilt") {
-    return (
-      <motion.div
-        ref={tiltRef}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay }}
-        className={cn("relative", className)}
-        style={{
-          transform: `perspective(1000px) rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg) scale(${tilt.scale})`,
-          transition: "transform 0.15s ease-out",
-        }}
-        onMouseMove={tiltHandlers.onMouseMove}
-        onMouseLeave={tiltHandlers.onMouseLeave}
-      >
-        {children}
-      </motion.div>
-    );
-  }
-
-  if (variant === "spotlight") {
-    return (
-      <motion.div
-        ref={spotlightRef}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay }}
-        className={cn("relative overflow-hidden", className)}
-        onMouseMove={spotlightHandlers.onMouseMove}
-        onMouseEnter={spotlightHandlers.onMouseEnter}
-        onMouseLeave={spotlightHandlers.onMouseLeave}
-      >
-        <div
-          className="pointer-events-none absolute inset-0 transition-opacity duration-300"
-          style={{
-            background: `radial-gradient(300px circle at ${spotlight.x}px ${spotlight.y}px, rgba(228, 197, 144, 0.15), transparent 80%)`,
-            opacity: spotlight.opacity,
-          }}
-        />
-        {children}
-      </motion.div>
-    );
-  }
-
   if (variant === "border") {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay }}
-        className={cn("card-border-hover", className)}
-      >
-        {children}
-      </motion.div>
+      <Reveal delay={delay}>
+        <div className={cn("card-border-hover", className)}>
+          {children}
+        </div>
+      </Reveal>
     );
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay }}
-      className={cn(className)}
-    >
-      {children}
-    </motion.div>
+    <Reveal delay={delay}>
+      <div className={cn(className)}>
+        {children}
+      </div>
+    </Reveal>
   );
 }
 
@@ -111,47 +53,43 @@ export function SpecialtyCard({
   delay = 0,
 }: SpecialtyCardProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay }}
-      className="specialty-card group"
-    >
-      <div className="card-image-wrapper mb-6 relative h-64">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="card-image object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-        <div className="card-overlay" />
-        <div className="card-icon">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          >
-            <path d="M12 5v14M5 12h14" />
-          </svg>
+    <Reveal delay={delay}>
+      <div className="specialty-card group">
+        <div className="card-image-wrapper mb-6 relative h-64">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="card-image object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+          <div className="card-overlay" />
+          <div className="card-icon">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            >
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+          </div>
+        </div>
+        <div className="card-content text-center">
+          <h4 className="card-title font-[var(--font-display)] text-xl text-white mb-2">
+            {title}
+          </h4>
+          <p className="text-[var(--color-text-muted)] text-sm mb-3 line-clamp-2">
+            {description}
+          </p>
+          <span className="font-[var(--font-display)] text-xl text-[var(--color-primary)]">
+            {price}
+          </span>
         </div>
       </div>
-      <div className="card-content text-center">
-        <h4 className="card-title font-[var(--font-display)] text-xl text-white mb-2">
-          {title}
-        </h4>
-        <p className="text-[var(--color-text-muted)] text-sm mb-3 line-clamp-2">
-          {description}
-        </p>
-        <span className="font-[var(--font-display)] text-xl text-[var(--color-primary)]">
-          {price}
-        </span>
-      </div>
-    </motion.div>
+    </Reveal>
   );
 }
 
@@ -185,49 +123,46 @@ export function MenuItemCard({
   const variant = watermarkVariants[index % watermarkVariants.length];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      className="menu-item-hover group relative overflow-hidden cursor-pointer py-5 px-4 border-b border-[var(--color-border)]/30"
-    >
-      <div
-        className="absolute pointer-events-none select-none w-20 h-20 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity duration-700"
-        style={{
-          left: variant.left,
-          bottom: variant.bottom,
-          transform: `rotate(${variant.rotate}) scale(${variant.scale})`,
-        }}
-        aria-hidden="true"
-      >
-        <Image
-          src="/images/decorations/sardegna.svg"
-          alt=""
-          fill
-          className="object-contain"
-        />
-      </div>
-
-      <div className="relative z-10">
-        <div className="flex items-start justify-between gap-4 mb-2">
-          <h4 className="menu-title font-[var(--font-display)] text-xl text-white group-hover:text-[var(--color-primary)] transition-colors duration-300">
-            {title}
-            {badge && (
-              <span className="ml-2 inline-block px-2 py-0.5 text-xs bg-[var(--color-primary)] text-[var(--color-background)] uppercase">
-                {badge}
-              </span>
-            )}
-          </h4>
-          <span className="font-[var(--font-display)] text-xl text-[var(--color-primary)] whitespace-nowrap">
-            {price}
-          </span>
+    <Reveal direction="left" delay={delay}>
+      <div className="menu-item-hover group relative overflow-hidden cursor-pointer py-5 px-4 border-b border-[var(--color-border)]/30">
+        <div
+          className="absolute pointer-events-none select-none w-20 h-20 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity duration-700"
+          style={{
+            left: variant.left,
+            bottom: variant.bottom,
+            transform: `rotate(${variant.rotate}) scale(${variant.scale})`,
+          }}
+          aria-hidden="true"
+        >
+          <Image
+            src="/images/decorations/sardegna.svg"
+            alt=""
+            fill
+            sizes="80px"
+            className="object-contain"
+          />
         </div>
-        <p className="text-[var(--color-text-muted)] text-sm leading-relaxed">
-          {description}
-        </p>
+
+        <div className="relative z-10">
+          <div className="flex items-start justify-between gap-4 mb-2">
+            <h3 className="menu-title font-[var(--font-display)] text-xl text-white group-hover:text-[var(--color-primary)] transition-colors duration-300">
+              {title}
+              {badge && (
+                <span className="ml-2 inline-block px-2 py-0.5 text-xs bg-[var(--color-primary)] text-[var(--color-background)] uppercase">
+                  {badge}
+                </span>
+              )}
+            </h3>
+            <span className="font-[var(--font-display)] text-xl text-[var(--color-primary)] whitespace-nowrap">
+              {price}
+            </span>
+          </div>
+          <p className="text-[var(--color-text-muted)] text-sm leading-relaxed">
+            {description}
+          </p>
+        </div>
       </div>
-    </motion.div>
+    </Reveal>
   );
 }
 
@@ -245,24 +180,20 @@ export function TestimonialCard({
   delay = 0,
 }: TestimonialCardProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      className="testimonial-card"
-    >
-      <span className="quote-icon">&ldquo;</span>
-      <p className="text-white text-lg leading-relaxed mb-6">{quote}</p>
-      <div>
-        <div className="font-[var(--font-display)] text-[var(--color-primary)] text-lg">
-          {author}
+    <Reveal direction="scale" delay={delay}>
+      <div className="testimonial-card">
+        <span className="quote-icon">&ldquo;</span>
+        <p className="text-white text-lg leading-relaxed mb-6">{quote}</p>
+        <div>
+          <div className="font-[var(--font-display)] text-[var(--color-primary)] text-lg">
+            {author}
+          </div>
+          {role && (
+            <div className="text-[var(--color-text-muted)] text-sm">{role}</div>
+          )}
         </div>
-        {role && (
-          <div className="text-[var(--color-text-muted)] text-sm">{role}</div>
-        )}
       </div>
-    </motion.div>
+    </Reveal>
   );
 }
 
@@ -324,25 +255,20 @@ export function CounterCard({
   }, [value, duration, delay, hasAnimated]);
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      className="counter-box text-center"
-    >
-      <div className="counter-value mb-2">
-        {count}
-        {suffix}
+    <Reveal delay={delay}>
+      <div ref={ref} className="counter-box text-center">
+        <div className="counter-value mb-2">
+          {count}
+          {suffix}
+        </div>
+        <div className="text-[var(--color-text-muted)] uppercase tracking-widest text-sm">
+          {label.split(" ").map((word, i) => (
+            <span key={i} className="block">
+              {word}
+            </span>
+          ))}
+        </div>
       </div>
-      <div className="text-[var(--color-text-muted)] uppercase tracking-widest text-sm">
-        {label.split(" ").map((word, i) => (
-          <span key={i} className="block">
-            {word}
-          </span>
-        ))}
-      </div>
-    </motion.div>
+    </Reveal>
   );
 }

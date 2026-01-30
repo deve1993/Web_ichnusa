@@ -1,25 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Send } from "lucide-react";
 import { getReferralDataForSubmission } from "@/hooks";
 import { submitContactForm } from "@/app/actions/contact";
 import { Link } from "@/i18n/navigation";
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
+import { Reveal } from "@/components/ui/Reveal";
 
 export default function ContactFormClient() {
   const t = useTranslations("contact");
@@ -69,29 +56,21 @@ export default function ContactFormClient() {
   };
 
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={staggerContainer}
-    >
-      <motion.span variants={fadeInUp} className="subtitle-decorator mb-4">
+    <Reveal direction="up">
+      <span className="subtitle-decorator mb-4">
         {t("form.subtitle")}
-      </motion.span>
-      <motion.h2
-        variants={fadeInUp}
-        className="font-[var(--font-display)] text-4xl text-white mb-6"
-      >
+      </span>
+      <h2 className="font-[var(--font-display)] text-4xl text-white mb-6">
         {t("form.title").split(" ")[0]}{" "}
         <span className="text-[var(--color-primary)]">
           {t("form.title").split(" ").slice(1).join(" ")}
         </span>
-      </motion.h2>
-      <motion.p variants={fadeInUp} className="text-[var(--color-text-muted)] mb-8">
+      </h2>
+      <p className="text-[var(--color-text-muted)] mb-8">
         {t("form.description")}
-      </motion.p>
+      </p>
 
-      <motion.form variants={fadeInUp} onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid sm:grid-cols-2 gap-6">
           <div>
             <label htmlFor="name" className="block text-sm text-[var(--color-text-muted)] mb-2">
@@ -226,26 +205,18 @@ export default function ContactFormClient() {
           </button>
 
           {submitStatus === "success" && (
-            <motion.span
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="text-green-500 text-sm"
-            >
+            <span className="text-green-500 text-sm animate-[fadeInLeft_0.3s_ease-out_both]">
               {t("form.success")}
-            </motion.span>
+            </span>
           )}
 
           {submitStatus === "error" && (
-            <motion.span
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="text-red-500 text-sm"
-            >
+            <span className="text-red-500 text-sm animate-[fadeInLeft_0.3s_ease-out_both]">
               {errorMessage || t("form.error")}
-            </motion.span>
+            </span>
           )}
         </div>
-      </motion.form>
-    </motion.div>
+      </form>
+    </Reveal>
   );
 }

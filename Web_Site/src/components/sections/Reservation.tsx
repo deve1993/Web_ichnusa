@@ -1,37 +1,34 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { MapPin, Clock, Phone } from "lucide-react";
 import { AnimatedButton } from "@/components/ui/AnimatedButton";
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
+import { Reveal } from "@/components/ui/Reveal";
 
 const RESERVATION_URL = "https://reservation.dish.co/widget/hydra-7cc98a90-5678-11ec-bb8e-d7389d5eaae1";
 const PHONE_NUMBER = "+420 605 375 012";
 
-export default function Reservation() {
-  const t = useTranslations("reservation");
+export default async function Reservation() {
+  const t = await getTranslations("reservation");
   return (
     <section
       id="reservation"
       className="section-padding relative"
-      style={{
-        backgroundImage: "url('/images/backgrounds/reservation-bg.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
     >
-      {/* Overlay */}
+      <Image
+        src="/images/gallery/sala-1.webp"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover"
+        quality={75}
+      />
       <div className="absolute inset-0 bg-black/80" />
 
       <div className="container-custom relative z-10">
         <div className="grid lg:grid-cols-2 gap-16">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <Reveal
+            direction="left"
             className="bg-[#151617] p-8 lg:p-12 flex flex-col"
           >
             <h2 className="font-[var(--font-display)] text-white text-3xl lg:text-4xl mb-4">
@@ -54,6 +51,7 @@ export default function Reservation() {
                     src="/images/siloutte-sar.svg"
                     alt=""
                     fill
+                    sizes="160px"
                     className="object-contain opacity-60"
                   />
                   <Phone className="text-[var(--color-primary)] relative z-10 -mt-2 ml-2" size={36} />
@@ -87,12 +85,10 @@ export default function Reservation() {
                 </Link>
               </p>
             </div>
-          </motion.div>
+          </Reveal>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <Reveal
+            direction="right"
             className="flex flex-col justify-center"
           >
             <h2 className="font-[var(--font-display)] text-white text-3xl lg:text-4xl mb-6">
@@ -115,13 +111,13 @@ export default function Reservation() {
                   <MapPin className="text-[var(--color-primary)]" size={24} />
                 </div>
                 <div>
-                  <h4 className="font-[var(--font-display)] text-white text-lg mb-1">
+                  <h3 className="font-[var(--font-display)] text-white text-lg mb-1">
                     {t("addressLabel")}
-                  </h4>
+                  </h3>
                   <p className="text-[var(--color-text-muted)]">
-                    Plaská 623/5
+                    Plaska 623/5
                     <br />
-                    150 00 Malá Strana, Praha
+                    150 00 Mala Strana, Praha
                   </p>
                 </div>
               </div>
@@ -131,29 +127,17 @@ export default function Reservation() {
                   <Clock className="text-[var(--color-primary)]" size={24} />
                 </div>
                 <div>
-                  <h4 className="font-[var(--font-display)] text-white text-lg mb-1">
-                    {t("lunch")}
-                  </h4>
+                  <h3 className="font-[var(--font-display)] text-white text-lg mb-1">
+                    {t("openingHours")}
+                  </h3>
                   <p className="text-[var(--color-text-muted)]">
-                    {t("mondaySunday")}
+                    {t("mondaySaturday")}
                     <br />
-                    11:30 - 15:00
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-5">
-                <div className="flex-shrink-0 w-14 h-14 border border-[var(--color-primary)] flex items-center justify-center">
-                  <Clock className="text-[var(--color-primary)]" size={24} />
-                </div>
-                <div>
-                  <h4 className="font-[var(--font-display)] text-white text-lg mb-1">
-                    {t("dinner")}
-                  </h4>
-                  <p className="text-[var(--color-text-muted)]">
-                    {t("mondaySunday")}
+                    11:00 - 23:30
                     <br />
-                    18:00 - 23:00
+                    <span className="text-white">{t("sunday")}</span>
+                    <br />
+                    {t("closed")}
                   </p>
                 </div>
               </div>
@@ -163,9 +147,9 @@ export default function Reservation() {
                   <Phone className="text-[var(--color-primary)]" size={24} />
                 </div>
                 <div>
-                  <h4 className="font-[var(--font-display)] text-white text-lg mb-1">
+                  <h3 className="font-[var(--font-display)] text-white text-lg mb-1">
                     {t("contacts")}
-                  </h4>
+                  </h3>
                   <p className="text-[var(--color-text-muted)]">
                     <a href="tel:+420605375012" className="hover:text-[var(--color-primary)] transition-colors">
                       {PHONE_NUMBER}
@@ -178,7 +162,7 @@ export default function Reservation() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>

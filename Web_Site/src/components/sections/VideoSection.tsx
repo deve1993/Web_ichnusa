@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Play, X } from "lucide-react";
+import Image from "next/image";
+import { Reveal } from "@/components/ui/Reveal";
 
 const stats = [
   { value: 350, label: "Daily Order", suffix: "+" },
@@ -23,23 +24,23 @@ function Counter({
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (inView) {
-      let start = 0;
-      const duration = 2000;
-      const increment = value / (duration / 16);
+    if (!inView) return;
 
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= value) {
-          setCount(value);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(start));
-        }
-      }, 16);
+    const duration = 2000;
+    let raf: number;
+    let t0: number | null = null;
 
-      return () => clearInterval(timer);
-    }
+    const step = (now: number) => {
+      if (t0 === null) t0 = now;
+      const progress = Math.min((now - t0) / duration, 1);
+      setCount(Math.floor(progress * value));
+      if (progress < 1) {
+        raf = requestAnimationFrame(step);
+      }
+    };
+
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
   }, [inView, value]);
 
   return (
@@ -52,30 +53,45 @@ function Counter({
 
 export default function VideoSection() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { rootMargin: "-100px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
-      <section
-        className="relative py-32"
-        style={{
-          backgroundImage: "url('/images/backgrounds/video-bg.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      >
-        {/* Overlay */}
+      <section className="relative py-32">
+        <Image
+          src="/images/backgrounds/video-bg.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+          quality={75}
+        />
         <div className="absolute inset-0 bg-black/70" />
 
         <div className="container-custom relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left - Video */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+            <Reveal
+              direction="left"
               className="text-center lg:text-left"
             >
               <div className="subtitle-decorator justify-center lg:justify-start mb-4">
@@ -102,82 +118,74 @@ export default function VideoSection() {
               <p className="text-[var(--color-primary)]">
                 William Joe - Master Chef
               </p>
-            </motion.div>
+            </Reveal>
 
             {/* Right - Stats */}
-            <motion.div
-              ref={ref}
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-2 gap-8"
-            >
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="text-center p-6 border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors"
-                >
-                  <div className="font-[var(--font-display)] text-5xl lg:text-6xl text-[var(--color-primary)] mb-2">
-                    <Counter
-                      value={stat.value}
-                      suffix={stat.suffix}
-                      inView={isInView}
-                    />
+            <Reveal direction="right">
+              <div
+                ref={ref}
+                className="grid grid-cols-2 gap-8"
+              >
+                {stats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="text-center p-6 border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors"
+                  >
+                    <div className="font-[var(--font-display)] text-5xl lg:text-6xl text-[var(--color-primary)] mb-2">
+                      <Counter
+                        value={stat.value}
+                        suffix={stat.suffix}
+                        inView={isInView}
+                      />
+                    </div>
+                    <div className="text-[var(--color-text-muted)] uppercase tracking-widest text-sm">
+                      {stat.label.split(" ").map((word, i) => (
+                        <span key={i} className="block">
+                          {word}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <div className="text-[var(--color-text-muted)] uppercase tracking-widest text-sm">
-                    {stat.label.split(" ").map((word, i) => (
-                      <span key={i} className="block">
-                        {word}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </motion.div>
+                ))}
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      <AnimatePresence>
-        {isVideoOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4"
-            onClick={() => setIsVideoOpen(false)}
-          >
-            <motion.button
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.5 }}
-              transition={{ delay: 0.2 }}
-              onClick={() => setIsVideoOpen(false)}
-              className="absolute top-6 right-6 text-white hover:text-[var(--color-primary)] transition-colors z-10"
-            >
-              <X size={40} />
-            </motion.button>
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 50 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: 50 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="w-full max-w-5xl aspect-video"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <iframe
-                src="https://www.youtube.com/embed/ZETY_l3GVQg?autoplay=1"
-                title="Restaurant Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full rounded-lg"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Video Modal - Pattern D: always in DOM, toggle visibility */}
+      <div
+        className={`fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4 transition-opacity duration-300 ${
+          isVideoOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setIsVideoOpen(false)}
+      >
+        <button
+          onClick={() => setIsVideoOpen(false)}
+          className={`absolute top-6 right-6 text-white hover:text-[var(--color-primary)] transition-all duration-300 z-10 ${
+            isVideoOpen ? "opacity-100 scale-100" : "opacity-0 scale-50"
+          }`}
+        >
+          <X size={40} />
+        </button>
+
+        <div
+          className={`w-full max-w-5xl aspect-video transition-all duration-300 ${
+            isVideoOpen ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-90 translate-y-12"
+          }`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {isVideoOpen && (
+            <iframe
+              src="https://www.youtube.com/embed/ZETY_l3GVQg?autoplay=1"
+              title="Restaurant Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full rounded-lg"
+            />
+          )}
+        </div>
+      </div>
     </>
   );
 }

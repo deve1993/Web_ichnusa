@@ -1,26 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
-import { useInViewport } from "@/hooks";
 import { SardegnaDecoration } from "@/components/ui/SardegnaDecoration";
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 },
-  },
-};
+import { Reveal } from "@/components/ui/Reveal";
 
 const valueIcons = ["🏺", "⭐", "❤️", "🤝"];
 const valueKeys = ["tradition", "quality", "passion", "hospitality"] as const;
@@ -32,10 +18,6 @@ export default function ChiSiamoPage() {
   const tCommon = useTranslations("common");
   const tNav = useTranslations("nav");
 
-  const [storyRef, storyInView] = useInViewport({ threshold: 0.2 });
-  const [valuesRef, valuesInView] = useInViewport({ threshold: 0.2 });
-  const [journeyRef, journeyInView] = useInViewport({ threshold: 0.2 });
-
   return (
     <>
       <Header />
@@ -43,44 +25,39 @@ export default function ChiSiamoPage() {
         <PageHero
           title={t("pageTitle")}
           subtitle={t("pageSubtitle")}
-          backgroundImage="/images/restaurant/interior.jpg"
+          backgroundImage="/images/gallery/chi-siamo-hero.webp"
           breadcrumbs={[{ label: tNav("about"), href: "/chi-siamo" }]}
         />
 
-        <section ref={storyRef} className="section-padding bg-[var(--color-background)] relative overflow-hidden">
+        <section className="section-padding bg-[var(--color-background)] relative overflow-hidden">
           <SardegnaDecoration 
             className="top-20 left-0 -translate-x-1/3 w-[600px] h-[600px] rotate-[-15deg]" 
             opacity={0.1}
           />
 
           <div className="container-custom relative z-10">
-            <motion.div
-              initial="hidden"
-              animate={storyInView ? "visible" : "hidden"}
-              variants={staggerContainer}
-              className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"
-            >
-              <motion.div variants={fadeInUp} className="relative">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+              <Reveal direction="up" className="relative">
                 <div className="relative aspect-[4/5] overflow-hidden">
                   <Image
-                    src="/images/restaurant/interior.jpg"
+                    src="/images/restaurant/chi-siamo-story.webp"
                     alt="Interno del ristorante Ichnusa"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 border border-[var(--color-primary)]/20" />
                 </div>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={storyInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 0.5, duration: 0.6 }}
+                <Reveal
+                  direction="scale"
+                  delay={0.5}
                   className="absolute -bottom-8 -right-8 bg-[var(--color-primary)] text-[var(--color-background)] p-6 md:p-8"
                 >
                   <span className="block text-4xl md:text-5xl font-[var(--font-display)]">10+</span>
                   <span className="text-sm uppercase tracking-wider">{tCommon("yearsExperience")}</span>
-                </motion.div>
-              </motion.div>
-              <motion.div variants={fadeInUp} className="lg:pl-8">
+                </Reveal>
+              </Reveal>
+              <Reveal direction="up" delay={0.15} className="lg:pl-8">
                 <span className="subtitle-decorator mb-4">{t("storySubtitle")}</span>
                 <h2 className="font-[var(--font-display)] text-4xl md:text-5xl text-white mb-6">
                   {t("storyTitle").split("Sardegna")[0]}
@@ -103,64 +80,55 @@ export default function ChiSiamoPage() {
                     <p className="text-sm text-[var(--color-text-muted)] mt-1">{tCommon("wineLabels")}</p>
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </Reveal>
+            </div>
           </div>
         </section>
 
-        <section ref={valuesRef} className="section-padding bg-[var(--color-surface)]">
+        <section className="section-padding bg-[var(--color-surface)]">
           <div className="container-custom">
-            <motion.div
-              initial="hidden"
-              animate={valuesInView ? "visible" : "hidden"}
-              variants={staggerContainer}
-              className="text-center mb-16"
-            >
-              <motion.span variants={fadeInUp} className="subtitle-decorator justify-center mb-4">
-                {t("valuesSubtitle")}
-              </motion.span>
-              <motion.h2 variants={fadeInUp} className="font-[var(--font-display)] text-4xl md:text-5xl text-white">
-                {t("valuesTitle").split(" ").slice(0, 1).join(" ")} <span className="text-[var(--color-primary)]">{t("valuesTitle").split(" ").slice(1).join(" ")}</span>
-              </motion.h2>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              animate={valuesInView ? "visible" : "hidden"}
-              variants={staggerContainer}
-              className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-            >
+            <div className="text-center mb-16">
+              <Reveal direction="up">
+                <span className="subtitle-decorator justify-center mb-4">
+                  {t("valuesSubtitle")}
+                </span>
+              </Reveal>
+              <Reveal direction="up" delay={0.15}>
+                <h2 className="font-[var(--font-display)] text-4xl md:text-5xl text-white">
+                  {t("valuesTitle").split(" ").slice(0, 1).join(" ")} <span className="text-[var(--color-primary)]">{t("valuesTitle").split(" ").slice(1).join(" ")}</span>
+                </h2>
+              </Reveal>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {valueKeys.map((key, index) => (
-                <motion.div
+                <Reveal
                   key={key}
-                  variants={fadeInUp}
-                  className="group p-8 bg-[var(--color-background)] border border-[var(--color-border)] hover:border-[var(--color-primary)]/50 transition-all duration-500"
+                  direction="up"
+                  delay={index * 0.1}
                 >
-                  <div className="text-4xl mb-4">{valueIcons[index]}</div>
-                  <h3 className="font-[var(--font-display)] text-xl text-white mb-3 group-hover:text-[var(--color-primary)] transition-colors">
-                    {t(`values.${key}.title`)}
-                  </h3>
-                  <p className="text-[var(--color-text-muted)] text-sm leading-relaxed">
-                    {t(`values.${key}.description`)}
-                  </p>
-                </motion.div>
+                  <div className="group p-8 bg-[var(--color-background)] border border-[var(--color-border)] hover:border-[var(--color-primary)]/50 transition-all duration-500">
+                    <div className="text-4xl mb-4">{valueIcons[index]}</div>
+                    <h3 className="font-[var(--font-display)] text-xl text-white mb-3 group-hover:text-[var(--color-primary)] transition-colors">
+                      {t(`values.${key}.title`)}
+                    </h3>
+                    <p className="text-[var(--color-text-muted)] text-sm leading-relaxed">
+                      {t(`values.${key}.description`)}
+                    </p>
+                  </div>
+                </Reveal>
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
 
-        <section ref={journeyRef} className="section-padding bg-[var(--color-background)] relative overflow-hidden">
+        <section className="section-padding bg-[var(--color-background)] relative overflow-hidden">
           <SardegnaDecoration
             className="bottom-20 right-0 translate-x-1/3 w-[500px] h-[500px] rotate-[15deg]"
             opacity={0.07}
           />
           <div className="container-custom relative z-10">
-            <motion.div
-              initial="hidden"
-              animate={journeyInView ? "visible" : "hidden"}
-              variants={staggerContainer}
-              className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"
-            >
-              <motion.div variants={fadeInUp}>
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+              <Reveal direction="up">
                 <span className="subtitle-decorator mb-4">{t("journeySubtitle")}</span>
                 <h2 className="font-[var(--font-display)] text-4xl md:text-5xl text-white mb-6">
                   {t("journeyTitle").split(" ").slice(0, 1).join(" ")}{" "}
@@ -183,21 +151,22 @@ export default function ChiSiamoPage() {
                     </div>
                   ))}
                 </div>
-              </motion.div>
-              <motion.div variants={fadeInUp} className="relative">
+              </Reveal>
+              <Reveal direction="up" delay={0.15} className="relative">
                 <div className="relative aspect-[4/5] overflow-hidden">
                   <Image
-                    src="/images/food/olivas.jpg"
+                    src="/images/food/chi-siamo-journey.webp"
                     alt={t("journeySubtitle")}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 border border-[var(--color-primary)]/20" />
                 </div>
                 <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-[var(--color-primary)]/30" />
                 <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-[var(--color-primary)]/30" />
-              </motion.div>
-            </motion.div>
+              </Reveal>
+            </div>
           </div>
         </section>
 
@@ -206,13 +175,7 @@ export default function ChiSiamoPage() {
             <div className="absolute inset-0" style={{ backgroundImage: "url('/images/backgrounds/pattern.svg')" }} />
           </div>
           <div className="container-custom relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-center max-w-3xl mx-auto"
-            >
+            <Reveal direction="up" className="text-center max-w-3xl mx-auto">
               <span className="subtitle-decorator justify-center mb-4">{t("ctaSubtitle")}</span>
               <h2 className="font-[var(--font-display)] text-4xl md:text-5xl text-white mb-6">
                 {t("ctaTitle").split(" ").slice(0, -1).join(" ")} <span className="text-[var(--color-primary)]">{t("ctaTitle").split(" ").slice(-1)}</span>
@@ -228,7 +191,7 @@ export default function ChiSiamoPage() {
               >
                 {tCommon("bookNow")}
               </a>
-            </motion.div>
+            </Reveal>
           </div>
         </section>
       </main>
