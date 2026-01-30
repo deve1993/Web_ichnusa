@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import nodemailer from "nodemailer";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Nome richiesto"),
@@ -40,6 +41,18 @@ async function verifyRecaptcha(token: string): Promise<{ valid: boolean; score: 
 
   const result: ReCaptchaVerifyResponse = await response.json();
   return { valid: result.success && (result.score ?? 0) >= 0.5, score: result.score ?? 0 };
+}
+
+function getTransporter() {
+  return nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT) || 465,
+    secure: process.env.SMTP_SECURE !== "false",
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
 }
 
 export async function submitContactForm(
@@ -96,16 +109,7 @@ UTM Source: ${data.utm_source || "N/A"}
 
   try {
     if (process.env.SMTP_HOST) {
-      const nodemailer = await import("nodemailer");
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT) || 465,
-        secure: process.env.SMTP_SECURE !== "false",
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
-        },
-      });
+      const transporter = getTransporter();
 
       await transporter.sendMail({
         from: process.env.EMAIL_FROM || "Ichnusa <reservations@ichnusa.restaurant>",
@@ -117,7 +121,7 @@ UTM Source: ${data.utm_source || "N/A"}
 
       console.log("Email sent via SMTP");
     } else {
-      console.log("SMTP not configured. Would send email:");
+      console.log("SMTP_HOST not configured. Would send email:");
       console.log(emailContent);
     }
 
