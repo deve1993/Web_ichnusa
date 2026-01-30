@@ -4,6 +4,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing, Locale } from "@/i18n/routing";
 import ClientWidgets from "@/components/ClientWidgets";
+import ReCaptchaScript from "@/components/ReCaptchaScript";
 import { RestaurantJsonLd } from "@/components/seo";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ichnusa.restaurant";
@@ -188,6 +189,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <>
       <RestaurantJsonLd locale={locale} />
+      <ReCaptchaScript />
       <NextIntlClientProvider messages={clientMessages}>
         <ClientWidgets>
           {children}

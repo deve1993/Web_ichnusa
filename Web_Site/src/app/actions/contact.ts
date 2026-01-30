@@ -17,6 +17,31 @@ export interface ContactResponse {
   error?: string;
 }
 
+interface ReCaptchaVerifyResponse {
+  success: boolean;
+  score?: number;
+  action?: string;
+  challenge_ts?: string;
+  hostname?: string;
+  "error-codes"?: string[];
+}
+
+async function verifyRecaptcha(token: string): Promise<{ valid: boolean; score: number }> {
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+  if (!secretKey) {
+    return { valid: true, score: 1.0 };
+  }
+
+  const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: `secret=${secretKey}&response=${token}`,
+  });
+
+  const result: ReCaptchaVerifyResponse = await response.json();
+  return { valid: result.success && (result.score ?? 0) >= 0.5, score: result.score ?? 0 };
+}
+
 export async function submitContactForm(
   data: Record<string, string>
 ): Promise<ContactResponse> {
@@ -28,6 +53,19 @@ export async function submitContactForm(
       success: false,
       error: messages.join(", "),
     };
+  }
+
+  if (process.env.RECAPTCHA_SECRET_KEY) {
+    const token = data.recaptchaToken;
+    if (!token) {
+      return { success: false, error: "Verifica reCAPTCHA mancante. Ricarica la pagina e riprova." };
+    }
+
+    const { valid, score } = await verifyRecaptcha(token);
+    if (!valid) {
+      console.warn(`reCAPTCHA rejected: score=${score}, email=${data.email}`);
+      return { success: false, error: "Verifica anti-spam fallita. Riprova." };
+    }
   }
 
   const validatedData = result.data;

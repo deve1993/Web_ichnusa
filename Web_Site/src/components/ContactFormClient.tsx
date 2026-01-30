@@ -30,9 +30,15 @@ export default function ContactFormClient() {
     setErrorMessage(null);
 
     const referralData = getReferralDataForSubmission();
-    const fullData = { ...formState, ...referralData };
 
     try {
+      let recaptchaToken = "";
+      const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+      if (siteKey && typeof window !== "undefined" && window.grecaptcha) {
+        recaptchaToken = await window.grecaptcha.execute(siteKey, { action: "contact_form" });
+      }
+
+      const fullData = { ...formState, ...referralData, recaptchaToken };
       const result = await submitContactForm(fullData);
       
       if (result.success) {
@@ -169,6 +175,12 @@ export default function ContactFormClient() {
             *
           </label>
         </div>
+
+        <p className="text-xs text-[var(--color-text-dark)]">
+          This site is protected by reCAPTCHA and the Google{" "}
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline">Privacy Policy</a> and{" "}
+          <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline">Terms of Service</a> apply.
+        </p>
 
         <div className="flex items-center gap-4">
           <button
