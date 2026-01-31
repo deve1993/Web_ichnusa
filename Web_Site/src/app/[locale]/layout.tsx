@@ -184,6 +184,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     gallery: messages.gallery,
     terms: messages.terms,
     privacy: messages.privacy,
+    newsletter: messages.newsletter,
   };
 
   return (

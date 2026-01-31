@@ -154,6 +154,12 @@
     "privacy": "Privacy Policy",
     "terms": "Termini e Condizioni"
   },
+  "newsletter": {
+    "placeholder": "La tua email",
+    "subscribe": "Iscriviti",
+    "success": "Iscrizione avvenuta con successo!",
+    "errorGeneric": "Errore durante l'iscrizione. Riprova più tardi."
+  },
   "about": {
     "pageTitle": "Chi Siamo",
     "pageSubtitle": "La nostra storia, la nostra passione per la cucina sarda autentica",

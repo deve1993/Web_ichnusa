@@ -154,6 +154,12 @@
     "privacy": "Zásady ochrany osobních údajů",
     "terms": "Obchodní podmínky"
   },
+  "newsletter": {
+    "placeholder": "Váš email",
+    "subscribe": "Odebírat",
+    "success": "Úspěšně přihlášeno k odběru!",
+    "errorGeneric": "Chyba při přihlášení. Zkuste to prosím později."
+  },
   "about": {
     "pageTitle": "O nás",
     "pageSubtitle": "Náš příběh, naše vášeň pro autentickou sardinskou kuchyni",

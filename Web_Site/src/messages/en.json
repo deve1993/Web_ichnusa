@@ -154,6 +154,12 @@
     "privacy": "Privacy Policy",
     "terms": "Terms and Conditions"
   },
+  "newsletter": {
+    "placeholder": "Your email",
+    "subscribe": "Subscribe",
+    "success": "Successfully subscribed!",
+    "errorGeneric": "Subscription failed. Please try again later."
+  },
   "about": {
     "pageTitle": "About Us",
     "pageSubtitle": "Our story, our passion for authentic Sardinian cuisine",

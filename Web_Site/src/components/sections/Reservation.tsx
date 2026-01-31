@@ -5,7 +5,7 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 
-const RESERVATION_URL = "https://reservation.dish.co/widget/hydra-7cc98a90-5678-11ec-bb8e-d7389d5eaae1";
+const RESERVATION_URL = "https://reservation.dish.co/widget/hors-hydra-7cc98a90-5678-11ec-bb8e-d7389d5eaae1";
 const PHONE_NUMBER = "+420 605 375 012";
 
 export default async function Reservation() {
