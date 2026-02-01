@@ -35,6 +35,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description: descriptions[locale] || descriptions.it,
       url: `${baseUrl}/${locale}/galleria`,
       type: 'website',
+      siteName: 'Ichnusa Botega & Bistro',
+      locale: locale === 'cs' ? 'cs_CZ' : locale === 'en' ? 'en_US' : 'it_IT',
+      images: [
+        {
+          url: `${baseUrl}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: 'Ichnusa Botega & Bistro',
+        },
+      ],
     },
   };
 }
