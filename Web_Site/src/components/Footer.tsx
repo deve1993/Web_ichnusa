@@ -19,7 +19,7 @@ const emailAddresses = [
 
 const socialLinks = [
   { icon: Facebook, href: "https://www.facebook.com/ichnusarestaurant", label: "Facebook" },
-  { icon: Instagram, href: "https://www.instagram.com/ichnusa_official_prague/", label: "Instagram" },
+  { icon: Instagram, href: "https://www.instagram.com/ichnusa.bistro_prague/", label: "Instagram" },
 ];
 
 export default async function Footer() {
