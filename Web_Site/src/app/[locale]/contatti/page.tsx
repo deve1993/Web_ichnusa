@@ -72,7 +72,7 @@ const fallbackContactInfo = {
   reservationUrl: "https://reservation.dish.co/widget/hydra-7cc98a90-5678-11ec-bb8e-d7389d5eaae1",
   social: {
     facebook: "https://www.facebook.com/ichnusarestaurant",
-    instagram: "https://www.instagram.com/ichnusa_official_prague/",
+    instagram: "https://www.instagram.com/ichnusa.bistro_prague/",
   },
   hours: "Lun - Sab: 11:00 - 23:30\nDom: Chiuso",
 };
