@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { routing, Locale } from "@/i18n/routing";
 import ClientWidgets from "@/components/ClientWidgets";
 import ReCaptchaScript from "@/components/ReCaptchaScript";
+import Analytics from "@/components/Analytics";
 import { RestaurantJsonLd } from "@/components/seo";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ichnusa.restaurant";
@@ -125,15 +126,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/icon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicons/favicon.ico", sizes: "48x48" },
+      { url: "/favicons/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicons/favicon-96x96.png", sizes: "96x96", type: "image/png" },
     ],
     apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-    other: [
-      { rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#C9A96E" },
+      { url: "/favicons/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
 };
@@ -190,6 +188,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <>
       <RestaurantJsonLd locale={locale} />
+      <Analytics />
       <ReCaptchaScript />
       <NextIntlClientProvider messages={clientMessages}>
         <ClientWidgets>
