@@ -28,7 +28,7 @@ export default function HeroVideo() {
         videoLoaded ? "opacity-100" : "opacity-0"
       }`}
     >
-      <source src="/video/tour-restaurant.mp4" type="video/mp4" />
+      <source src="/video/hero-video.mp4" type="video/mp4" />
     </video>
   );
 }
