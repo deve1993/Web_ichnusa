@@ -121,7 +121,7 @@ const fallbackItems: MenuItem[] = [
   // Dolci
   { id: "d1", name: "Seadas", price: 255, category: "dolci", isAvailable: true },
   { id: "d2", name: "Tiramisù al bicchiere", price: 220, category: "dolci", isAvailable: true },
-  { id: "d3", name: "Bobà al mirto servito con zabaione caldo", price: 215, category: "dolci", isAvailable: true },
+  { id: "d3", name: "Babà al mirto servito con zabaione caldo", price: 215, category: "dolci", isAvailable: true },
   { id: "d4", name: "Millefoglie, crema di cioccolato, amaretti, amarene", price: 245, category: "dolci", isAvailable: true },
 ];
 

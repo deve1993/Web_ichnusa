@@ -5,4 +5,7 @@ interface ReCaptchaV3 {
 
 interface Window {
   grecaptcha: ReCaptchaV3;
+  gtag: (...args: unknown[]) => void;
+  fbq: (...args: unknown[]) => void;
+  dataLayer: Record<string, unknown>[];
 }

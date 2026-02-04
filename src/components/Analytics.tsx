@@ -1,28 +1,71 @@
 "use client";
 
 import Script from "next/script";
+import { useEffect, useState } from "react";
+import { COOKIE_CONSENT_KEY, type ConsentLevel } from "@/hooks/useCookieConsent";
 
-/**
- * Analytics & Tracking Scripts
- *
- * Carica condizionalmente:
- * - Google Tag Manager (GTM)
- * - Google Analytics 4 (GA4) — solo se NON usi GTM
- * - Meta Pixel (Facebook/Instagram)
- * - Plausible Analytics (privacy-first)
- *
- * Ogni script si attiva SOLO se la relativa variabile NEXT_PUBLIC_* è presente nel .env.
- * Se la variabile è commentata o assente, lo script non viene caricato.
- */
 export default function Analytics() {
-  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
   const ga4Id = process.env.NEXT_PUBLIC_GA4_ID;
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
   const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
-  const plausibleHost = process.env.NEXT_PUBLIC_PLAUSIBLE_HOST || "https://plausible.io";
+  const plausibleHost =
+    process.env.NEXT_PUBLIC_PLAUSIBLE_HOST || "https://plausible.io";
+
+  const [consent, setConsent] = useState<ConsentLevel>(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem(COOKIE_CONSENT_KEY) as ConsentLevel;
+    setConsent(stored);
+
+    const handleConsentChange = (e: Event) => {
+      const detail = (e as CustomEvent<ConsentLevel>).detail;
+      setConsent(detail);
+    };
+
+    window.addEventListener("cookie-consent-change", handleConsentChange);
+    return () =>
+      window.removeEventListener("cookie-consent-change", handleConsentChange);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.gtag) return;
+
+    if (consent === "all") {
+      window.gtag("consent", "update", {
+        analytics_storage: "granted",
+        ad_storage: "granted",
+        ad_user_data: "granted",
+        ad_personalization: "granted",
+      });
+    }
+  }, [consent]);
+
+  const hasConsent = consent === "all";
 
   return (
     <>
+      {/* ─── Google Consent Mode v2 — Default denied (always loaded) ─── */}
+      {(ga4Id || gtmId) && (
+        <Script
+          id="google-consent-default"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                analytics_storage: 'denied',
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                wait_for_update: 500
+              });
+            `,
+          }}
+        />
+      )}
+
       {/* ─── Google Tag Manager ─── */}
       {gtmId && (
         <>
@@ -39,7 +82,6 @@ export default function Analytics() {
               `,
             }}
           />
-          {/* GTM noscript fallback — iniettato via dangerouslySetInnerHTML nel body */}
           <noscript>
             <iframe
               src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
@@ -76,8 +118,8 @@ export default function Analytics() {
         </>
       )}
 
-      {/* ─── Meta Pixel (Facebook/Instagram) ─── */}
-      {metaPixelId && (
+      {/* ─── Meta Pixel — solo dopo consenso ─── */}
+      {metaPixelId && hasConsent && (
         <>
           <Script
             id="meta-pixel"
@@ -109,7 +151,7 @@ export default function Analytics() {
         </>
       )}
 
-      {/* ─── Plausible Analytics ─── */}
+      {/* ─── Plausible Analytics (cookieless, no consenso richiesto) ─── */}
       {plausibleDomain && (
         <Script
           defer
