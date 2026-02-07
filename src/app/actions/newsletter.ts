@@ -1,7 +1,6 @@
 "use server";
 
 import { z } from "zod";
-import nodemailer from "nodemailer";
 
 const newsletterSchema = z.object({
   email: z.string().email("Email non valida"),
@@ -12,20 +11,9 @@ export interface NewsletterResponse {
   error?: string;
 }
 
-function getTransporter() {
-  return nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT) || 465,
-    secure: process.env.SMTP_SECURE !== "false",
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  });
-}
-
 export async function subscribeNewsletter(
-  email: string
+  email: string,
+  locale: string = "it"
 ): Promise<NewsletterResponse> {
   const result = newsletterSchema.safeParse({ email });
 
@@ -34,31 +22,28 @@ export async function subscribeNewsletter(
   }
 
   const validEmail = result.data.email;
+  const webhookUrl = process.env.N8N_NEWSLETTER_WEBHOOK_URL;
 
-  const emailContent = `
-Nuova iscrizione newsletter - Ichnusa Botega & Bistro
-
-Email: ${validEmail}
-Data: ${new Date().toLocaleString("it-IT", { timeZone: "Europe/Prague" })}
-
----
-Iscrizione ricevuta dal sito web.
-  `.trim();
+  if (!webhookUrl) {
+    console.error("N8N_NEWSLETTER_WEBHOOK_URL not configured");
+    return { success: false, error: "Servizio temporaneamente non disponibile." };
+  }
 
   try {
-    if (process.env.SMTP_HOST) {
-      const transporter = getTransporter();
+    const response = await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: validEmail,
+        locale,
+        subscribedAt: new Date().toISOString(),
+      }),
+      signal: AbortSignal.timeout(5000),
+    });
 
-      await transporter.sendMail({
-        from: process.env.EMAIL_FROM || "Ichnusa <reservations@ichnusa.restaurant>",
-        to: process.env.CONTACT_EMAIL || "reservations@ichnusa.restaurant",
-        subject: `[Ichnusa Newsletter] Nuova iscrizione: ${validEmail}`,
-        text: emailContent,
-      });
-
-      console.log("Newsletter subscription sent via SMTP:", validEmail);
-    } else {
-      console.log("SMTP_HOST not configured. Newsletter subscription:", validEmail);
+    if (!response.ok) {
+      console.error("n8n webhook error:", response.status);
+      return { success: false, error: "Errore durante l'iscrizione. Riprova più tardi." };
     }
 
     return { success: true };

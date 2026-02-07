@@ -93,8 +93,11 @@ export default function Analytics() {
         </>
       )}
 
-      {/* ─── Google Analytics 4 (solo se GTM NON è attivo) ─── */}
-      {ga4Id && !gtmId && (
+      {/* ─── Google Analytics 4 ───
+       * TODO: Quando il cliente configura GA4 dentro GTM, rimuovere questo blocco
+       * e commentare NEXT_PUBLIC_GA4_ID nel .env per evitare hit duplicati.
+       */}
+      {ga4Id && (
         <>
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}

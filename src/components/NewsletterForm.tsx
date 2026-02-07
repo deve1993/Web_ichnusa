@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { Send, Check, AlertCircle, Loader2 } from "lucide-react";
 import { subscribeNewsletter } from "@/app/actions/newsletter";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 export default function NewsletterForm() {
+  const locale = useLocale();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -18,7 +19,7 @@ export default function NewsletterForm() {
     setStatus("loading");
     setErrorMsg("");
 
-    const result = await subscribeNewsletter(email);
+    const result = await subscribeNewsletter(email, locale);
 
     if (result.success) {
       setStatus("success");
